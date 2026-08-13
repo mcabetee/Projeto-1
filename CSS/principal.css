@@ -1,33 +1,42 @@
-*{
+/*Configuraçõs universal*/
+* {
     margin: 0px;
     padding: 0px;
+
+    font-family: Arial;
 }
 
-header{
+/*Cabeçalho*/
+header {
 
-    background-color:rgb(110, 6, 148);
+    font-family: Arial;
+
+    background-color: rgb(110, 6, 148);
     color: white;
 
-    height:100px;
+    height: 100px;
 
     display: flex;
-    align-items:center;
-    justify-content:center;
+    align-items: center;
+    justify-content: center;
 
 }
 
-main{
+/*Principal*/
+main {
 
     display: flex;
     flex-direction: column;
 
     margin-top: 20px;
 
-    background-color: yellow;
+
 
 }
 
-.section_calenddarioEaviso{
+/*Configurações do calendario*/
+
+.section_calenddarioEaviso {
 
     display: flex;
     align-items: center;
@@ -36,7 +45,7 @@ main{
 
 }
 
-.section_calenddarioEaviso .div_calen{
+.section_calenddarioEaviso .div_calen {
 
     display: flex;
     align-items: center;
@@ -49,7 +58,9 @@ main{
 
 }
 
-.section_calenddarioEaviso .div_avis{
+/*Configurações dos avisos*/
+
+.section_calenddarioEaviso .div_avis {
 
     display: flex;
     justify-content: center;
@@ -60,9 +71,13 @@ main{
     height: 100px;
     width: 200px;
 
+    font-family: Arial;
+
 }
 
-.section_materias{
+/*Configurações da div materias*/
+
+.section_materias {
 
     display: flex;
     flex-direction: column;
@@ -72,14 +87,14 @@ main{
 
 }
 
-.section_materias h2{
+.section_materias h2 {
 
     margin-left: 20px;
     margin-bottom: 20px;
 
 }
 
-.div_materiasSemH2{
+.div_materiasSemH2 {
 
     display: flex;
     flex-direction: column;
@@ -89,7 +104,7 @@ main{
 
 }
 
-.div_inputsMaterias{
+.div_inputsMaterias {
 
     display: flex;
     flex-direction: row;
@@ -99,7 +114,7 @@ main{
 
 }
 
-.input_textMateria{
+.input_textMateria {
 
     height: 45px;
     width: 350px;
@@ -111,9 +126,9 @@ main{
 
 }
 
-.input_textMateriaCadas{
+.input_textMateriaCadas {
 
-    background-color:rgb(110, 6, 148);
+    background-color: rgb(110, 6, 148);
     color: white;
 
     height: 47px;
@@ -122,22 +137,181 @@ main{
     border-radius: 10px;
     border: 2px solid black;
 
-    transition: 0.5px;
+    transition: 0.3s;
 
 }
 
-.input_textMateriaCadas:hover{
+.input_textMateriaCadas:hover {
 
-    background-color:rgb(131, 4, 177);
+    background-color: rgb(223, 192, 234);
     color: white;
 
     transform: translateY(-5px);
 
 }
 
-footer{
+.div_materiasRes {
 
-    background-color:rgb(110, 6, 148);
+    width: 400px;
+    margin: 50px auto;
+
+    border: 2px solid white;
+    border-radius: 20px;
+
+    background-color: rgb(110, 6, 148);
+
+
+    overflow: hidden;
+
+}
+
+/*Configurações da Primeira tabela*/
+
+.tabela1 {
+
+    width: 100%;
+
+    border: 2px solid black;
+
+    border-collapse: collapse;
+
+    color: white;
+
+
+}
+
+.tabela1 th {
+
+    background-color: rgb(110, 6, 148);
+
+    color: white;
+
+    font-size: 19px;
+    font-family: Arial;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-right: 1px solid white;
+}
+
+.tabela1 th:last-child {
+    border-right: none;
+}
+
+.tabela1 td {
+
+
+    color: black;
+
+    padding: 22px;
+
+    font-size: 22px;
+
+    text-align: center;
+
+    border: 1px solid black;
+
+}
+
+.tabela1 tr:nth-child(even) {
+    background-color: rgb(223, 192, 234);
+}
+
+.tabela1 tr:nth-child(odd) {
+    background-color: white;
+}
+
+.tabela1 tr:hover {
+
+    background-color: rgb(238, 218, 245);
+
+}
+
+/*configurações da Segunda tabela*/
+
+.div_tarefasRes {
+
+    width: 750px;
+    margin: 50px auto;
+
+    border: 2px solid white;
+    border-radius: 20px;
+
+    background-color: rgb(110, 6, 148);
+
+    overflow: hidden;
+
+}
+
+.tabela2 {
+
+    width: 100%;
+
+    border: 2px solid black;
+
+    border-collapse: collapse;
+
+    color: white;
+
+
+}
+
+.tabela2 th {
+
+    background-color: rgb(110, 6, 148);
+
+    color: white;
+
+    font-size: 19px;
+    font-family: Arial;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-right: 1px solid white;
+}
+
+.tabela2 th:last-child {
+    border-right: none;
+}
+
+.tabela2 td {
+
+
+    color: black;
+
+    padding: 22px;
+
+    font-size: 22px;
+
+    text-align: center;
+
+    border: 1px solid black;
+
+}
+
+.tabela2 tr:nth-child(even) {
+    background-color: rgb(223, 192, 234);
+}
+
+.tabela2 tr:nth-child(odd) {
+    background-color: white;
+}
+
+.tabela2 tr:hover {
+
+    background-color: rgb(238, 218, 245);
+
+}
+
+/*Radapé*/
+
+footer {
+
+    background-color: rgb(110, 6, 148);
     color: white;
 
     height: 80px;
