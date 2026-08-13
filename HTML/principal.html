@@ -1,21 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-Br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto 1</title>
     <link rel="stylesheet" href="/CSS/principal.css">
 </head>
+
 <body>
 
     <header>
 
-        <h1>Projeto 1</h1>
-        <h2>uai</h2>
-        <h2>teste</h2>
+        <h1>Nome do site</h1>
 
     </header>
 
+    <main>
+
+        <section class="section_calenddarioEaviso">
+
+            <div>Calendario 2026</div>
+
+            <div>Aviso</div>
+
+        </section>
+
+        <section class="section_materias">
+
+            <h2>Materias:</h2>
+
+            <div class="div_inputsMaterias">
+
+                <input type="text" name="" id="inputMateria" placeholder="Nome da materia...">
+
+                <input type="button" value="Cadastrar">
+
+            </div>
+
+            <div class="div_materiasRes">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Nome da materia</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table_MateriaRes"> </tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+        <section class="section_tarefas">
+
+            <h2>Tarefas:</h2>
+
+            <div class="div_inputsTarefas">
+
+                <div class="div_inputNomeDaTarefa">
+
+                    <input type="text" name="" id="" placeholder="Nome da tarefa...">
+
+                </div>
+
+                <div class="div_inputNomeDaMateria">
+
+                    <label for="materias">Escolha sua materia:</label>
+
+                    <select name="materias" id="materias">
+
+                        <optgroup label="Humanas">
+
+                            <option value="Portugues">Portugues</option>
+                            <option value="Historia">Historia</option>
+
+                        </optgroup>
+
+                        <optgroup label="Exatas">
+
+                            <option value="Matematica">Matematica</option>
+                            <option value="fisica">fisica</option>
+
+                        </optgroup>
+
+                    </select>
+
+                <!-- Esse input que está comentado é casos o select não de certo <input type="text" name="" id="" placeholder="Nome da materia...">
+                -->
+
+                </div>
+
+                <div class="div_inputElabelDatetime">
+
+                    <label for="datetime-local">Dia e horario que expira as atividades:</label>
+                    <input type="datetime-local" name="" id="">
+
+                </div>
+
+            </div>
+
+            <div class="div_tarefasRes">
+
+
+
+            </div>
+
+        </section>
+
+        <section class="section_total">
+
+            <div class="div_totalDeMaterias"></div>
+
+            <div class="div_totalDeTarefas"></div>
+
+            <div class="div_totalDePendencias"></div>
+
+        </section>
+
+        <section class="section_grafico">
+
+            <p>grafico</p>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>&copy;Esse site foi desenvolvido por mariana C e Yuri M</p>
+
+    </footer>
+
     <script src="/JAVASCRIPT/principal.js"></script>
 </body>
+
 </html>
