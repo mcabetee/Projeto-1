@@ -16,6 +16,125 @@ header{
 
 }
 
+main{
+
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 20px;
+
+    background-color: yellow;
+
+}
+
+.section_calenddarioEaviso{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+
+}
+
+.section_calenddarioEaviso .div_calen{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: red;
+
+    height: 200px;
+    width: 240px;
+
+}
+
+.section_calenddarioEaviso .div_avis{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: red;
+
+    height: 100px;
+    width: 200px;
+
+}
+
+.section_materias{
+
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+}
+
+.section_materias h2{
+
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+}
+
+.div_materiasSemH2{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.div_inputsMaterias{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+
+}
+
+.input_textMateria{
+
+    height: 45px;
+    width: 350px;
+
+    padding-left: 10px;
+
+    border-radius: 10px;
+    border: 2px solid black;
+
+}
+
+.input_textMateriaCadas{
+
+    background-color:rgb(110, 6, 148);
+    color: white;
+
+    height: 47px;
+    width: 100px;
+
+    border-radius: 10px;
+    border: 2px solid black;
+
+    transition: 0.5px;
+
+}
+
+.input_textMateriaCadas:hover{
+
+    background-color:rgb(131, 4, 177);
+    color: white;
+
+    transform: translateY(-5px);
+
+}
+
 footer{
 
     background-color:rgb(110, 6, 148);

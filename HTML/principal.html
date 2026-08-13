@@ -20,9 +20,9 @@
 
         <section class="section_calenddarioEaviso">
 
-            <div>Calendario 2026</div>
+            <div class="div_calen">Calendario 2026</div>
 
-            <div>Aviso</div>
+            <div class="div_avis">Aviso</div>
 
         </section>
 
@@ -30,27 +30,32 @@
 
             <h2>Materias:</h2>
 
-            <div class="div_inputsMaterias">
+            <div class="div_materiasSemH2">
 
-                <input type="text" name="" id="inputMateria" placeholder="Nome da materia...">
+                <div class="div_inputsMaterias">
 
-                <input type="button" value="Cadastrar">
+                    <input type="text" class="input_textMateria" name="" id="inputMateria" placeholder="Nome da materia...">
 
-            </div>
+                    <input type="button" class="input_textMateriaCadas" value="Cadastrar">
 
-            <div class="div_materiasRes">
+                </div>
 
-                <table>
+                <div class="div_materiasRes">
 
-                    <thead>
-                        <tr>
-                            <th>Nome da materia</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
+                    <table>
 
-                    <tbody class="table_MateriaRes"> </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>Nome da materia</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="table_MateriaRes"> </tbody>
+                    </table>
+
+
+                </div>
 
             </div>
 
@@ -90,7 +95,7 @@
 
                     </select>
 
-                <!-- Esse input que está comentado é casos o select não de certo <input type="text" name="" id="" placeholder="Nome da materia...">
+                    <!-- Esse input que está comentado é casos o select não de certo <input type="text" name="" id="" placeholder="Nome da materia...">
                 -->
 
                 </div>
@@ -106,7 +111,17 @@
 
             <div class="div_tarefasRes">
 
-
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome da Tarefa</th>
+                            <th>Nome da Materia</th>
+                            <th>Expira Em</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table_tarefaRes"></tbody>
+                </table>
 
             </div>
 
@@ -114,11 +129,29 @@
 
         <section class="section_total">
 
-            <div class="div_totalDeMaterias"></div>
+            <div class="div_totalDeMaterias">
 
-            <div class="div_totalDeTarefas"></div>
+                <h3>Total de Materias:</h3>
 
-            <div class="div_totalDePendencias"></div>
+                <div class="div_totalMateriasRes"></div>
+
+            </div>
+
+            <div class="div_totalDeTarefas">
+
+                <h3>Total de Tarefas:</h3>
+
+                <div class="div_totalTarefasRes"></div>
+
+            </div>
+
+            <div class="div_totalDePendencias">
+
+                <h3>Total de Pendencias:</h3>
+
+                <div class="div_totalPendenRes"></div>
+
+            </div>
 
         </section>
 
