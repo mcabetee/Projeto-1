@@ -30,34 +30,62 @@
 
             <h2>Materias:</h2>
 
-            <div class="div_materiasSemH2">
+            <div>
+
 
                 <div class="div_inputsMaterias">
 
-                    <input type="text" class="input_textMateria" name="" id="inputMateria" placeholder="Nome da materia...">
+                    <div>
 
-                    <input type="button" class="input_textMateriaCadas" value="Cadastrar">
+                        <input type="text" class="input_textMateria" name="" id="inputMateria"
+                            placeholder="Nome da materia...">
+                    </div>
 
-                </div>
+                    <div>
 
-                <div class="div_materiasRes">
+                        <label for="area">Qual área é a sua materia:</label>
 
-                    <table class="tabela1">
+                        <select name="area" class="select_area" id="area_select">
 
-                        <thead>
-                            <tr>
-                                <th>Nome da materia</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
+                            <optgroup label="Qual Área">
 
-                        <tbody class="div_tableMatRes"> </tbody>
+                                <option value="Portugues">Humanas</option>
+                                <option value="Historia">Exatas</option>
 
-                    </table>
+                            </optgroup>
+
+                    </div>
+
+
+                    <div class="div_inputBotCadas1">
+
+                        <input type="button" class="input_textMateriaCadas" value="Cadastrar">
+
+                    </div>
+
 
                 </div>
 
             </div>
+
+            <div class="div_materiasRes">
+
+                <table class="tabela1">
+
+                    <thead>
+                        <tr>
+                            <th>Nome da materia</th>
+                            <th>Área</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="div_tableMatRes"> </tbody>
+
+                </table>
+
+            </div>
+
 
         </section>
 
@@ -73,11 +101,11 @@
 
                 </div>
 
-                <div class="div_inputNomeDaMateria">
+                <div class="div_inputNomeDaMateriaTare">
 
                     <label for="materias">Escolha sua materia:</label>
 
-                    <select name="materias" id="materias">
+                    <select name="materias" class="select_materias" id="materias">
 
                         <optgroup label="Humanas">
 
@@ -95,15 +123,20 @@
 
                     </select>
 
-                    <!-- Esse input que está comentado é casos o select não de certo <input type="text" name="" id="" placeholder="Nome da materia...">
-                -->
+                    <!-- Esse input que está comentado é casos o select não de certo <input type="text" name="" id="" placeholder="Nome da materia..."> -->
 
                 </div>
 
-                <div class="div_inputElabelDatetime">
+                <div class="div_inputElabelDatetimeTare">
 
-                    <label for="datetime-local">Dia e horario que expira as atividades:</label>
+                    <label for="datetime-local">Data que expira as atividades:</label>
                     <input type="datetime-local" name="" id="">
+
+                </div>
+
+                <div class="div_inputBotCadasTare">
+
+                    <input type="button" value="Cadastrar">
 
                 </div>
 
@@ -117,6 +150,7 @@
                         <tr>
                             <th>Nome da Tarefa</th>
                             <th>Nome da Materia</th>
+                            <th>Área</th>
                             <th>Expira Em</th>
                             <th>Ações</th>
                         </tr>
