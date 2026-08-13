@@ -1,6 +1,6 @@
 # Projeto-1
 
-# 🎵 Projeto 1
+# Projeto 1
 
 Bem-vindo ao Projeto 1
 
