@@ -30,62 +30,62 @@
 
             <h2>Materias:</h2>
 
-            <div>
+            <div class="div_cardMat">
 
+                <div class="div_inputsMateriais">
 
-                <div class="div_inputsMaterias">
-
-                    <div>
-
-                        <input type="text" class="input_textMateria" name="" id="inputMateria"
+                    <div class="div_inputTextMat">
+                        <label for="text">Digite o nome da materia</label>
+                        <input type="text" name="" class="input_textMat" id="input_textMateria"
                             placeholder="Nome da materia...">
                     </div>
 
-                    <div>
+                    <div class="div_selectMat">
 
-                        <label for="area">Qual área é a sua materia:</label>
+                        <label for="areaMat">Adicione uma área</label>
 
-                        <select name="area" class="select_area" id="area_select">
+                        <select name="areaMat" class="selectMat" id="select_materia">
 
-                            <optgroup label="Qual Área">
+                            <optgroup label="Áreas" id="select_mateHumaRes">
 
-                                <option value="Portugues">Humanas</option>
-                                <option value="Historia">Exatas</option>
+                                <option value="Humanas">Humanas</option>
 
+                                <option value="Exatas">Exatas</option>
                             </optgroup>
 
-                    </div>
-
-
-                    <div class="div_inputBotCadas1">
-
-                        <input type="button" class="input_textMateriaCadas" value="Cadastrar">
+                        </select>
 
                     </div>
 
+                    <div class="div_matBotCadas">
+
+                        <input type="button" class="bot_cadasMat" value="Cadastrar" onclick="cadastrarMat()">
+
+                    </div>
 
                 </div>
 
             </div>
 
-            <div class="div_materiasRes">
+        </section>
 
-                <table class="tabela1">
+        <div class="div_materiasRes">
 
-                    <thead>
-                        <tr>
-                            <th>Nome da materia</th>
-                            <th>Área</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
+            <table class="tabela1">
 
-                    <tbody class="div_tableMatRes"> </tbody>
+                <thead>
+                    <tr>
+                        <th>Nome da materia</th>
+                        <th>Área</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
 
-                </table>
+                <tbody class="div_tableMatRes"> </tbody>
 
-            </div>
+            </table>
 
+        </div>
 
         </section>
 
@@ -93,100 +93,119 @@
 
             <h2>Tarefas:</h2>
 
-            <div class="div_inputsTarefas">
+            <div class="div_cardTare">
 
-                <div class="div_inputNomeDaTarefa">
+                <div class="div_inputsTare">
 
-                    <input type="text" name="" id="" placeholder="Nome da tarefa...">
+                    <div class="div_inputTextTare">
 
-                </div>
+                        <label for="text">Digite o nome da tarefa</label>
+                        <input type="text" class="input_textTare" name="" id="" placeholder="Nome da tarefa...">
 
-                <div class="div_inputNomeDaMateriaTare">
+                    </div>
 
-                    <label for="materias">Escolha sua materia:</label>
+                    <div class="div_inputDateTimeLocalTare">
 
-                    <select name="materias" class="select_materias" id="materias">
+                        <label for="datetime-local">Adicione uma data para a sua tarefa</label>
+                        <input type="datetime-local" class="input_datetimeLocalTare" name="" id="input_datetimeLocal">
 
-                        <optgroup label="Humanas">
+                    </div>
 
-                            <option value="Portugues">Portugues</option>
-                            <option value="Historia">Historia</option>
+                    <div class="div_selectTare">
 
-                        </optgroup>
+                        <label for="areaTarefas">Adicione uma materia</label>
 
-                        <optgroup label="Exatas">
+                        <select name="areaTarefas" id="selectTare" class="select_tarefas">
 
-                            <option value="Matematica">Matematica</option>
-                            <option value="fisica">fisica</option>
+                            <optgroup label="Humanas" id="select_tarefasRes">
+                                <option value="Portugues">Portugues</option>
+                            </optgroup>
 
-                        </optgroup>
+                            <optgroup label="Exatas" id="select_tarefasRes">
+                                <option value="Matematica">Matematica</option>
+                            </optgroup>
 
-                    </select>
+                        </select>
 
-                    <!-- Esse input que está comentado é casos o select não de certo <input type="text" name="" id="" placeholder="Nome da materia..."> -->
+                    </div>
 
-                </div>
+                    <div class="div_tareBotCadas">
 
-                <div class="div_inputElabelDatetimeTare">
+                        <input type="button" class="bot_cadasTare" value="Cadastrar" onclick="cadastrarTare()">
 
-                    <label for="datetime-local">Data que expira as atividades:</label>
-                    <input type="datetime-local" name="" id="">
-
-                </div>
-
-                <div class="div_inputBotCadasTare">
-
-                    <input type="button" value="Cadastrar">
+                    </div>
 
                 </div>
 
             </div>
 
-            <div class="div_tarefasRes">
+        </section>
+        <!-- Esse input que está comentado é casos o select não de certo <input type="text" name="" id="" placeholder="Nome da materia..."> -->
 
-                <table class="tabela2">
+        <div class="div_tarefasRes">
 
-                    <thead>
-                        <tr>
-                            <th>Nome da Tarefa</th>
-                            <th>Nome da Materia</th>
-                            <th>Área</th>
-                            <th>Expira Em</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
+            <table class="tabela2">
 
-                    <tbody class="div_tableTarRes"> </tbody>
+                <thead>
+                    <tr>
+                        <th>Nome da Tarefa</th>
+                        <th>Nome da Materia</th>
+                        <th>Área</th>
+                        <th>Expira Em</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
 
-                </table>
+                <tbody class="div_tableTarRes"> </tbody>
 
-            </div>
+            </table>
+
+        </div>
 
         </section>
 
         <section class="section_total">
 
-            <div class="div_totalDeMaterias">
+            <div class="div_cardTotal">
 
-                <h3>Total de Materias:</h3>
+                <div class="div_totalDeMaterias">
 
-                <div class="div_totalMateriasRes"></div>
+                    <h3>Total de Materias:</h3>
 
-            </div>
+                    <div class="div_totalMateriasRes"><h4>3</h4></div>
 
-            <div class="div_totalDeTarefas">
+                </div>
 
-                <h3>Total de Tarefas:</h3>
+                <div class="div_totalDeTarefas">
 
-                <div class="div_totalTarefasRes"></div>
+                    <h3>Total de Tarefas:</h3>
 
-            </div>
+                    <div class="div_totalTarefasRes"><h4>4</h4></div>
 
-            <div class="div_totalDePendencias">
+                </div>
 
-                <h3>Total de Pendencias:</h3>
+                <div class="div_totalDePendencias">
 
-                <div class="div_totalPendenRes"></div>
+                    <div class="divTotal_pende">
+
+                        <h3>Total de Pendencias:</h3>
+                        <div class="div_totalPendenRes">
+                            <h4>2</h4>
+                        </div>
+
+                    </div>
+
+                    <div class="divTotal_expirar">
+
+                        <h4>Proxima a expirar:</h4>
+
+                        <div class="div_tempoDeExpirar">
+                            <h5>Dia: 32 mes: 14 ano: 2020 horario: 13:99</h5>
+                        </div>
+
+
+                    </div>
+                </div>
 
             </div>
 

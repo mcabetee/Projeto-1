@@ -77,17 +77,8 @@ main {
 
 }
 
-/*Configurações da div materias*/
-
-.section_materias {
-
-    display: flex;
-    flex-direction: column;
-
-    margin-bottom: 60px;
-
-}
-
+/*Estilização das materias*/
+/*Estilização do H2 de materias*/
 .section_materias h2 {
 
     margin-left: 20px;
@@ -95,27 +86,42 @@ main {
 
 }
 
-.div_materiasSemH2 {
+/*Estilização das primeiras divs da parte da materia o primeiro é do card e o segundo é da div dos inputs*/
+.div_cardMat {
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
 
 }
 
-.div_inputsMaterias {
+.div_inputsMateriais {
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: 20px;
+
+    height: 255px;
+    width: 30%;
+
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
 }
 
-.input_textMateria {
+/*Estilização do input:text*/
+.div_inputTextMat {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input_textMat {
 
     height: 45px;
     width: 350px;
@@ -127,39 +133,71 @@ main {
 
 }
 
+/*Estilização do select*/
+.div_selectMat {
 
+    display: flex;
+    flex-direction: column;
 
+}
 
-
-
-
-
-.input_textMateriaCadas {
+.div_selectMat select {
 
     background-color: rgb(110, 6, 148);
     color: white;
 
-    height: 47px;
-    width: 100px;
+    height: 50px;
+    width: 175px;
+
+    padding-left: 10px;
 
     border-radius: 10px;
     border: 2px solid black;
+
+}
+
+.selectMat optgroup {
+
+    background-color: rgb(110, 6, 148);
+
+    color: white;
+
+}
+
+.selectMat option {
+
+    background-color: white;
+
+    color: black;
+
+}
+
+/*Estilização do botão cadastrar*/
+
+.bot_cadasMat {
+
+    height: 50px;
+    width: 87px;
+
+    border-radius: 10px;
+
+    border: none;
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
     transition: 0.3s;
 
 }
 
-.input_textMateriaCadas:hover {
+.bot_cadasMat:hover {
 
     background-color: rgb(223, 192, 234);
-    color: white;
+    color: black;
 
     transform: translateY(-5px);
 
 }
 
-/*Configurações da Primeira tabela*/
-
+/*Configurações da Primeira tabela que é res das materias*/
 .div_materiasRes {
 
     width: 460px;
@@ -240,27 +278,42 @@ main {
 }
 
 /*Configurações das Tarefas*/
-
-.section_tarefas h2 {
-
-    margin-left: 20px;
-    margin-bottom: 20px;
-
-}
-
-.div_inputsTarefas {
+.div_cardTare {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 10px;
-
-    height: 150px;
+    align-items: center;
 
 }
 
-.div_inputNomeDaTarefa input {
+.div_inputsTare {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    height: 350px;
+    width: 35%;
+
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+}
+
+
+/*Estilização do input:text*/
+.div_inputTextTare {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input_textTare {
 
     height: 45px;
     width: 350px;
@@ -272,70 +325,88 @@ main {
 
 }
 
-.div_inputNomeDaMateriaTare {
+/*Estilização do select*/
+.div_selectTare {
 
     display: flex;
     flex-direction: column;
 
 }
 
-.div_inputElabelDatetimeTare {
+.div_selectTare select {
 
-    display: flex;
-    flex-direction: column;
+    background-color: rgb(110, 6, 148);
+    color: white;
 
-}
-
-.select_materias {
+    height: 50px;
+    width: 175px;
 
     padding-left: 10px;
 
     border-radius: 10px;
     border: 2px solid black;
 
-    height: 47px;
-
 }
 
-.select_materias optgroup {
+.select_tarefas optgroup {
 
     background-color: rgb(110, 6, 148);
-    color: white;
 
-    font-size: 19px;
+    color: white;
 
 }
 
-.select_materias option {
+.select_tarefas option {
 
     background-color: white;
+
     color: black;
 
-    height: 100px;
+}
+
+/*Estilização da datetime-local*/
+
+.div_inputDateTimeLocalTare {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input_datetimeLocalTare {
+
+    height: 50px;
+
+    padding-left: 10px;
+    padding-right: 10px;
 
     font-size: 16px;
 
+    border: 2px solid black;
+    border-radius: 10px;
+
 }
 
-.div_inputBotCadasTare input {
+/*Estilização do botão cadastrar*/
 
-    background-color: rgb(110, 6, 148);
-    color: white;
+.bot_cadasTare {
 
-    height: 47px;
-    width: 100px;
+    height: 50px;
+    width: 87px;
 
     border-radius: 10px;
-    border: 2px solid black;
+
+    border: none;
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
     transition: 0.3s;
 
 }
 
-.div_inputBotCadasTare input:hover {
+.bot_cadasTare:hover {
 
     background-color: rgb(223, 192, 234);
-    color: white;
+    color: black;
 
     transform: translateY(-5px);
 
@@ -417,6 +488,97 @@ main {
 .tabela2 tr:hover {
 
     background-color: rgb(238, 218, 245);
+
+}
+
+/*Estilização do total de cada coisa*/
+.section_total {
+
+    background-color: red;
+
+    height: 200px;
+
+}
+
+.div_cardTotal {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+/*Estilização dos pequenos cards*/
+.div_totalDeMaterias {
+
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+    width: 270px;
+    height: 150px;
+
+}
+
+.div_totalDeTarefas {
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+    width: 270px;
+    height: 150px;
+
+}
+
+.div_totalDePendencias {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+    width: 270px;
+    height: 150px;
+
+}
+
+.divTotal_pende{
+
+    text-align: center;
+
+}
+
+.divTotal_pende h3{
+
+    margin-bottom: 10px;
+
+}
+
+.divTotal_pende h4{
+
+    font-size: 20px;
+
+}
+
+.divTotal_expirar{
+
+    text-align: center;
+
+}
+
+.divTotal_expirar h4{
+
+    margin-bottom: 10px;
 
 }
 
