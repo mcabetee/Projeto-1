@@ -285,6 +285,8 @@ main {
     justify-content: center;
     align-items: center;
 
+    margin-bottom: 20px;
+
 }
 
 .div_inputsTare {
@@ -494,17 +496,14 @@ main {
 /*Estilização do total de cada coisa*/
 .section_total {
 
-    background-color: red;
-
-
     height: 230px;
     width: 100%;
+
+    margin-top: 20px;
 
 }
 
 .div_cardTotal {
-
-    background-color: green;
 
     display: flex;
     flex-direction: row;
@@ -524,19 +523,32 @@ main {
     align-items: center;
     gap: 20px;
 
-    background-color: yellow;
-
     height: 80%;
     width: 15%;
+
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
 }
 
 .div_totalDePendencias {
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
     background-color: yellow;
 
     height: 80%;
     width: 15%;
+
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
 }
 
@@ -548,7 +560,11 @@ main {
 
 }
 
+.div_totalMateriasRes, .div_totalTarefasRes, .div_totalDePendencias h4{
 
+    font-size: 27px;
+
+}
 
 /*Rodapé*/
 
