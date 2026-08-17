@@ -42,8 +42,7 @@
 
                     <div class="div_inputTextMat">
                         <label for="text">Digite o nome da materia</label>
-                        <input type="text" name="" class="input_textMat" id="input_textMateria"
-                            placeholder="Nome da materia...">
+                        <input type="text" name="" class="input_textMat" id="input_textMateria" placeholder="Nome da materia...">
                     </div>
 
                     <div class="div_selectMat">
@@ -105,15 +104,17 @@
 
                     <div class="div_inputTextTare">
 
+                   <!-- Onde Coloca O Nome das Tarefas --> 
                         <label for="text">Digite o nome da tarefa</label>
-                        <input type="text" class="input_textTare" name="" id="" placeholder="Nome da tarefa...">
+                        <input type="text" class="input_textTare" name="" id="input_textTareId" placeholder="Nome da tarefa...">
 
                     </div>
 
                     <div class="div_inputDateTimeLocalTare">
 
+                        <!-- Coloca Data -->
                         <label for="datetime-local">Adicione uma data para a sua tarefa</label>
-                        <input type="datetime-local" class="input_datetimeLocalTare" name="" id="input_datetimeLocal">
+                        <input type="datetime-local" class="input_datetimeLocalTare" name="" id="input_datetimeLocalTareId">
 
                     </div>
 
@@ -121,13 +122,13 @@
 
                         <label for="areaTarefas">Adicione uma materia</label>
 
-                        <select name="areaTarefas" id="selectTare" class="select_tarefas">
+                        <select name="areaTarefas" id="select_tarefasId" class="select_tarefas">
 
-                            <optgroup label="Humanas" id="select_tarefasRes">
+                            <optgroup label="Humanas" id="select_tarefasResId">
                                 <option value="Portugues">Portugues</option>
                             </optgroup>
 
-                            <optgroup label="Exatas" id="select_tarefasRes">
+                            <optgroup label="Exatas" id="select_tarefasResId">
                                 <option value="Matematica">Matematica</option>
                             </optgroup>
 
@@ -162,7 +163,7 @@
                     </tr>
                 </thead>
 
-                <tbody class="div_tableTarRes"> </tbody>
+                <tbody id="div_tableTarResId"> </tbody>
 
             </table>
 
@@ -178,7 +179,7 @@
 
                     <h3>Total de Materias:</h3>
 
-                    <div class="div_totalMateriasRes">
+                    <div class="div_totalMateriasRes" id="div_totalMateriasResId">
                         <h4>3</h4>
                     </div>
 
@@ -188,7 +189,7 @@
 
                     <h3>Total de Tarefas:</h3>
 
-                    <div class="div_totalTarefasRes">
+                    <div class="div_totalTarefasRes" id="div_totalTarefasResId">
                         <h4>4</h4>
                     </div>
 
@@ -200,7 +201,7 @@
 
                         <h3>Total de Pendencias:</h3>
 
-                        <div class="div_totalPendenRes">
+                        <div class="div_totalPendenRes" id="div_totalPendenResId">
                             <h4>2</h4>
                         </div>
 
@@ -210,7 +211,7 @@
 
                         <h3>Proxima a expirar:</h3>
 
-                        <div class="div_tempoDeExpirarRes">
+                        <div class="div_tempoDeExpirarRes" id="div_tempoDeExpirarResId">
                             <ul>
                                 <li><strong>DIA:</strong> 19</li>
                                 <li><strong>MÊS:</strong> 20</li>
