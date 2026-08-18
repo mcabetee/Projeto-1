@@ -229,7 +229,7 @@ main {
 
     background-color: rgb(110, 6, 148);
 
-    width: 460px;
+    width: 600px;
     max-width: 90%;
 
     margin: 50px auto;
@@ -682,5 +682,39 @@ footer {
         flex-direction: column;
         gap: 25px;
     }
+
+}
+
+/* Embaixo é configurações do js */
+
+.button_js1, .button_js2 {
+
+    height: 50px;
+    width: 87px;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+    transition: 0.3s;
+
+}
+
+.button_js1:hover {
+
+    background-color: rgb(223, 192, 234);
+    color: black;
+
+    transform: translateY(-5px);
+
+}
+
+.button_js2:hover{
+    
+    background-color: rgb(223, 192, 234);
+    color: black;
+
+    transform: translateY(-5px);
 
 }
