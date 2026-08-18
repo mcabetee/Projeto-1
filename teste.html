@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de Select com JavaScript</title>
+  <style>
+    /* Estilização simples para o exemplo ficar bonito */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f4f7f6;
+    }
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      max-width: 400px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      outline: none;
+    }
+    select:focus {
+      border-color: #007BFF;
+    }
+    .info-box {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <form id="meuFormulario">
+      
+      <!-- O NOSSO SELECT -->
+      <label for="plano">Escolha o seu plano:</label>
+      <select id="plano" name="plano">
+        <option value="" selected>-- Selecione um plano --</option>
+        <option value="basico">Plano Básico</option>
+        <option value="premium">Plano Premium</option>
+        <option value="ultra">Plano Ultra Pro</option>
+      </select>
+
+      <!-- Caixa que vai mudar o texto via JavaScript -->
+      <div class="info-box">
+        <p><strong>Plano selecionado:</strong> <span id="txtPlano">Nenhum</span></p>
+        <p><strong>Valor:</strong> <span id="txtPreco">R$ 0,00</span></p>
+      </div>
+
+      <!-- Botão que começa desativado -->
+      <button type="submit" id="btnEnviar" disabled>Confirmar Assinatura</button>
+
+    </form>
+  </div>
+
+  <!-- JAVASCRIPT QUE GERENCIA O SELECT -->
+  <script>
+    // 1. Pegando as referências dos elementos do HTML
+    const selectPlano = document.getElementById('plano');
+    const txtPlano = document.getElementById('txtPlano');
+    const txtPreco = document.getElementById('txtPreco');
+    const btnEnviar = document.getElementById('btnEnviar');
+
+    // 2. Criando o evento que escuta a mudança no select
+    selectPlano.addEventListener('change', function() {
+      
+      // Pega o value da opção atual (ex: "basico", "premium")
+      const valorEscolhido = selectPlano.value; 
+      
+      // Pega o texto visível da opção atual (ex: "Plano Básico")
+      const textoEscolhido = selectPlano.options[selectPlano.selectedIndex].text;
+
+      // 3. Lógica para atualizar a tela dependendo do valor
+      if (valorEscolhido === "") {
+        // Se escolheu a primeira opção vazia, reseta tudo
+        txtPlano.innerText = "Nenhum";
+        txtPreco.innerText = "R$ 0,00";
+        btnEnviar.disabled = true; // Bloqueia o botão
+      } 
+      else if (valorEscolhido === "basico") {
+        txtPlano.innerText = textoEscolhido;
+        txtPreco.innerText = "R$ 29,90 / mês";
+        btnEnviar.disabled = false; // Libera o botão
+      } 
+      else if (valorEscolhido === "premium") {
+        txtPlano.innerText = textoEscolhido;
+        txtPreco.innerText = "R$ 59,90 / mês";
+        btnEnviar.disabled = false;
+      } 
+      else if (valorEscolhido === "ultra") {
+        txtPlano.innerText = textoEscolhido;
+        txtPreco.innerText = "R$ 99,90 / mês";
+        btnEnviar.disabled = false;
+      }
+    });
+
+    // Apenas para simular o envio do formulário
+    document.getElementById('meuFormulario').addEventListener('submit', function(evento) {
+      evento.preventDefault(); // Impede a página de atualizar
+      alert("Plano enviado com sucesso: " + selectPlano.value);
+    });
+  </script>
+
+</body>
+</html>

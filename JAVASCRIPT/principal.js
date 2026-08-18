@@ -46,11 +46,6 @@ function mostrar() {
     div_tableMatResId.innerHTML = conteudoHTML;
 }
 
-function limparInputs(){
-
-    document.getElementById('input_textMatId').value = '';
-}
-
 function alternarTarefa(indice) {
     tarefas[indice].concluida = !tarefas[indice].concluida;
     window.confirm("Está tarefa foi concluida?");
@@ -62,4 +57,12 @@ function deletarTarefa(indice) {
     tarefas.splice(indice, 1);
     window.alert("Tarefa Excluída!");
     mostrar();
+}
+
+let 
+
+
+function limparInputs(){
+
+    document.getElementById('input_textMatId').value = '';
 }

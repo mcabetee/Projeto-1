@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Select em Tabela com JS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f4f7f6;
+      display: flex;
+      gap: 40px;
+    }
+    .coluna {
+      flex: 1;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    /* Estilos da Tabela */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COLUNA 1: O FORMULÁRIO COM O SELECT -->
+  <div class="coluna">
+    <form id="meuFormulario">
+      <label for="plano">Escolha o seu plano:</label>
+      <select id="plano" name="plano">
+        <option value="" selected>-- Selecione um plano --</option>
+        <option value="basico">Plano Básico</option>
+        <option value="premium">Plano Premium</option>
+        <option value="ultra">Plano Ultra Pro</option>
+      </select>
+
+      <button type="submit" id="btnAdicionar" disabled>Adicionar à Tabela</button>
+    </form>
+  </div>
+
+  <!-- COLUNA 2: A TABELA QUE RECEBERÁ OS DADOS -->
+  <div class="coluna">
+    <h2>Planos Selecionados</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID interno (Value)</th>
+          <th>Nome do Plano (Text)</th>
+          <th>Preço Estimado</th>
+        </tr>
+      </thead>
+      <!-- O JavaScript vai injetar as linhas aqui dentro -->
+      <tbody id="corpoTabela">
+        <!-- Começa vazio -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const selectPlano = document.getElementById('plano');
+    const btnAdicionar = document.getElementById('btnAdicionar');
+    const corpoTabela = document.getElementById('corpoTabela');
+
+    // 1. Libera o botão apenas se o usuário escolher uma opção válida
+    selectPlano.addEventListener('change', function() {
+      if (selectPlano.value === "") {
+        btnAdicionar.disabled = true;
+      } else {
+        btnAdicionar.disabled = false;
+      }
+    });
+
+    // 2. Escuta o clique no botão para adicionar a linha na tabela
+    document.getElementById('meuFormulario').addEventListener('submit', function(evento) {
+      evento.preventDefault(); // Evita que a página recarregue
+
+      // Pega os dados do select atual
+      const valor = selectPlano.value;
+      const texto = selectPlano.options[selectPlano.selectedIndex].text;
+      
+      // Define um preço fixo baseado no valor selecionado
+      let preco = "R$ 0,00";
+      if (valor === "basico") preco = "R$ 29,90";
+      if (valor === "premium") preco = "R$ 59,90";
+      if (valor === "ultra") preco = "R$ 99,90";
+
+      // 3. Cria uma nova linha (tr) para a tabela
+      const novaLinha = document.createElement('tr');
+
+      // 4. Cria a estrutura das células (td) com os dados
+      novaLinha.innerHTML = `
+        <td>${valor}</td>
+        <td>${texto}</td>
+        <td>${preco}</td>
+      `;
+
+      // 5. Adiciona a nova linha dentro do corpo da tabela (tbody)
+      corpoTabela.appendChild(novaLinha);
+
+      // Opcional: Reseta o formulário após adicionar
+      selectPlano.value = "";
+      btnAdicionar.disabled = true;
+    });
+  </script>
+
+</body>
+</html>
