@@ -454,7 +454,7 @@ main {
 
     background-color: rgb(110, 6, 148);
 
-    width: 750px;
+    width: 55%;
     max-width: 90%;
 
     margin: 50px auto;
@@ -712,6 +712,39 @@ footer {
 
 .button_js2:hover{
     
+    background-color: rgb(223, 192, 234);
+    color: black;
+
+    transform: translateY(-5px);
+
+}
+
+/* configurações do botão cadastrar tarefas */
+.button_js3, .button_js4 {
+
+    height: 50px;
+    width: 87px;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+    transition: 0.3s;
+
+}
+
+.button_js3:hover {
+
+    background-color: rgb(223, 192, 234);
+    color: black;
+
+    transform: translateY(-5px);
+
+}
+
+.button_js4:hover {
+
     background-color: rgb(223, 192, 234);
     color: black;
 

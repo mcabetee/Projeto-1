@@ -63,7 +63,7 @@ function deletarMateria(indice) {
     mostrarMat();
 }
 
-
+// função do botão cadastrar
 function cadastrarTare(){
 
     let input_textTareId = document.getElementById('input_textTareId').value
@@ -118,11 +118,12 @@ function mostrarTare(){
         <td>${indice + 1}</td>
         <td>${tarefa.nome}</td>
         <td>${tarefa.materia}</td>
+        <td>Area</td>
         <td>${tarefa.data}</td>
         <td>${tarefa.hora}</td>
         <td>
-        <button>Concluir</button>
-        <button>Excluir</button>
+        <button class="button_js3">Concluir</button>
+        <button class="button_js4">Excluir</button>
         </td>
 
         `
