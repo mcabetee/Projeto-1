@@ -16,6 +16,7 @@ function cadastrarMat() {
         });
 
         mostrarMat();
+        atualizarSelectMaterias();
 
     } else {
 
@@ -63,12 +64,46 @@ function deletarMateria(indice) {
     mostrarMat();
 }
 
+function atualizarSelectMaterias() {
+
+    let select_tarefasId = document.getElementById('select_tarefasId');
+
+
+    // Limpa o select
+
+    select_tarefasId.innerHTML = `
+
+        <option value="">
+            Selecione uma matéria
+        </option>
+
+    `;
+
+
+    // Adiciona todas as matérias cadastradas
+
+    materias.forEach((materia, indice) => {
+
+        select_tarefasId.innerHTML += `
+
+            <option value="${indice}">
+                ${materia.nome}
+            </option>
+
+        `;
+
+    });
+
+}
+
 // função do botão cadastrar
-function cadastrarTare(){
+function cadastrarTare() {
 
     let input_textTareId = document.getElementById('input_textTareId').value
-    let select_tarefasId = document.getElementById('select_tarefasId').value
+    let indiceMateria = document.getElementById('select_tarefasId').value
     let input_datetimeLocalTareId = document.getElementById('input_datetimeLocalTareId').value
+
+    let materiaSelecionada = materias[indiceMateria];
 
     let dataObjeto = new Date(input_datetimeLocalTareId);
 
@@ -76,26 +111,28 @@ function cadastrarTare(){
     let dataFormatada = dataObjeto.toLocaleDateString('pt-BR');
 
     // Formata a hora para o padrão brasileiro (HH:MM)
-    let horaFormatada = dataObjeto.toLocaleTimeString('pt-BR', { 
-        hour: '2-digit', 
-        minute: '2-digit' 
+    let horaFormatada = dataObjeto.toLocaleTimeString('pt-BR', {
+        hour: '2-digit',
+        minute: '2-digit'
     });
-
 
     div_tableTarResId.innerHTML = '';
 
-    if(input_textTareId !== '' && select_tarefasId !== '' && input_datetimeLocalTareId !== '' ){
+    if (input_textTareId !== '' && indiceMateria !== '' && input_datetimeLocalTareId !== '') {
 
         tarefas.push({
 
-            nome:input_textTareId,
-            materia:select_tarefasId,
-            data:dataFormatada,
-            hora:horaFormatada
+            nome: input_textTareId,
+            materia: materiaSelecionada.nome,
+            area: materiaSelecionada.area,
+            data: dataFormatada,
+            hora: horaFormatada
 
         });
 
         mostrarTare()
+
+        atualizarSelectMaterias();
 
     } else {
 
@@ -107,18 +144,22 @@ function cadastrarTare(){
 
 }
 
-function mostrarTare(){
-    
+function mostrarTare() {
+
     let div_tableTarResId = document.getElementById('div_tableTarResId')
+
+    div_tableTarResId.innerHTML = '';
 
     tarefas.forEach((tarefa, indice) => {
 
         div_tableTarResId.innerHTML += `
         
+        <tr>
+
         <td>${indice + 1}</td>
         <td>${tarefa.nome}</td>
         <td>${tarefa.materia}</td>
-        <td>Area</td>
+        <td>${tarefa.area}</td>
         <td>${tarefa.data}</td>
         <td>${tarefa.hora}</td>
         <td>
@@ -126,8 +167,10 @@ function mostrarTare(){
         <button class="button_js4">Excluir</button>
         </td>
 
+        </tr>
+
         `
-        
+
     });
 
 }

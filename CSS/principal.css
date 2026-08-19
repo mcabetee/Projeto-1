@@ -229,7 +229,7 @@ main {
 
     background-color: rgb(110, 6, 148);
 
-    width: 600px;
+    width: 40%;
     max-width: 90%;
 
     margin: 50px auto;
@@ -288,12 +288,43 @@ main {
 
 }
 
-.tabela1 tr:nth-child(even),
+.tabela1 th:last-child {
+
+    border-right: none;
+
+}
+
+.tabela1 td {
+
+    color: black;
+
+    padding: 22px;
+
+    text-align: center;
+    font-size: 22px;
+
+    border: 1px solid black;
+
+}
+
+.tabela1 tr:nth-child(even) {
+
+    background-color: rgb(223, 192, 234);
+
+}
+
 .tabela1 tr:nth-child(odd) {
 
     background-color: white;
 
 }
+
+.tabela1 tr:hover {
+
+    background-color: rgb(238, 218, 245);
+
+}
+
 
 /*Configurações das Tarefas*/
 .section_tarefas h2 {
@@ -454,7 +485,7 @@ main {
 
     background-color: rgb(110, 6, 148);
 
-    width: 55%;
+    width: 65%;
     max-width: 90%;
 
     margin: 50px auto;

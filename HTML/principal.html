@@ -42,7 +42,8 @@
 
                     <div class="div_inputTextMat">
                         <label for="text">Digite o nome da materia</label>
-                        <input type="text" name="" class="input_textMat" id="input_textMatId" placeholder="Nome da materia...">
+                        <input type="text" name="" class="input_textMat" id="input_textMatId"
+                            placeholder="Nome da materia...">
                     </div>
 
                     <div class="div_selectMat">
@@ -57,6 +58,8 @@
 
                                 <option value="exatas">Exatas</option>
 
+                                <option value="tecnico">Tecnico</option>
+
                             </optgroup>
 
                         </select>
@@ -65,7 +68,8 @@
 
                     <div class="div_matBotCadas">
 
-                        <input type="button" class="bot_cadasMat" id="bot_cadasMatId" value="Cadastrar" onclick="cadastrarMat()">
+                        <input type="button" class="bot_cadasMat" id="bot_cadasMatId" value="Cadastrar"
+                            onclick="cadastrarMat()">
 
                     </div>
 
@@ -105,9 +109,10 @@
 
                     <div class="div_inputTextTare">
 
-                   <!-- Onde Coloca O Nome das Tarefas --> 
+                        <!-- Onde Coloca O Nome das Tarefas -->
                         <label for="text">Digite o nome da tarefa</label>
-                        <input type="text" class="input_textTare" name="" id="input_textTareId" placeholder="Nome da tarefa...">
+                        <input type="text" class="input_textTare" name="" id="input_textTareId"
+                            placeholder="Nome da tarefa...">
 
                     </div>
 
@@ -115,7 +120,8 @@
 
                         <!-- Coloca Data -->
                         <label for="datetime-local">Adicione uma data para a sua tarefa</label>
-                        <input type="datetime-local" class="input_datetimeLocalTare" name="" id="input_datetimeLocalTareId">
+                        <input type="datetime-local" class="input_datetimeLocalTare" name=""
+                            id="input_datetimeLocalTareId">
 
                     </div>
 
@@ -124,15 +130,9 @@
                         <label for="areaTarefas">Adicione uma materia</label>
 
                         <select name="areaTarefas" id="select_tarefasId" class="select_tarefas">
-
-                            <optgroup label="Humanas" id="select_tarefasResId">
-                                <option value="Portugues">Portugues</option>
-                            </optgroup>
-
-                            <optgroup label="Exatas" id="select_tarefasResId">
-                                <option value="Matematica">Matematica</option>
-                            </optgroup>
-
+                            <option value="selecione">
+                                Selecione uma matéria
+                            </option>
                         </select>
 
                     </div>
