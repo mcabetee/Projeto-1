@@ -70,7 +70,7 @@ function cadastrarTare(){
     let select_tarefasId = document.getElementById('select_tarefasId').value
     let input_datetimeLocalTareId = document.getElementById('input_datetimeLocalTareId').value
 
-    let dataObjeto = new Date(dataHoraValor);
+    let dataObjeto = new Date(input_datetimeLocalTareId);
 
     // Formata a data para o padrão brasileiro (DD/MM/AAAA)
     let dataFormatada = dataObjeto.toLocaleDateString('pt-BR');
