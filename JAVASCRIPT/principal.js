@@ -11,7 +11,7 @@ function cadastrarMat() {
         materias.push({
 
             nome: input_textMatId,
-            materia: select_materiaId
+            area: select_materiaId
 
         });
 
@@ -38,7 +38,7 @@ function mostrarMat() {
         conteudoHTML += `
             <tr style="${estiloConcluido}">
                 <td>${materia.nome}</td>
-                <td>${materia.materia}</td>
+                <td>${materia.area}</td>
                 <td>
                     <button class="button_js1" onclick="alternarMateria(${indice})">Concluir</button>
                     <button class="button_js2" onclick="deletarMateria(${indice})">Excluir</button>
@@ -68,15 +68,30 @@ function cadastrarTare(){
 
     let input_textTareId = document.getElementById('input_textTareId').value
     let select_tarefasId = document.getElementById('select_tarefasId').value
+    let input_datetimeLocalTareId = document.getElementById('input_datetimeLocalTareId').value
+
+    let dataObjeto = new Date(dataHoraValor);
+
+    // Formata a data para o padrão brasileiro (DD/MM/AAAA)
+    let dataFormatada = dataObjeto.toLocaleDateString('pt-BR');
+
+    // Formata a hora para o padrão brasileiro (HH:MM)
+    let horaFormatada = dataObjeto.toLocaleTimeString('pt-BR', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+    });
+
 
     div_tableTarResId.innerHTML = '';
 
-    if(input_textTareId !== '' && select_tarefasId !== '' ){
+    if(input_textTareId !== '' && select_tarefasId !== '' && input_datetimeLocalTareId !== '' ){
 
         tarefas.push({
 
             nome:input_textTareId,
-            materia:select_tarefasId
+            materia:select_tarefasId,
+            data:dataFormatada,
+            hora:horaFormatada
 
         });
 
@@ -100,11 +115,11 @@ function mostrarTare(){
 
         div_tableTarResId.innerHTML += `
         
+        <td>${indice + 1}</td>
         <td>${tarefa.nome}</td>
         <td>${tarefa.materia}</td>
-        <td>Materia</td>
-        <td>area</td>
-        <td>expira</td>
+        <td>${tarefa.data}</td>
+        <td>${tarefa.hora}</td>
         <td>
         <button>Concluirr</button>
         <button>Excluir</button>

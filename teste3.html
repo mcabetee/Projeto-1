@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Compromissos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Agendar Compromisso</h2>
+    
+    <div class="form-group">
+        <label for="titulo">Nome do Compromisso:</label>
+        <input type="text" id="titulo" placeholder="Ex: Consulta médica, Reunião...">
+    </div>
+
+    <div class="form-group">
+        <label for="dataHora">Escolha a Data e Hora:</label>
+        <input type="datetime-local" id="dataHora">
+    </div>
+
+    <button id="btnAdicionar">Adicionar à Tabela</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Compromisso</th>
+                <th>Data</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabela">
+            <!-- As linhas inseridas pelo JS aparecerão aqui -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Seleciona os elementos da página
+    const inputTitulo = document.getElementById('titulo');
+    const inputDataHora = document.getElementById('dataHora');
+    const btnAdicionar = document.getElementById('btnAdicionar');
+    const corpoTabela = document.getElementById('corpoTabela');
+
+    // Configura o evento de clique do botão
+    btnAdicionar.addEventListener('click', function() {
+        // Pega os valores digitados
+        const titulo = inputTitulo.value;
+        const dataHoraValor = inputDataHora.value;
+
+        // Validação simples: não deixa adicionar se algum campo estiver vazio
+        if (!titulo || !dataHoraValor) {
+            alert('Por favor, preencha todos os campos!');
+            return;
+        }
+
+        // Transforma o texto do input em um objeto de data do JavaScript
+        const dataObjeto = new Date(dataHoraValor);
+
+        // Formata a data para o padrão brasileiro (DD/MM/AAAA)
+        const dataFormatada = dataObjeto.toLocaleDateString('pt-BR');
+
+        // Formata a hora para o padrão brasileiro (HH:MM)
+        const horaFormatada = dataObjeto.toLocaleTimeString('pt-BR', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        });
+
+        // Cria uma nova linha no HTML
+        const novaLinha = document.createElement('tr');
+
+        // Adiciona as colunas com as informações dentro da linha
+        novaLinha.innerHTML = `
+            <td>${titulo}</td>
+            <td>${dataFormatada}</td>
+            <td>${horaFormatada}</td>
+        `;
+
+        // Coloca a nova linha dentro do corpo da tabela
+        corpoTabela.appendChild(novaLinha);
+
+        // Limpa os campos para o próximo preenchimento
+        inputTitulo.value = '';
+        inputDataHora.value = '';
+    });
+</script>
+
+</body>
+</html>

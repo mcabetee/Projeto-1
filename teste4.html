@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto 1 - Sala de Tarefas</title>
+    
+    <!-- Vinculação do CSS Separado -->
+    <link rel="stylesheet" href="principal.css">
+    
+    <!-- Biblioteca Chart.js para o funcionamento do Gráfico -->
+    <script src="https://jsdelivr.net"></script>
+</head>
+
+    <style>
+
+        /* Configurações universais */
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Configurações do corpo do site */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(110, 6, 148);
+    color: white;
+    height: 100px;
+    font-family: Arial, sans-serif;
+}
+
+/* Principal */
+main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+/* Configurações do calendário dinâmico */
+.section_calenddarioEaviso {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 80px;
+    padding: 0 15px;
+}
+
+.section_calenddarioEaviso .div_calen {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: rgb(110, 6, 148);
+    color: white;
+    padding: 12px;
+    height: auto;
+    min-height: 240px;
+    width: 260px;
+    max-width: 100%;
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+}
+
+/* Elementos internos do Calendário Dinâmico */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.calendar-header h3 {
+    font-size: 16px;
+}
+.calendar-header button {
+    background: white;
+    color: rgb(110, 6, 148);
+    border: none;
+    padding: 2px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+    font-size: 12px;
+}
+.calendar-day-name {
+    font-weight: bold;
+    color: #ddd;
+    padding-bottom: 2px;
+}
+.calendar-day {
+    padding: 5px 0;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: white;
+}
+
+/* Regras de cores condicionais do calendário */
+.calendar-today { background-color: #007bff !important; color: white !important; font-weight: bold; }
+.calendar-pending { background-color: #ff9800 !important; color: white !important; font-weight: bold; }
+.calendar-today.calendar-pending { background-color: #8e44ad !important; color: white !important; border: 2px solid white; }
+
+/* Configurações dos avisos */
+.section_calenddarioEaviso .div_avis {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 200px;
+    max-width: 100%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+}
+
+/* Estilização das materias */
+.section_materias h2 {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.div_cardMat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.div_inputsMateriais {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+    min-height: 255px;
+    width: 30%;
+    min-width: 280px;
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+}
+
+.div_inputTextMat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input_textMat {
+    height: 45px;
+    width: 350px;
+    max-width: 100%;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.div_selectMat {
+    display: flex;
+    flex-direction: column;
+}
+
+.div_selectMat select {
+    background-color: rgb(110, 6, 148);
+    color: white;
+    height: 50px;
+    width: 175px;
+    max-width: 100%;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.selectMat optgroup {
+    background-color: rgb(110, 6, 148);
+    color: white;
+}
+
+.selectMat option {
+    background-color: white;
+    color: black;
+}
+
+.bot_cadasMat {
+    height: 50px;
+    width: 87px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.bot_cadasMat:hover {
+    background-color: rgb(223, 192, 234);
+    color: black;
+    transform: translateY(-5px);
+}
+
+/* Configurações da Primeira tabela */
+.div_materiasRes {
+    background-color: rgb(110, 6, 148);
+    width: 600px;
+    max-width: 90%;
+    margin: 50px auto;
+    border: 2px solid white;
+    border-radius: 20px;
+    overflow-x: auto;
+}
+
+.tabela1 {
+    width: 100%;
+    border: 2px solid black;
+    border-collapse: collapse;
+    color: white;
+}
+
+.tabela1 th {
+    background-color: rgb(110, 6, 148);
+    color: white;
+    text-align: center;
+    font-size: 19px;
+    font-family: Arial, sans-serif;
+    padding: 25px;
+    border-right: 1px solid white;
+}
+
+.tabela1 th:last-child {
+    border-right: none;
+}
+
+.tabela1 td {
+    color: black;
+    text-align: center;
+    padding: 22px;
+    font-size: 22px;
+    border: 1px solid black;
+}
+
+.tabela1 tr:nth-child(even),
+.tabela1 tr:nth-child(odd) {
+    background-color: white;
+}
+
+/* Configurações das Tarefas */
+.section_tarefas h2 {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.div_cardTare {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.div_inputsTare {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+    min-height: 350px;
+    width: 35%;
+    min-width: 280px;
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+}
+
+.div_inputTextTare {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input_textTare {
+    height: 45px;
+    width: 350px;
+    max-width: 100%;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.div_selectTare {
+    display: flex;
+    flex-direction: column;
+}
+
+.div_selectTare select {
+    background-color: rgb(110, 6, 148);
+    color: white;
+    height: 50px;
+    width: 175px;
+    max-width: 100%;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.select_tarefas optgroup {
+    background-color: rgb(110, 6, 148);
+    color: white;
+}
+
+.select_tarefas option {
+    background-color: white;
+    color: black;
+}
+
+.div_inputDateTimeLocalTare {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input_datetimeLocalTare {
+    height: 50px;
+    width: 350px;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.bot_cadasTare {
+    height: 50px;
+    width: 87px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.bot_cadasTare:hover {
+    background-color: rgb(223, 192, 234);
+    color: black;
+    transform: translateY(-5px);
+}
+
+/* Configurações da Segunda tabela */
+.div_tarefasRes {
+    background-color: rgb(110, 6, 148);
+    width: 750px;
+    max-width: 90%;
+    margin: 50px auto;
+    border-radius: 20px;
+    border: 2px solid white;
+    overflow-x: auto;
+}
+
+.tabela2 {
+    color: white;
+    width: 100%;
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.tabela2 th {
+    text-align: center;
+    background-color: rgb(110, 6, 148);
+    color: white;
+    font-size: 19px;
+    font-family: Arial, sans-serif;
+    padding: 25px;
+    border-right: 1px solid white;
+}
+
+.tabela2 th:last-child {
+    border-right: none;
+}
+
+.tabela2 td {
+    color: black;
+    padding: 22px;
+    text-align: center;
+    font-size: 22px;
+    border: 1px solid black;
+}
+
+.tabela2 tr:nth-child(even) {
+    background-color: rgb(223, 192, 234);
+}
+
+.tabela2 tr:nth-child(odd) {
+    background-color: white;
+}
+
+.tabela2 tr:hover {
+    background-color: rgb(238, 218, 245);
+}
+
+/* Estilização do total de cada coisa */
+.section_total {
+    height: auto;
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px 15px;
+}
+
+.div_cardTotal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.div_totalDeMaterias,
+.div_totalDeTarefas,
+.div_totalDePendencias {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    padding: 20px;
+    flex: 1 1 250px;
+    max-width: 380px;
+    min-height: 160px;
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+    transition: 0.3s;
+}
+
+.div_totalDeMaterias:hover,
+.div_totalDeTarefas:hover,
+.div_totalDePendencias:hover {
+    transform: translateY(-5px);
+    cursor: default;
+}
+
+.div_totalDeMaterias h3,
+.div_totalDeTarefas h3,
+.div_totalDePendencias h3 {
+    font-size: 22px;
+}
+
+.div_totalMateriasRes,
+.div_totalTarefasRes,
+.div_totalDePendencias h4 {
+    font-size: 25px;
+}
+
+.div_tempoDeExpirarRes ul {
+    list-style: none;
+    margin-top: 5px;
+}
+
+/* Configuração do grafico consertada */
+.section_grafico {
+    margin-top: 40px;
+    height: auto;
+    padding-bottom: 40px;
+}
+
+.section_grafico h2 {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.div_cardGrafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 450px;
+    max-width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+    background-color: white;
+}
+
+table button {
+    background-color: rgb(110, 6, 148);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+table button:hover {
+    background-color: rgb(150, 20, 190);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #eee;
+    margin-top: auto;
+}
+
+    </style>
+
+<body>
+
+    <header>
+        <h1>Sala de Tarefas</h1>
+    </header>
+
+    <main>
+        <section class="section_calenddarioEaviso">
+            <!-- Calendário Dinâmico -->
+            <div class="div_calen">
+                <div class="calendar-header">
+                    <button onclick="mudarMes(-1)">‹</button>
+                    <h3 id="mesAnoId">Calendario 2026</h3>
+                    <button onclick="mudarMes(1)">›</button>
+                </div>
+                <div class="calendar-grid" id="calendarGridId"></div>
+            </div>
+            
+            <div class="div_avis">
+                <h2>Aviso!!</h2>
+                <p id="avisoTextoId">Nenhuma atividade cadastrada.</p>
+            </div>
+        </section>
+
+        <section class="section_materias">
+            <h2>Materias:</h2>
+            <div class="div_cardMat">
+                <div class="div_inputsMateriais">
+                    <div class="div_inputTextMat">
+                        <label for="input_textMatId">Digite o nome da materia</label>
+                        <input type="text" class="input_textMat" id="input_textMatId" placeholder="Nome da materia...">
+                    </div>
+                    <div class="div_selectMat">
+                        <label for="select_materiaId">Adicione uma área</label>
+                        <select class="selectMat" id="select_materiaId">
+                            <optgroup label="Áreas" id="select_mateHumaRes">
+                                <option value="Humanas">Humanas</option>
+                                <option value="Exatas">Exatas</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="div_matBotCadas">
+                        <input type="button" class="bot_cadasMat" id="bot_cadasMatId" value="Cadastrar" onclick="cadastrarMat()">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="div_materiasRes">
+                <table class="tabela1">
+                    <thead>
+                        <tr>
+                            <th>Nome da materia</th>
+                            <th>Área</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="div_tableMatResId"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section_tarefas">
+            <h2>Tarefas:</h2>
+            <div class="div_cardTare">
+                <div class="div_inputsTare">
+                    <div class="div_inputTextTare">
+                        <label for="input_textTareId">Digite o nome da tarefa</label>
+                        <input type="text" class="input_textTare" id="input_textTareId" placeholder="Nome da tarefa...">
+                    </div>
+                    <div class="div_inputDateTimeLocalTare">
+                        <label for="input_datetimeLocalTareId">Adicione uma data para a sua tarefa</label>
+                        <input type="datetime-local" class="input_datetimeLocalTare" id="input_datetimeLocalTareId">
+                    </div>
+                    <div class="div_selectTare">
+                        <label for="select_tarefasId">Adicione uma materia</label>
+                        <select id="select_tarefasId" class="select_tarefas">
+                            <!-- Injetado via JS -->
+                        </select>
+                    </div>
+                    <div class="div_tareBotCadas">
+                        <input type="button" class="bot_cadasTare" value="Cadastrar" onclick="cadastrarTare()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="div_tarefasRes">
+                <table class="tabela2">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome da Tarefa</th>
+                            <th>Nome da Materia</th>
+                            <th>Área</th>
+                            <th>Expira Em</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="div_tableTarResId"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section_total">
+            <div class="div_cardTotal">
+                <div class="div_totalDeMaterias">
+                    <h3>Total de Materias:</h3>
+                    <div class="div_totalMateriasRes" id="div_totalMateriasResId">
+                        <h4>0</h4>
+                    </div>
+                </div>
+                <div class="div_totalDeTarefas">
+                    <h3>Total de Tarefas:</h3>
+                    <div class="div_totalTarefasRes" id="div_totalTarefasResId">
+                        <h4>0</h4>
+                    </div>
+                </div>
+                <div class="div_totalDePendencias">
+                    <div class="divTotal_pende">
+                        <h3>Total de Pendencias:</h3>
+                        <div id="div_totalPendenResId">
+                            <h4>0</h4>
+                        </div>
+                    </div>
+                    <div class="divTotal_expirar">
+                        <h3>Proxima a expirar:</h3>
+                        <div class="div_tempoDeExpirarRes" id="div_tempoDeExpirarResId">
+                            <ul id="proximaTarefaLista">
+                                <li><strong>DIA:</strong> --</li>
+                                <li><strong>MÊS:</strong> --</li>
+                                <li><strong>ANO:</strong> --</li>
+                                <li><strong>HORARIO:</strong> --</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section_grafico">
+            <h2>Desempenho:</h2>
+            <div class="div_cardGrafico">
+                <div class="div_grafico">
+                    <canvas id="graficoDesempenhoCanvas"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Esse site foi desenvolvido por mariana C e Yuri M</p>
+    </footer>
+
+    <!-- Vinculação do JavaScript Separado -->
+  
+    <script>
+
+        
+        const monthYear = document.getElementById('month-year');
+        const daysContainer = document.getElementById('days-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Data real de hoje
+        const today = new Date();
+        const todayDay = today.getDate();
+        const todayMonth = today.getMonth();
+        const todayYear = today.getFullYear();
+
+        // Variáveis de navegação do calendário
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+
+        const months = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+
+        // Chave do dia de hoje gerada dinamicamente
+        const todayKey = `${todayYear}-${todayMonth}-${todayDay}`;
+
+        // Lista de tarefas contendo dinamicamente o dia de hoje
+        const tasks = [
+            todayKey,       // Adiciona a tarefa no dia de hoje automaticamente
+            "2026-7-25",    
+            "2026-8-05"     
+        ];
+
+        function renderCalendar() {
+            monthYear.innerHTML = `${months[currentMonth]} ${currentYear}`;
+
+            const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+            const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+            let daysHTML = "";
+
+            for (let i = 0; i < firstDayIndex; i++) {
+                daysHTML += `<div class="empty"></div>`;
+            }
+
+            for (let i = 1; i <= totalDays; i++) {
+                let classes = [];
+
+                if (i === todayDay && currentMonth === todayMonth && currentYear === todayYear) {
+                    classes.push("today");
+                }
+
+                const dateKey = `${currentYear}-${currentMonth}-${i}`;
+                if (tasks.includes(dateKey)) {
+                    classes.push("has-task");
+                }
+
+                const classString = classes.length > 0 ? `class="${classes.join(' ')}"` : '';
+                daysHTML += `<div ${classString}>${i}</div>`;
+            }
+
+            daysContainer.innerHTML = daysHTML;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar();
+        });
+
+        renderCalendar();
+
+
+    </script>
+
+</body>
+
+</html>
