@@ -121,7 +121,7 @@ function mostrarTare(){
         <td>${tarefa.data}</td>
         <td>${tarefa.hora}</td>
         <td>
-        <button>Concluirr</button>
+        <button>Concluir</button>
         <button>Excluir</button>
         </td>
 
@@ -135,5 +135,6 @@ function limparInputs() {
 
     document.getElementById('input_textMatId').value = '';
     document.getElementById('input_textTareId').value = '';
+    document.getElementById('input_datetimeLocalTareId').value = '';
 
 }
