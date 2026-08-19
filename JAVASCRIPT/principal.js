@@ -6,7 +6,7 @@ function cadastrarMat() {
     let input_textMatId = document.getElementById('input_textMatId').value
     let select_materiaId = document.getElementById('select_materiaId').value
 
-    if (input_textMatId !== '') {
+    if (input_textMatId.trim() !== '') {
 
         materias.push({
 
@@ -34,14 +34,12 @@ function mostrarMat() {
     let conteudoHTML = "";
 
     materias.forEach((materia, indice) => {
-        let estiloConcluido = materia.concluida ? "text-decoration: line-through; opacity: 0.8;" : "color: #000000;";
 
         conteudoHTML += `
-            <tr style="${estiloConcluido}">
+            <tr>
                 <td>${materia.nome}</td>
                 <td>${materia.area}</td>
                 <td>
-                    <button class="button_js1" onclick="alternarMateria(${indice})">Concluir</button>
                     <button class="button_js2" onclick="deletarMateria(${indice})">Excluir</button>
                 </td>
             </tr>
@@ -49,13 +47,6 @@ function mostrarMat() {
     });
 
     div_tableMatResId.innerHTML = conteudoHTML;
-}
-
-function alternarMateria(indice) {
-    materias[indice].concluida = !materias[indice].concluida;
-    window.confirm("Está tarefa foi concluida?");
-    mostrarMat();
-
 }
 
 function deletarMateria(indice) {
@@ -118,7 +109,7 @@ function cadastrarTare() {
 
     div_tableTarResId.innerHTML = '';
 
-    if (input_textTareId !== '' && indiceMateria !== '' && input_datetimeLocalTareId !== '') {
+    if (input_textTareId.trim() !== '' && indiceMateria.trim() !== '' && input_datetimeLocalTareId !== '') {
 
         tarefas.push({
 
@@ -126,7 +117,8 @@ function cadastrarTare() {
             materia: materiaSelecionada.nome,
             area: materiaSelecionada.area,
             data: dataFormatada,
-            hora: horaFormatada
+            hora: horaFormatada,
+            concluida: false
 
         });
 
@@ -152,9 +144,11 @@ function mostrarTare() {
 
     tarefas.forEach((tarefa, indice) => {
 
+        let estiloConcluido = tarefa.concluida ? "text-decoration: line-through; color: #2ecc71; opacity: 0.8;" : "color: #000000;";
+
         div_tableTarResId.innerHTML += `
         
-        <tr>
+        <tr style="${estiloConcluido}">
 
         <td>${indice + 1}</td>
         <td>${tarefa.nome}</td>
@@ -163,8 +157,9 @@ function mostrarTare() {
         <td>${tarefa.data}</td>
         <td>${tarefa.hora}</td>
         <td>
-        <button class="button_js3">Concluir</button>
-        <button class="button_js4">Excluir</button>
+        <button class="button_js3" onclick="concluidaTarefa(${indice})">Concluir</button>
+        <button class="button_js4" onclick="">Alerar</button>
+        <button class="button_js5" onclick="excluirTarefa(${indice})">Excluir</button>
         </td>
 
         </tr>
@@ -172,6 +167,32 @@ function mostrarTare() {
         `
 
     });
+
+}
+
+function concluidaTarefa(indice) {
+
+    let confirmar = window.confirm('Essa tarefa foi concluída?');
+
+    if (confirmar) {
+
+        tarefas[indice].concluida = !tarefas[indice].concluida;
+
+        mostrarTare();
+
+    } else {
+
+        alert('A tarefa não foi concluída.');
+
+    }
+}
+
+function excluirTarefa(indice) {
+
+    tarefas.splice(indice, 1);
+    window.alert("Tarefa excluida");
+
+    mostrarTare();
 
 }
 
