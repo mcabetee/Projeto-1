@@ -143,7 +143,7 @@ function cadastrarTare() {
 
         verificarAvisos();
 
-        atualizarPendencias(); 
+        atualizarPendencias();
 
         limparInputs();
 
@@ -292,12 +292,7 @@ function excluirTarefa(indice) {
 
 }
 
-
-
-
-// =====================================
-// CALENDÁRIO
-// =====================================
+// Calendario
 
 let dataCalendario = new Date();
 
@@ -308,10 +303,7 @@ let mesAtual = dataCalendario.getMonth();
 let anoAtual = dataCalendario.getFullYear();
 
 
-// =====================================
-// MOSTRAR CALENDÁRIO
-// =====================================
-
+// mostrar calendario
 function mostrarCalendario() {
 
     let diasCalendario = document.getElementById('diasCalendario');
@@ -401,10 +393,7 @@ function mostrarCalendario() {
         elementoDia.innerText =
             dia;
 
-        // =================================
-        // VERIFICA HOJE
-        // =================================
-
+        // verificar hoje
         let hoje =
             new Date();
 
@@ -416,10 +405,8 @@ function mostrarCalendario() {
 
             anoAtual === hoje.getFullYear();
 
-        // =================================
-        // VERIFICA TAREFA
-        // =================================
 
+        // verificar a tarefa
         let temTarefa =
             tarefas.some(
                 function (tarefa) {
@@ -482,10 +469,8 @@ function mostrarCalendario() {
     }
 
 }
-// =====================================
-// MÊS ANTERIOR
-// =====================================
 
+// mes anterior
 function mesAnterior() {
 
     mesAtual--;
@@ -501,10 +486,8 @@ function mesAnterior() {
     mostrarCalendario();
 
 }
-// =====================================
-// PRÓXIMO MÊS
-// =====================================
 
+// proximo mes
 function proximoMes() {
 
     mesAtual++;
@@ -520,21 +503,15 @@ function proximoMes() {
     mostrarCalendario();
 
 }
-// =====================================
-// AVISOS DE PRAZO
-// =====================================
 
+// Aviso e prazo
 function verificarAvisos() {
 
-    let divAvisos =
-        document.getElementById(
-            'avisosTarefas'
-        );
+    let divAvisos = document.getElementById('avisosTarefas');
 
     divAvisos.innerHTML = '';
 
-    let agora =
-        new Date();
+    let agora = new Date();
 
     let tarefasProximas = [];
 
@@ -733,10 +710,8 @@ function verificarAvisos() {
     );
 
 }
-// =====================================
-// TOTAL DE PENDÊNCIAS
-// =====================================
 
+// Total de pendencias
 function atualizarPendencias() {
 
     let pendencias =
@@ -756,10 +731,8 @@ function atualizarPendencias() {
     atualizarProximaExpirar();
 
 }
-// =====================================
-// PRÓXIMA TAREFA A EXPIRAR
-// =====================================
 
+// proxima tarefa a expriar
 function atualizarProximaExpirar() {
 
     let div =

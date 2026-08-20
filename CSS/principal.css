@@ -45,11 +45,7 @@ main {
 
 }
 
-
-/* ================================= */
-/* CALENDÁRIO + AVISO */
-/* ================================= */
-
+/* Calendario e a aviso */
 .section_calenddarioEaviso {
 
     display: flex;
@@ -68,32 +64,26 @@ main {
 
 }
 
-
-/* ================================= */
-/* CALENDÁRIO */
-/* ================================= */
-
+/* Configurações do calendario */
 .div_calen {
 
-    height: auto !important;
+    height: auto;
 
     min-height: 300px;
 
-    width: 350px !important;
+    width: 350px;
 
-    background-color: white !important;
+    background-color: white;
 
     border: 2px solid rgb(110, 6, 148);
 
     border-radius: 15px;
 
-    box-shadow:
-        5px 6px 15px 2px rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
     padding: 15px;
 
 }
-
 
 .calendario {
 
@@ -101,9 +91,7 @@ main {
 
 }
 
-
 /* Cabeçalho */
-
 .calendario_cabecalho {
 
     display: flex;
@@ -116,7 +104,6 @@ main {
 
 }
 
-
 .calendario_cabecalho h2 {
 
     font-size: 20px;
@@ -124,7 +111,6 @@ main {
     color: rgb(110, 6, 148);
 
 }
-
 
 .calendario_cabecalho button {
 
@@ -148,7 +134,6 @@ main {
 
 }
 
-
 .calendario_cabecalho button:hover {
 
     background-color: rgb(223, 192, 234);
@@ -157,9 +142,7 @@ main {
 
 }
 
-
 /* Dias da semana */
-
 .dias_semana {
 
     display: grid;
@@ -173,7 +156,6 @@ main {
 
 }
 
-
 .dias_semana span {
 
     font-size: 11px;
@@ -186,7 +168,6 @@ main {
 
 
 /* Dias */
-
 .dias_calendario {
 
     display: grid;
@@ -197,7 +178,6 @@ main {
     gap: 5px;
 
 }
-
 
 .dia_calendario {
 
@@ -221,7 +201,6 @@ main {
 
 
 /* Espaço vazio */
-
 .dia_vazio {
 
     height: 32px;
@@ -230,7 +209,6 @@ main {
 
 
 /* Dia com tarefa */
-
 .dia_tarefa {
 
     background-color: red;
@@ -243,7 +221,6 @@ main {
 
 
 /* Hoje */
-
 .dia_hoje {
 
     background-color: rgb(110, 6, 148);
@@ -256,7 +233,6 @@ main {
 
 
 /* Hoje + tarefa */
-
 .dia_hoje.dia_tarefa {
 
     background-color: rgb(110, 6, 148);
@@ -267,7 +243,6 @@ main {
 
 
 /* Hover */
-
 .dia_calendario:not(.dia_vazio):hover {
 
     transform: scale(1.1);
@@ -275,10 +250,7 @@ main {
 }
 
 
-/* ================================= */
-/* AVISOS */
-/* ================================= */
-
+/* configurações do aviso */
 .div_avis {
 
     display: flex;
@@ -289,9 +261,9 @@ main {
 
     align-items: center;
 
-    height: 150px;
+    height: 200px;
 
-    width: 300px;
+    width: 500px;
 
     max-width: 100%;
 
@@ -301,8 +273,7 @@ main {
 
     border: 2px solid rgb(110, 6, 148);
 
-    box-shadow:
-        5px 6px 15px 2px rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
     padding: 15px;
 
@@ -333,7 +304,7 @@ main {
 
     margin-bottom: 8px;
 
-    font-size: 14px;
+    font-size: 18px;
 
 }
 
