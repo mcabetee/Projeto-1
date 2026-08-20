@@ -55,7 +55,7 @@ function mostrarMat() {
     // total de materias cadastradas (da para colocar assim: "div_totalMateriasResId.innerHTML = materias.length;")
     let somaMat = materias.reduce((acc) => acc + 1, 0);
 
-    div_totalMateriasResId.innerHTML = somaMat;
+    div_totalMateriasResId.innerHTML = `<h4 class="h4_totalDeMatJS">${somaMat}</h4>`;
 
 }
 
@@ -190,7 +190,7 @@ function mostrarTare() {
 
         let somaTar = tarefas.reduce((acc) => acc + 1, 0);
 
-        div_totalTarefasResId.innerHTML = somaTar;
+        div_totalTarefasResId.innerHTML = `<h4 class="h4_totalDeTareJS">${somaTar}</h4>`;
 
     });
 
@@ -659,7 +659,7 @@ function atualizarPendencias() {
 
     );
 
-    document.getElementById('div_totalPendenResId').innerHTML = pendencias.length;
+    document.getElementById('div_totalPendenResId').innerHTML = `<h4>${pendencias.length}</h4>`;
 
     atualizarProximaExpirar();
 
@@ -680,7 +680,7 @@ function atualizarProximaExpirar() {
 
     if (pendencias.length === 0) {
 
-        div.innerHTML = '<p>Nenhuma tarefa pendente.</p>';
+        div.innerHTML = '<p class="p_TotalPendJs">Nenhuma tarefa pendente.</p>';
 
         return;
 
@@ -697,9 +697,10 @@ function atualizarProximaExpirar() {
 
     let tarefa = pendencias[0];
 
+
     div.innerHTML = `
 
-        <ul>
+        <ul class="ul_LisTotalDePendenjs">
 
             <li><strong>TAREFA:</strong>${tarefa.nome}</li>
 

@@ -782,7 +782,7 @@ main {
 
     margin-top: 20px;
     padding: 20px 15px;
-
+    
 }
 
 .div_cardTotal {
@@ -835,20 +835,39 @@ main {
 }
 
 .div_totalDeMaterias h3,
-.div_totalDeTarefas h3,
+.div_totalDeTarefas h3 {
+
+    font-size: 25px;
+
+}
+
 .div_totalDePendencias h3 {
 
     font-size: 22px;
 
 }
 
-.div_totalMateriasRes,
-.div_totalTarefasRes,
-.div_totalDePendencias h4 {
+.div_totalMateriasRes h4{
+
+    font-size: 25px;
+
+
+}
+
+.div_totalTarefasRes h4{
 
     font-size: 25px;
 
 }
+
+.div_totalDePendencias h4{
+
+    margin-top: 10px;
+
+    font-size: 25px;
+
+}
+
 
 .div_tempoDeExpirarRes ul {
 
@@ -1005,5 +1024,30 @@ footer {
     color: black;
 
     transform: translateY(-5px);
+
+}
+
+.p_TotalPendJs{
+
+    font-size: 18px;
+    margin-top: 5px;
+
+}
+
+.ul_LisTotalDePendenjs li{
+
+    font-size: 21px;
+
+}
+
+.h4_totalDeMatJS{
+
+    font-size: 205px;
+
+}
+
+.h4_totalDeTareJS{
+
+    font-size: 205px;
 
 }
