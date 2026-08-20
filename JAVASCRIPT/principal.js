@@ -2,6 +2,44 @@
 let materias = [];
 let tarefas = [];
 
+function pesquisa() {
+
+    let input_pesquisaId = document.getElementById('input_pesquisaId').value.toLowerCase()
+
+    let div_pesuiseRes = document.getElementById('div_pesuiseRes')
+
+    div_pesuiseRes.innerHTML = '';
+
+    materias.forEach((materia, indice) => {
+
+        if (materia.nome.toLowerCase().includes(input_pesquisaId))
+
+            div_pesuiseRes.innerHTML += `
+            
+            <table>
+            
+            <thead>
+            <tr>
+            <th>Materia</th>
+            <th>Area</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            <tr>
+            <td>${materia.nome}</td>
+            <td>${materia.area}</td>
+            </tr>
+            </tbody>
+
+            </table>
+
+            `
+
+    });
+
+}
+
 // function da botão de cadastrar as materias
 function cadastrarMat() {
 
@@ -528,8 +566,8 @@ function verificarAvisos() {
 
             let diasRestantes = Math.ceil(
 
-                    diferenca / (1000 * 60 * 60 * 24)
-                );
+                diferenca / (1000 * 60 * 60 * 24)
+            );
 
             // Tarefa atrasada
             if (diferenca < 0) {
@@ -689,9 +727,9 @@ function atualizarProximaExpirar() {
     // Ordena pela data
     pendencias.sort(function (a, b) {
 
-            return (new Date(a.dataISO) - new Date(b.dataISO));
+        return (new Date(a.dataISO) - new Date(b.dataISO));
 
-        }
+    }
 
     );
 
