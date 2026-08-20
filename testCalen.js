@@ -1,24 +1,77 @@
-// =====================================
-// ARRAYS
-// =====================================
+// arrays
 
 let materias = [];
 
 let tarefas = [];
 
 
-// =====================================
-// CADASTRAR MATÉRIA
-// =====================================
+// ======================================================
+// ADICIONADO: variável para guardar o gráfico
+// ======================================================
+
+let graficoTarefas;
+
+
+// ======================================================
+// PESQUISA
+// ======================================================
+
+function pesquisa() {
+
+    let input_pesquisaId = document.getElementById('input_pesquisaId').value.toLowerCase()
+
+    let div_pesuiseRes = document.getElementById('div_pesuiseRes')
+
+    div_pesuiseRes.innerHTML = '';
+
+    materias.forEach((materia, indice) => {
+
+        if (materia.nome.toLowerCase().includes(input_pesquisaId))
+
+            div_pesuiseRes.innerHTML += `
+
+            <table>
+
+            <thead>
+
+            <tr>
+
+            <th>Materia</th>
+
+            <th>Area</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr>
+
+            <td>${materia.nome}</td>
+
+            <td>${materia.area}</td>
+
+            </tr>
+
+            </tbody>
+
+            </table>
+
+            `
+
+    });
+
+}
+
+
+// function da botão de cadastrar as materias
 
 function cadastrarMat() {
 
-    let input_textMatId =
-        document.getElementById('input_textMatId').value;
+    let input_textMatId = document.getElementById('input_textMatId').value
 
-    let select_materiaId =
-        document.getElementById('select_materiaId').value;
-
+    let select_materiaId = document.getElementById('select_materiaId').value
 
     if (input_textMatId.trim() !== '') {
 
@@ -30,34 +83,28 @@ function cadastrarMat() {
 
         });
 
-
         mostrarMat();
 
         atualizarSelectMaterias();
 
     } else {
 
-        alert('Preencha os campos');
+        alert('Preencha os campos')
 
     }
-
 
     limparInputs();
 
 }
 
 
-// =====================================
-// MOSTRAR MATÉRIAS
-// =====================================
+// function para atualizar e conseguir ver o resultado dos cadastros
 
 function mostrarMat() {
 
-    let div_tableMatResId =
-        document.getElementById('div_tableMatResId');
+    let div_tableMatResId = document.getElementById('div_tableMatResId');
 
     let conteudoHTML = "";
-
 
     materias.forEach((materia, indice) => {
 
@@ -65,23 +112,13 @@ function mostrarMat() {
 
             <tr>
 
-                <td>
-                    ${materia.nome}
-                </td>
+                <td>${materia.nome}</td>
 
-                <td>
-                    ${materia.area}
-                </td>
+                <td>${materia.area}</td>
 
                 <td>
 
-                    <button
-                        class="button_js2"
-                        onclick="deletarMateria(${indice})">
-
-                        Excluir
-
-                    </button>
+                    <button class="button_js2" onclick="deletarMateria(${indice})">Excluir</button>
 
                 </td>
 
@@ -91,49 +128,40 @@ function mostrarMat() {
 
     });
 
-
     div_tableMatResId.innerHTML = conteudoHTML;
 
+    // Embaixo são os totais
 
-    // Total de matérias
+    // total de materias cadastradas (da para colocar assim: "div_totalMateriasResId.innerHTML = materias.length;")
 
-    let somaMat =
-        materias.reduce((acc) => acc + 1, 0);
+    let somaMat = materias.reduce((acc) => acc + 1, 0);
 
-
-    document.getElementById(
-        'div_totalMateriasResId'
-    ).innerHTML = somaMat;
+    div_totalMateriasResId.innerHTML = `<h4 class="h4_totalDeMatJS">${somaMat}</h4>`;
 
 }
 
 
-// =====================================
-// EXCLUIR MATÉRIA
-// =====================================
+// function do botão de excluir uma materia
 
 function deletarMateria(indice) {
 
     materias.splice(indice, 1);
 
-    window.alert("Matéria Excluída!");
+    window.alert("Tarefa Excluída!");
 
     mostrarMat();
-
-    atualizarSelectMaterias();
 
 }
 
 
-// =====================================
-// ATUALIZAR SELECT DAS MATÉRIAS
-// =====================================
+// function atualizar o select das materias nas tarefas
 
 function atualizarSelectMaterias() {
 
-    let select_tarefasId =
-        document.getElementById('select_tarefasId');
+    let select_tarefasId = document.getElementById('select_tarefasId');
 
+
+    // Limpa o select
 
     select_tarefasId.innerHTML = `
 
@@ -145,6 +173,8 @@ function atualizarSelectMaterias() {
 
     `;
 
+
+    // Adiciona todas as matérias cadastradas
 
     materias.forEach((materia, indice) => {
 
@@ -163,68 +193,41 @@ function atualizarSelectMaterias() {
 }
 
 
-// =====================================
-// CADASTRAR TAREFA
-// =====================================
+// function da botão de cadastrar as tarefas
 
 function cadastrarTare() {
 
-    let input_textTareId =
-        document.getElementById(
-            'input_textTareId'
-        ).value;
+    let input_textTareId = document.getElementById('input_textTareId').value
+
+    let indiceMateria = document.getElementById('select_tarefasId').value
+
+    let input_datetimeLocalTareId = document.getElementById('input_datetimeLocalTareId').value
+
+    let materiaSelecionada = materias[indiceMateria];
+
+    let dataObjeto = new Date(input_datetimeLocalTareId);
 
 
-    let indiceMateria =
-        document.getElementById(
-            'select_tarefasId'
-        ).value;
+    // Formata a data para o padrão brasileiro (DD/MM/AAAA)
+
+    let dataFormatada = dataObjeto.toLocaleDateString('pt-BR');
 
 
-    let input_datetimeLocalTareId =
-        document.getElementById(
-            'input_datetimeLocalTareId'
-        ).value;
+    // Formata a hora para o padrão brasileiro (HH:MM)
+
+    let horaFormatada = dataObjeto.toLocaleTimeString('pt-BR', {
+
+        hour: '2-digit',
+
+        minute: '2-digit'
+
+    });
 
 
-    // Verifica campos
-
-    if (
-        input_textTareId.trim() !== '' &&
-        indiceMateria.trim() !== '' &&
-        input_datetimeLocalTareId !== ''
-    ) {
+    div_tableTarResId.innerHTML = '';
 
 
-        let materiaSelecionada =
-            materias[indiceMateria];
-
-
-        let dataObjeto =
-            new Date(input_datetimeLocalTareId);
-
-
-        // Data para mostrar
-
-        let dataFormatada =
-            dataObjeto.toLocaleDateString(
-                'pt-BR'
-            );
-
-
-        // Hora para mostrar
-
-        let horaFormatada =
-            dataObjeto.toLocaleTimeString(
-                'pt-BR',
-                {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                }
-            );
-
-
-        // Adiciona tarefa
+    if (input_textTareId.trim() !== '' && indiceMateria.trim() !== '' && input_datetimeLocalTareId !== '') {
 
         tarefas.push({
 
@@ -238,8 +241,6 @@ function cadastrarTare() {
 
             hora: horaFormatada,
 
-            // Data original
-
             dataISO: input_datetimeLocalTareId,
 
             concluida: false
@@ -249,6 +250,14 @@ function cadastrarTare() {
 
         mostrarTare();
 
+
+        // ======================================================
+        // ADICIONADO: atualiza o gráfico depois de cadastrar
+        // ======================================================
+
+        atualizarGrafico();
+
+
         atualizarSelectMaterias();
 
         mostrarCalendario();
@@ -257,139 +266,79 @@ function cadastrarTare() {
 
         atualizarPendencias();
 
+        limparInputs();
 
     } else {
 
-        alert('Preencha todos os campos');
+        alert('Preencha todos as campos')
 
     }
-
-
-    limparInputs();
 
 }
 
 
-// =====================================
-// MOSTRAR TAREFAS
-// =====================================
+// function para atualizar e conseguir ver o resultado dos cadastros
 
 function mostrarTare() {
 
-    let div_tableTarResId =
-        document.getElementById(
-            'div_tableTarResId'
-        );
-
+    let div_tableTarResId = document.getElementById('div_tableTarResId')
 
     div_tableTarResId.innerHTML = '';
 
-
     tarefas.forEach((tarefa, indice) => {
 
+        let estiloConcluido = tarefa.concluida ? "text-decoration: line-through; color: #000000; opacity: 0.8;" : "color: #000000;";
 
-        let estiloConcluido =
-            tarefa.concluida
-
-                ? "text-decoration: line-through; color: #000000; opacity: 0.8;"
-
-                : "color: #000000;";
-
+        let div_totalTarefasResId = document.getElementById('div_totalTarefasResId')
 
         div_tableTarResId.innerHTML += `
 
-            <tr style="${estiloConcluido}">
+        <tr style="${estiloConcluido}">
 
-                <td>
-                    ${indice + 1}
-                </td>
+        <td>${indice + 1}</td>
 
-                <td>
-                    ${tarefa.nome}
-                </td>
+        <td>${tarefa.nome}</td>
 
-                <td>
-                    ${tarefa.materia}
-                </td>
+        <td>${tarefa.materia}</td>
 
-                <td>
-                    ${tarefa.area}
-                </td>
+        <td>${tarefa.area}</td>
 
-                <td>
-                    ${tarefa.data}
-                </td>
+        <td>${tarefa.data}</td>
 
-                <td>
-                    ${tarefa.hora}
-                </td>
+        <td>${tarefa.hora}</td>
 
-                <td>
+        <td>
 
-                    <button
-                        class="button_js3"
-                        onclick="concluidaTarefa(${indice})">
+        <button class="button_js3" onclick="concluidaTarefa(${indice})">Concluir</button>
 
-                        ${tarefa.concluida
-                            ? 'Desconcluir'
-                            : 'Concluir'}
+        <button class="button_js4" onclick="alterar(${indice})">Alerar</button>
 
-                    </button>
+        <button class="button_js5" onclick="excluirTarefa(${indice})">Excluir</button>
 
+        </td>
 
-                    <button
-                        class="button_js4"
-                        onclick="alterar(${indice})">
+        </tr>
 
-                        Alterar
+        `
 
-                    </button>
+        let somaTar = tarefas.reduce((acc) => acc + 1, 0);
 
-
-                    <button
-                        class="button_js5"
-                        onclick="excluirTarefa(${indice})">
-
-                        Excluir
-
-                    </button>
-
-                </td>
-
-            </tr>
-
-        `;
+        div_totalTarefasResId.innerHTML = `<h4 class="h4_totalDeTareJS">${somaTar}</h4>`;
 
     });
 
-
-    // Total de tarefas
-
-    document.getElementById(
-        'div_totalTarefasResId'
-    ).innerHTML = tarefas.length;
-
-
 }
 
 
-// =====================================
-// CONCLUIR TAREFA
-// =====================================
+// function do botão de concluir uma tarefa
 
 function concluidaTarefa(indice) {
 
-    let confirmar =
-        window.confirm(
-            'Essa tarefa foi concluída?'
-        );
-
+    let confirmar = window.confirm('Essa tarefa foi concluída?');
 
     if (confirmar) {
 
-        tarefas[indice].concluida =
-            !tarefas[indice].concluida;
-
+        tarefas[indice].concluida = !tarefas[indice].concluida;
 
         mostrarTare();
 
@@ -397,140 +346,103 @@ function concluidaTarefa(indice) {
 
         atualizarPendencias();
 
+        limparInputs();
+
 
     } else {
 
-        alert(
-            'A tarefa não foi concluída.'
-        );
+        alert('A tarefa não foi concluída.');
 
     }
 
 }
 
 
-// =====================================
-// ALTERAR TAREFA
-// =====================================
+// function do botão de altera uma tarefa
 
 function alterar(indice) {
 
-    let novaData =
-        prompt(
-            "Digite a nova data (DDMMAAAA):"
-        );
+    let novaData = prompt("Digite a nova data (DDMMAAAA):");
+
+    let novaHora = prompt("Digite o novo horário (HHMM):");
 
 
-    let novaHora =
-        prompt(
-            "Digite o novo horário (HHMM):"
-        );
+    // Remove qualquer caractere que não seja número
+
+    novaData = novaData.replace(/\D/g, "");
+
+    novaHora = novaHora.replace(/\D/g, "");
 
 
-    if (
-        novaData === null ||
-        novaHora === null
-    ) {
+    if (novaData.length === 8 && novaHora.length === 4) {
 
-        return;
+        // Formata a data
 
-    }
+        let dataFormatada =
 
-
-    // Remove caracteres
-
-    novaData =
-        novaData.replace(/\D/g, "");
+            `${novaData.slice(0, 2)}/${novaData.slice(2, 4)}/${novaData.slice(4, 8)}`;
 
 
-    novaHora =
-        novaHora.replace(/\D/g, "");
+        // Formata a hora
+
+        let horaFormatada =
+
+            `${novaHora.slice(0, 2)}:${novaHora.slice(2, 4)}`;
 
 
-    if (
-        novaData.length === 8 &&
-        novaHora.length === 4
-    ) {
+        // Cria a data no formato ISO
 
+        let dia = novaData.slice(0, 2);
 
-        let dia =
-            novaData.slice(0, 2);
+        let mes = novaData.slice(2, 4);
 
+        let ano = novaData.slice(4, 8);
 
-        let mes =
-            novaData.slice(2, 4);
+        let hora = novaHora.slice(0, 2);
 
+        let minuto = novaHora.slice(2, 4);
 
-        let ano =
-            novaData.slice(4, 8);
+        let dataISO =
 
-
-        let hora =
-            novaHora.slice(0, 2);
-
-
-        let minuto =
-            novaHora.slice(2, 4);
-
-
-        // Verifica se a data é válida
-
-        let dataTeste =
-            new Date(
-                `${ano}-${mes}-${dia}T${hora}:${minuto}`
-            );
-
-
-        if (
-            isNaN(dataTeste.getTime())
-        ) {
-
-            alert(
-                "Data ou horário inválido."
-            );
-
-            return;
-
-        }
-
-
-        // Data mostrada
-
-        tarefas[indice].data =
-            `${dia}/${mes}/${ano}`;
-
-
-        // Hora mostrada
-
-        tarefas[indice].hora =
-            `${hora}:${minuto}`;
-
-
-        // Data utilizada pelo JS
-
-        tarefas[indice].dataISO =
             `${ano}-${mes}-${dia}T${hora}:${minuto}`;
 
 
-        alert(
-            "Alterações salvas!"
-        );
+        // Atualiza a tarefa
 
+        tarefas[indice].data = dataFormatada;
+
+        tarefas[indice].hora = horaFormatada;
+
+        tarefas[indice].dataISO = dataISO;
+
+        alert("Alterações salvas!");
 
         mostrarTare();
 
-        mostrarCalendario();
+
+        // ======================================================
+        // ADICIONADO: atualiza o gráfico depois de alterar
+        // ======================================================
+
+        atualizarGrafico();
+
 
         verificarAvisos();
 
+        mostrarCalendario();
+
         atualizarPendencias();
 
+        atualizarProximaExpirar();
 
     } else {
 
         alert(
+
             "Digite a data com 8 números (DDMMAAAA) " +
+
             "e a hora com 4 números (HHMM)."
+
         );
 
     }
@@ -538,20 +450,23 @@ function alterar(indice) {
 }
 
 
-// =====================================
-// EXCLUIR TAREFA
-// =====================================
+// function do botão de excluir uma tarefa
 
 function excluirTarefa(indice) {
 
     tarefas.splice(indice, 1);
 
-    window.alert(
-        "Tarefa excluída"
-    );
-
+    window.alert("Tarefa excluida");
 
     mostrarTare();
+
+
+    // ======================================================
+    // ADICIONADO: atualiza o gráfico depois de excluir
+    // ======================================================
+
+    atualizarGrafico();
+
 
     mostrarCalendario();
 
@@ -562,9 +477,7 @@ function excluirTarefa(indice) {
 }
 
 
-// =====================================
-// CALENDÁRIO
-// =====================================
+// Calendario
 
 let dataCalendario = new Date();
 
@@ -575,9 +488,7 @@ let mesAtual = dataCalendario.getMonth();
 let anoAtual = dataCalendario.getFullYear();
 
 
-// =====================================
-// MOSTRAR CALENDÁRIO
-// =====================================
+// mostrar calendario
 
 function mostrarCalendario() {
 
@@ -587,108 +498,164 @@ function mostrarCalendario() {
 
     diasCalendario.innerHTML = '';
 
+
     // Primeiro dia do mês
+
     let primeiroDia =
+
         new Date(
+
             anoAtual,
+
             mesAtual,
+
             1
+
         );
 
+
     // Último dia do mês
+
     let ultimoDia =
+
         new Date(
+
             anoAtual,
+
             mesAtual + 1,
+
             0
+
         );
+
 
     let quantidadeDias = ultimoDia.getDate();
 
+
     // Dia da semana em que o mês começa
+
     let diaSemanaInicio = primeiroDia.getDay();
 
+
     // Nome do mês
+
     let nomeMes = new Date(
-            anoAtual,
-            mesAtual
-        ).toLocaleDateString(
-            'pt-BR',
-            {
-                month: 'long',
-                year: 'numeric'
-            }
-        );
+
+        anoAtual,
+
+        mesAtual
+
+    ).toLocaleDateString(
+
+        'pt-BR',
+
+        {
+
+            month: 'long',
+
+            year: 'numeric'
+
+        }
+
+    );
+
 
     nomeMes =
+
         nomeMes.charAt(0).toUpperCase()
+
         + nomeMes.slice(1);
 
+
     mesAno.innerHTML =
+
         nomeMes;
 
+
     // Espaços antes do primeiro dia
+
     for (
+
         let i = 0;
+
         i < diaSemanaInicio;
+
         i++
+
     ) {
 
         let vazio =
+
             document.createElement(
+
                 'div'
+
             );
 
         vazio.classList.add(
+
             'dia_vazio'
+
         );
 
         diasCalendario.appendChild(
+
             vazio
+
         );
 
     }
 
+
     // Cria os dias
+
     for (
+
         let dia = 1;
+
         dia <= quantidadeDias;
+
         dia++
+
     ) {
 
         let elementoDia =
+
             document.createElement(
+
                 'div'
+
             );
 
         elementoDia.classList.add(
+
             'dia_calendario'
+
         );
 
         elementoDia.innerText =
+
             dia;
 
-        // =================================
-        // VERIFICA HOJE
-        // =================================
+
+        // verificar hoje
 
         let hoje =
+
             new Date();
+
 
         let ehHoje =
 
-            dia === hoje.getDate() &&
+            dia === hoje.getDate() && mesAtual === hoje.getMonth() && anoAtual === hoje.getFullYear();
 
-            mesAtual === hoje.getMonth() &&
 
-            anoAtual === hoje.getFullYear();
-
-        // =================================
-        // VERIFICA TAREFA
-        // =================================
+        // verificar a tarefa
 
         let temTarefa =
+
             tarefas.some(
+
                 function (tarefa) {
 
                     if (!tarefa.dataISO) {
@@ -698,60 +665,62 @@ function mostrarCalendario() {
                     }
 
                     let dataTarefa =
+
                         new Date(
+
                             tarefa.dataISO
+
                         );
 
                     return (
 
-                        dataTarefa.getDate()
-                        === dia
-
-                        &&
-
-                        dataTarefa.getMonth()
-                        === mesAtual
-
-                        &&
-
-                        dataTarefa.getFullYear()
-                        === anoAtual
+                        dataTarefa.getDate() === dia && dataTarefa.getMonth() === mesAtual && dataTarefa.getFullYear() === anoAtual
 
                     );
 
                 }
+
             );
+
 
         // Vermelho para tarefa
 
         if (temTarefa) {
 
             elementoDia.classList.add(
+
                 'dia_tarefa'
+
             );
 
         }
+
 
         // Roxo para hoje
 
         if (ehHoje) {
 
             elementoDia.classList.add(
+
                 'dia_hoje'
+
             );
 
         }
 
+
         diasCalendario.appendChild(
+
             elementoDia
+
         );
 
     }
 
 }
-// =====================================
-// MÊS ANTERIOR
-// =====================================
+
+
+// mes anterior
 
 function mesAnterior() {
 
@@ -768,9 +737,9 @@ function mesAnterior() {
     mostrarCalendario();
 
 }
-// =====================================
-// PRÓXIMO MÊS
-// =====================================
+
+
+// proximo mes
 
 function proximoMes() {
 
@@ -787,54 +756,67 @@ function proximoMes() {
     mostrarCalendario();
 
 }
-// =====================================
-// AVISOS DE PRAZO
-// =====================================
+
+
+// Aviso e prazo
 
 function verificarAvisos() {
 
-    let divAvisos =
-        document.getElementById(
-            'avisosTarefas'
-        );
+    let divAvisos = document.getElementById('avisosTarefas');
 
     divAvisos.innerHTML = '';
 
-    let agora =
-        new Date();
+    let agora = new Date();
 
     let tarefasProximas = [];
 
+
     tarefas.forEach(
+
         function (tarefa) {
 
             // Tarefa concluída não gera aviso
+
             if (
+
                 !tarefa.dataISO ||
+
                 tarefa.concluida
+
             ) {
 
                 return;
 
             }
 
+
             let prazo =
+
                 new Date(
+
                     tarefa.dataISO
+
                 );
+
 
             let diferenca =
+
                 prazo.getTime()
+
                 -
+
                 agora.getTime();
 
-            let diasRestantes =
-                Math.ceil(
-                    diferenca /
-                    (1000 * 60 * 60 * 24)
-                );
+
+            let diasRestantes = Math.ceil(
+
+                diferenca / (1000 * 60 * 60 * 24)
+
+            );
+
 
             // Tarefa atrasada
+
             if (diferenca < 0) {
 
                 tarefasProximas.push({
@@ -849,9 +831,13 @@ function verificarAvisos() {
 
             }
 
+
             // Faltam até 2 dias
+
             else if (
+
                 diasRestantes <= 2
+
             ) {
 
                 tarefasProximas.push({
@@ -867,18 +853,21 @@ function verificarAvisos() {
             }
 
         }
+
     );
 
+
     // Nenhum aviso
+
     if (
+
         tarefasProximas.length === 0
+
     ) {
 
         divAvisos.innerHTML = `
 
-            <p>
-                Nenhuma tarefa próxima do prazo.
-            </p>
+            <p>Nenhuma tarefa próxima do prazo.</p>
 
         `;
 
@@ -886,242 +875,367 @@ function verificarAvisos() {
 
     }
 
+
     // Mostra avisos
+
     tarefasProximas.forEach(
+
         function (item) {
 
-            let tarefa =
-                item.tarefa;
+            let tarefa = item.tarefa;
 
             let textoAviso;
 
+
             // Atrasada
+
             if (
+
                 item.atrasada
+
             ) {
 
                 textoAviso = `
 
-                    <p>
-
-                        ⚠️ A tarefa
-
-                        <strong>
-                            ${tarefa.nome}
-                        </strong>
-
-                        está atrasada!
-
-                    </p>
+                    <p>⚠️ A tarefa <strong> ${tarefa.nome} </strong> está atrasada!</p>
 
                 `;
 
             }
+
 
             // Vence hoje
+
             else if (
+
                 item.dias === 0
+
             ) {
 
                 textoAviso = `
 
-                    <p>
-
-                        ⚠️ A tarefa
-
-                        <strong>
-                            ${tarefa.nome}
-                        </strong>
-
-                        vence hoje às
-
-                        <strong>
-                            ${tarefa.hora}
-                        </strong>.
-
-                    </p>
+                    <p>⚠️ A tarefa <strong> ${tarefa.nome} </strong> vence hoje às <strong> ${tarefa.hora} </strong>.</p>
 
                 `;
 
             }
+
 
             // Amanhã
+
             else if (
+
                 item.dias === 1
+
             ) {
 
                 textoAviso = `
 
-                    <p>
-
-                        ⚠️ A tarefa
-
-                        <strong>
-                            ${tarefa.nome}
-                        </strong>
-
-                        vence amanhã.
-
-                    </p>
+                    <p>⚠️ A tarefa <strong> ${tarefa.nome} </strong> vence amanhã.</p>
 
                 `;
 
             }
 
+
             // Dois dias
+
             else {
 
                 textoAviso = `
 
-                    <p>
-
-                        ⚠️ A tarefa
-
-                        <strong>
-                            ${tarefa.nome}
-                        </strong>
-
-                        vai expirar daqui a
-
-                        <strong>
-                            ${item.dias} dias
-                        </strong>.
-
-                    </p>
+                    <p>⚠️ A tarefa <strong>${tarefa.nome}</strong> vai expirar daqui a <strong> ${item.dias} dias </strong>.</p>
 
                 `;
 
             }
 
-            divAvisos.innerHTML +=
-                textoAviso;
+
+            divAvisos.innerHTML += textoAviso;
 
         }
+
     );
 
 }
-// =====================================
-// TOTAL DE PENDÊNCIAS
-// =====================================
+
+
+// Total de pendencias
 
 function atualizarPendencias() {
 
-    let pendencias =
-        tarefas.filter(
-            function (tarefa) {
+    let pendencias = tarefas.filter(function (tarefa) {
 
-                return !tarefa.concluida;
+        return !tarefa.concluida;
 
-            }
-        );
+    }
 
-    document.getElementById(
-        'div_totalPendenResId'
-    ).innerHTML =
-        pendencias.length;
+    );
+
+
+    document.getElementById('div_totalPendenResId').innerHTML = `<h4>${pendencias.length}</h4>`;
 
     atualizarProximaExpirar();
 
 }
-// =====================================
-// PRÓXIMA TAREFA A EXPIRAR
-// =====================================
+
+
+// proxima tarefa a expriar
 
 function atualizarProximaExpirar() {
 
-    let div =
-        document.getElementById(
-            'div_tempoDeExpirarResId'
-        );
+    let div = document.getElementById('div_tempoDeExpirarResId');
 
-    let pendencias =
-        tarefas.filter(
-            function (tarefa) {
+    let pendencias = tarefas.filter(function (tarefa) {
 
-                return (
-                    !tarefa.concluida &&
-                    tarefa.dataISO
-                );
+        return (!tarefa.concluida && tarefa.dataISO);
 
-            }
-        );
+    }
 
-    if (
-        pendencias.length === 0
-    ) {
+    );
 
-        div.innerHTML =
-            '<p>Nenhuma tarefa pendente.</p>';
+
+    if (pendencias.length === 0) {
+
+        div.innerHTML = '<p class="p_TotalPendJs">Nenhuma tarefa pendente.</p>';
 
         return;
 
     }
 
+
     // Ordena pela data
-    pendencias.sort(
-        function (a, b) {
 
-            return (
-                new Date(a.dataISO)
-                -
-                new Date(b.dataISO)
-            );
+    pendencias.sort(function (a, b) {
 
-        }
+        return (new Date(a.dataISO) - new Date(b.dataISO));
+
+    }
+
     );
 
-    let tarefa =
-        pendencias[0];
+
+    let tarefa = pendencias[0];
+
 
     div.innerHTML = `
 
-        <ul>
+        <ul class="ul_LisTotalDePendenjs">
 
-            <li>
-                <strong>TAREFA:</strong>
-                ${tarefa.nome}
-            </li>
+            <li><strong>TAREFA:</strong>${tarefa.nome}</li>
 
-            <li>
-                <strong>DATA:</strong>
-                ${tarefa.data}
-            </li>
+            <li><strong>DATA:</strong>${tarefa.data}</li>
 
-            <li>
-                <strong>HORÁRIO:</strong>
-                ${tarefa.hora}
-            </li>
+            <li><strong>HORÁRIO:</strong>${tarefa.hora}</li>
 
         </ul>
 
     `;
 
 }
-// =====================================
-// LIMPAR INPUTS
-// =====================================
 
-function limparInputs() {
 
-    document.getElementById(
-        'input_textMatId'
-    ).value = '';
+// ======================================================
+// ADICIONADO: FUNÇÃO DO GRÁFICO
+// ======================================================
 
-    document.getElementById(
-        'input_textTareId'
-    ).value = '';
+function atualizarGrafico() {
 
-    document.getElementById(
-        'input_datetimeLocalTareId'
-    ).value = '';
+    // Cria um espaço para guardar a quantidade
+    // de tarefas de cada mês
+
+    let quantidadePorMes = [
+
+        0, // Janeiro
+        0, // Fevereiro
+        0, // Março
+        0, // Abril
+        0, // Maio
+        0, // Junho
+        0, // Julho
+        0, // Agosto
+        0, // Setembro
+        0, // Outubro
+        0, // Novembro
+        0  // Dezembro
+
+    ];
+
+
+    // Percorre todas as tarefas
+
+    tarefas.forEach(function (tarefa) {
+
+        // Verifica se a tarefa possui uma data
+
+        if (!tarefa.dataISO) {
+
+            return;
+
+        }
+
+
+        // Transforma a data da tarefa em Date
+
+        let data = new Date(tarefa.dataISO);
+
+
+        // Pega o mês da tarefa
+
+        // Janeiro = 0
+        // Fevereiro = 1
+        // ...
+        // Dezembro = 11
+
+        let mes = data.getMonth();
+
+
+        // Adiciona uma tarefa ao mês
+
+        quantidadePorMes[mes]++;
+
+    });
+
+
+    // Pega o canvas do HTML
+
+    let canvas = document.getElementById('graficoTarefas');
+
+
+    // Se já existir um gráfico,
+    // destrói o antigo
+
+    if (graficoTarefas) {
+
+        graficoTarefas.destroy();
+
+    }
+
+
+    // Cria o gráfico
+
+    graficoTarefas = new Chart(canvas, {
+
+        // Tipo do gráfico
+
+        type: 'bar',
+
+
+        data: {
+
+            // Meses que aparecem no gráfico
+
+            labels: [
+
+                'Janeiro',
+                'Fevereiro',
+                'Março',
+                'Abril',
+                'Maio',
+                'Junho',
+                'Julho',
+                'Agosto',
+                'Setembro',
+                'Outubro',
+                'Novembro',
+                'Dezembro'
+
+            ],
+
+
+            datasets: [
+
+                {
+
+                    // Nome do conjunto de dados
+
+                    label: 'Quantidade de tarefas',
+
+
+                    // Quantidade de tarefas de cada mês
+
+                    data: quantidadePorMes,
+
+
+                    // Cor do gráfico
+
+                    backgroundColor: 'rgb(110, 6, 148)',
+
+
+                    // Borda das barras
+
+                    borderWidth: 1
+
+                }
+
+            ]
+
+        },
+
+
+        options: {
+
+            // Faz o gráfico se adaptar ao tamanho da tela
+
+            responsive: true,
+
+
+            // Permite que o CSS controle a altura
+
+            maintainAspectRatio: false,
+
+
+            scales: {
+
+                y: {
+
+                    // Começa o eixo em zero
+
+                    beginAtZero: true,
+                
+
+
+                    // Aumenta de 1 em 1
+
+                    ticks: {
+
+                        stepSize: 1
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
 
 }
-// =====================================
-// INICIALIZAÇÃO
-// =====================================
+
 
 mostrarCalendario();
 
 verificarAvisos();
 
 atualizarPendencias();
+
+
+// ======================================================
+// ADICIONADO: mostra o gráfico quando a página abre
+// ======================================================
+
+atualizarGrafico();
+
+
+// function de limpar os inputs após cadastrar algo
+
+function limparInputs() {
+
+    document.getElementById('input_textMatId').value = '';
+
+    document.getElementById('input_textTareId').value = '';
+
+    document.getElementById('input_datetimeLocalTareId').value = '';
+
+}

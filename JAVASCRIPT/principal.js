@@ -1,6 +1,7 @@
 // arrays
 let materias = [];
 let tarefas = [];
+let graficoTarefas;
 
 function pesquisa() {
 
@@ -174,6 +175,8 @@ function cadastrarTare() {
         });
 
         mostrarTare();
+
+        atualizarGrafico();
 
         atualizarSelectMaterias();
 
@@ -752,11 +755,189 @@ function atualizarProximaExpirar() {
 
 }
 
+
+function atualizarGrafico() {
+
+    // Cria um espaço para guardar a quantidade
+    // de tarefas de cada mês
+
+    let quantidadePorMes = [
+
+        0, // Janeiro
+        0, // Fevereiro
+        0, // Março
+        0, // Abril
+        0, // Maio
+        0, // Junho
+        0, // Julho
+        0, // Agosto
+        0, // Setembro
+        0, // Outubro
+        0, // Novembro
+        0  // Dezembro
+
+    ];
+
+
+    // Percorre todas as tarefas
+
+    tarefas.forEach(function (tarefa) {
+
+        // Verifica se a tarefa possui uma data
+
+        if (!tarefa.dataISO) {
+
+            return;
+
+        }
+
+
+        // Transforma a data da tarefa em Date
+
+        let data = new Date(tarefa.dataISO);
+
+
+        // Pega o mês da tarefa
+
+        // Janeiro = 0
+        // Fevereiro = 1
+        // ...
+        // Dezembro = 11
+
+        let mes = data.getMonth();
+
+
+        // Adiciona uma tarefa ao mês
+
+        quantidadePorMes[mes]++;
+
+    });
+
+
+    // Pega o canvas do HTML
+
+    let canvas = document.getElementById('graficoTarefas');
+
+
+    // Se já existir um gráfico,
+    // destrói o antigo
+
+    if (graficoTarefas) {
+
+        graficoTarefas.destroy();
+
+    }
+
+
+    // Cria o gráfico
+
+    graficoTarefas = new Chart(canvas, {
+
+        // Tipo do gráfico
+
+        type: 'bar',
+
+
+        data: {
+
+            // Meses que aparecem no gráfico
+
+            labels: [
+
+                'Janeiro',
+                'Fevereiro',
+                'Março',
+                'Abril',
+                'Maio',
+                'Junho',
+                'Julho',
+                'Agosto',
+                'Setembro',
+                'Outubro',
+                'Novembro',
+                'Dezembro'
+
+            ],
+
+
+            datasets: [
+
+                {
+
+                    // Nome do conjunto de dados
+
+                    label: 'Quantidade de tarefas',
+
+
+                    // Quantidade de tarefas de cada mês
+
+                    data: quantidadePorMes,
+
+
+                    // Cor do gráfico
+
+                    backgroundColor: 'rgb(110, 6, 148)',
+
+
+                    // Borda das barras
+
+                    borderWidth: 1
+
+                }
+
+            ]
+
+        },
+
+
+        options: {
+            // Faz o gráfico se adaptar ao tamanho da tela
+            responsive: true,
+
+            // Permite que o CSS controle a altura
+            maintainAspectRatio: false,
+
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#000000'
+                    }
+                },
+
+                y: {
+                    // Começa o eixo em zero
+                    beginAtZero: true,
+
+                    // Aumenta de 1 em 1
+                    ticks: {
+                        stepSize: 1,
+                        color: '#000000'
+                    }
+                }
+            },
+
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#000000'
+                    }
+                }
+            }
+        }
+
+    });
+
+}
+
+
 mostrarCalendario();
 
 verificarAvisos();
 
 atualizarPendencias();
+
+atualizarGrafico();
+
 
 
 // function de limpar os inputs após cadastrar algo

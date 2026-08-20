@@ -49,275 +49,288 @@ main {
 }
 
 /* Calendario e a aviso */
-.section_calenddarioEaviso {
+.section_calenddarioEavisoPrimeira{
 
     display: flex;
+    justify-content: center;
 
-    align-items: center;
-
-    justify-content: space-around;
-
-    flex-direction: row;
-
-    gap: 20px;
-
-    margin-bottom: 80px;
-
-    padding: 0 15px;
 
 }
 
-/* Configurações do calendario */
+.section_cardCalenddarioEavisoH2{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 70%;
+    
+
+}
+
+.tituloCalendario{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+
+    font-family: Arial;
+
+    color: rgb(110, 6, 148);
+
+    margin-left: 30px;
+
+}
+
+.tituloCalendario img{
+
+    width: 50px;
+
+}
+
+.section_calenddarioEaviso {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 20px auto 80px auto;
+    padding: 0 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 60px;
+}
+
+/* calendario */
 .div_calen {
-
-    height: auto;
-
-    min-height: 300px;
-
-    width: 700px;
+    width: 50%;
+    max-width: 680px;
+    min-height: 370px;
 
     background-color: white;
 
-    border: 2px solid rgb(110, 6, 148);
-
+    border: 1px solid rgb(190, 130, 220);
     border-radius: 15px;
 
     box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
-    padding: 15px;
+    padding: 18px 25px;
 
+    flex-shrink: 1;
 }
+
 
 .calendario {
+    width: 100%;
+}
 
+
+/* Cabeçalho do calendário */
+.calendario_cabecalho {
     width: 100%;
 
-}
-
-/* Cabeçalho */
-.calendario_cabecalho {
-
     display: flex;
-
+    align-items: center;
     justify-content: space-between;
 
-    align-items: center;
-
-    margin-bottom: 15px;
-
+    margin-bottom: 18px;
 }
 
-.calendario_cabecalho h2 {
 
-    font-size: 20px;
+.calendario_cabecalho h2 {
+    margin: 0;
 
     color: rgb(110, 6, 148);
 
+    font-size: 27px;
+    font-weight: bold;
+
+    text-align: center;
 }
 
+
+/* Botões de mudar mês */
 .calendario_cabecalho button {
-
-    width: 35px;
-
-    height: 35px;
+    width: 45px;
+    height: 42px;
 
     border: none;
-
     border-radius: 8px;
 
     background-color: rgb(110, 6, 148);
-
     color: white;
 
-    font-size: 22px;
+    font-size: 28px;
 
     cursor: pointer;
 
-    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    transition: 0.3s;
 }
 
-.calendario_cabecalho button:hover {
 
+.calendario_cabecalho button:hover {
     background-color: rgb(223, 192, 234);
 
     color: black;
 
+    transform: translateY(-2px);
 }
 
-/* Dias da semana */
+
+/* dias da semana */
 .dias_semana {
+    width: 100%;
 
     display: grid;
-
-    grid-template-columns:
-        repeat(7, 1fr);
+    grid-template-columns: repeat(7, 1fr);
 
     text-align: center;
 
-    margin-bottom: 8px;
-
+    margin-bottom: 10px;
 }
+
 
 .dias_semana span {
-
-    font-size: 11px;
-
-    font-weight: bold;
-
     color: rgb(110, 6, 148);
 
+    font-size: 15px;
+    font-weight: bold;
 }
 
-
-/* Dias */
+/* Dias do calendario */
 .dias_calendario {
+    width: 100%;
 
     display: grid;
+    grid-template-columns: repeat(7, 1fr);
 
-    grid-template-columns:
-        repeat(7, 1fr);
-
-    gap: 5px;
-
+    gap: 7px;
 }
 
-.dia_calendario {
 
-    height: 32px;
+.dia_calendario,
+.dia_vazio {
+    width: 100%;
+    height: 40px;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
+
+    font-size: 16px;
 
     border-radius: 50%;
 
-    font-size: 13px;
-
-    cursor: default;
-
     transition: 0.2s;
-
 }
 
 
-/* Espaço vazio */
+.dia_calendario {
+    cursor: default;
+}
+
+
 .dia_vazio {
-
-    height: 32px;
-
+    height: 40px;
 }
 
 
 /* Dia com tarefa */
 .dia_tarefa {
-
     background-color: red;
-
     color: white;
 
     font-weight: bold;
-
 }
 
 
-/* Hoje */
+/* Dia atual */
 .dia_hoje {
-
     background-color: rgb(110, 6, 148);
-
     color: white;
 
     font-weight: bold;
-
 }
 
 
 /* Hoje + tarefa */
 .dia_hoje.dia_tarefa {
-
     background-color: rgb(110, 6, 148);
-
     color: white;
-
 }
 
 
 /* Hover */
+
 .dia_calendario:not(.dia_vazio):hover {
-
     transform: scale(1.1);
-
 }
 
-
-/* configurações do aviso */
+/* Aviso */
 .div_avis {
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    height: 200px;
-
-    width: 700px;
-
-    max-width: 100%;
-
-    text-align: center;
-
-    border-radius: 10px;
+    width: 50%;
+    max-width: 680px;
+    min-height: 160px;
 
     border: 2px solid rgb(110, 6, 148);
+    border-radius: 15px;
 
     box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
-    padding: 15px;
+    padding: 30px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    text-align: left;
+
+    flex-shrink: 1;
 }
 
 
+/* Título do aviso */
 .div_avis h2 {
-
     margin-bottom: 10px;
 
+    color: rgb(110, 6, 148);
+
+    font-size: 25px;
 }
 
 
+/* Área onde o JS coloca os avisos */
 #avisosTarefas {
-
     width: 100%;
 
-    max-height: 90px;
+    max-height: 100px;
 
     overflow-y: auto;
 
-    padding: 5px;
-
+    padding: 0;
 }
 
 
 #avisosTarefas p {
-
     margin-bottom: 8px;
 
     font-size: 18px;
 
+    color: black;
 }
 
 /*Estilização das materias*/
+.section_materias{
 
-/*Estilização do H2 de materias*/
-.section_materias h2 {
-
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin-top: 50px;
 
 }
 
@@ -333,6 +346,28 @@ main {
 
 }
 
+.h2_materias{
+
+    color: rgb(110, 6, 148);
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+
+    position: absolute;
+    left: 400px;
+    bottom: 230px;
+
+
+}
+
+.h2_materias img{
+
+    width: 50px;
+
+}
+
 .div_inputsMateriais {
 
     display: flex;
@@ -343,7 +378,7 @@ main {
 
     height: auto;
     min-height: 255px;
-    width: 30%;
+    width: 35%;
     min-width: 280px;
     max-width: 100%;
 
@@ -352,6 +387,16 @@ main {
     border-radius: 10px;
     border: 2px solid rgb(110, 6, 148);
     box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+}
+
+.div_inputTextEselect{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 
 }
 
@@ -393,7 +438,7 @@ main {
     background-color: rgb(110, 6, 148);
     color: white;
 
-    height: 50px;
+    height: 45px;
     width: 175px;
     max-width: 100%;
 
@@ -420,6 +465,9 @@ main {
 
 /*Estilização do botão cadastrar*/
 .bot_cadasMat {
+
+    background-color: rgb(110, 6, 148);
+    color: white;
 
     height: 50px;
     width: 87px;
@@ -550,7 +598,7 @@ main {
 
 }
 
-.div_cardTare {
+.div_inputsTarefas {
 
     display: flex;
     flex-direction: column;
@@ -562,13 +610,13 @@ main {
 
 }
 
-.div_inputsTare {
+.div_inputsTextEselectTare {
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 
     height: auto;
     min-height: 350px;
@@ -696,6 +744,166 @@ main {
 
 }
 
+
+
+/* configurações teste das tarefas */
+.div_cardMat {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 15px;
+
+}
+
+.h2_materias{
+
+    color: rgb(110, 6, 148);
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+
+    position: absolute;
+    left: 400px;
+    bottom: 230px;
+
+
+}
+
+.h2_materias img{
+
+    width: 50px;
+
+}
+
+.div_inputsMateriais {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    height: auto;
+    min-height: 255px;
+    width: 35%;
+    min-width: 280px;
+    max-width: 100%;
+
+    padding: 20px;
+
+    border-radius: 10px;
+    border: 2px solid rgb(110, 6, 148);
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+}
+
+.div_inputTextEselect{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+
+/*Estilização do input:text*/
+.div_inputTextMat {
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 100%;
+
+}
+
+.input_textMat {
+
+    height: 45px;
+    width: 350px;
+    max-width: 100%;
+
+    padding-left: 10px;
+
+    border-radius: 10px;
+    border: 2px solid black;
+
+}
+
+/*Estilização do select*/
+.div_selectMat {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.div_selectMat select {
+
+    background-color: rgb(110, 6, 148);
+    color: white;
+
+    height: 45px;
+    width: 175px;
+    max-width: 100%;
+
+    padding-left: 10px;
+
+    border-radius: 10px;
+    border: 2px solid black;
+
+}
+
+.selectMat optgroup {
+
+    background-color: rgb(110, 6, 148);
+    color: white;
+
+}
+
+.selectMat option {
+
+    background-color: white;
+    color: black;
+
+}
+
+/*Estilização do botão cadastrar*/
+.bot_cadasMat {
+
+    background-color: rgb(110, 6, 148);
+    color: white;
+
+    height: 50px;
+    width: 87px;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+    transition: 0.3s;
+
+}
+
+.bot_cadasMat:hover {
+
+    background-color: rgb(223, 192, 234);
+    color: black;
+
+    transform: translateY(-5px);
+
+}
+
+
+
 /*configurações da Segunda tabela*/
 .div_tarefasRes {
 
@@ -785,7 +993,7 @@ main {
 
     margin-top: 20px;
     padding: 20px 15px;
-    
+
 }
 
 .div_cardTotal {
@@ -850,20 +1058,20 @@ main {
 
 }
 
-.div_totalMateriasRes h4{
+.div_totalMateriasRes h4 {
 
     font-size: 25px;
 
 
 }
 
-.div_totalTarefasRes h4{
+.div_totalTarefasRes h4 {
 
     font-size: 25px;
 
 }
 
-.div_totalDePendencias h4{
+.div_totalDePendencias h4 {
 
     margin-top: 10px;
 
@@ -881,50 +1089,50 @@ main {
 }
 
 /*Configuração do grafico (essas configurações são somente de exemplo)*/
-
 .section_grafico {
 
-    margin-top: 40px;
+    width: 90%;
+    max-width: 1200px;
 
-    height: 300px;
+    margin: 50px auto;
 
-}
+    padding: 25px;
 
-.section_grafico h2 {
+    background-color: white;
 
-    margin-left: 20px;
-    margin-bottom: 20px;
+    border-radius: 15px;
 
-}
-
-.div_cardGrafico {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.div_grafico {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 205px;
-    width: 450px;
-
-    border-radius: 10px;
     border: 2px solid rgb(110, 6, 148);
+
     box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
 }
 
-.div_grafico p {
 
-    font-size: 20px;
+.section_grafico h2 {
+
+    margin-bottom: 25px;
+
+    color: rgb(110, 6, 148);
 
 }
+
+
+.div_cardGrafico {
+
+    width: 100%;
+
+}
+
+
+.div_grafico {
+
+    width: 100%;
+
+    height: 450px;
+
+}
+
 
 footer {
 
@@ -943,10 +1151,56 @@ footer {
 
 
 /* Configuração para celulares e outros */
-@media (max-width: 768px) {
+@media (max-width: 450px) {
+
     .section_calenddarioEaviso {
-        flex-direction: column;
-        gap: 25px;
+        padding: 0 10px;
+    }
+
+
+    .div_calen {
+        padding: 12px;
+    }
+
+
+    .calendario_cabecalho h2 {
+        font-size: 19px;
+    }
+
+
+    .calendario_cabecalho button {
+        width: 35px;
+        height: 35px;
+
+        font-size: 21px;
+    }
+
+
+    .dias_semana span {
+        font-size: 11px;
+    }
+
+
+    .dias_calendario {
+        gap: 4px;
+    }
+
+
+    .dia_calendario,
+    .dia_vazio {
+        height: 32px;
+
+        font-size: 13px;
+    }
+
+
+    .div_avis h2 {
+        font-size: 21px;
+    }
+
+
+    #avisosTarefas p {
+        font-size: 16px;
     }
 
 }
@@ -1030,26 +1284,26 @@ footer {
 
 }
 
-.p_TotalPendJs{
+.p_TotalPendJs {
 
     font-size: 18px;
     margin-top: 5px;
 
 }
 
-.ul_LisTotalDePendenjs li{
+.ul_LisTotalDePendenjs li {
 
     font-size: 21px;
 
 }
 
-.h4_totalDeMatJS{
+.h4_totalDeMatJS {
 
     font-size: 205px;
 
 }
 
-.h4_totalDeTareJS{
+.h4_totalDeTareJS {
 
     font-size: 205px;
 

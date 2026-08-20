@@ -1,13 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Teste calen</title>
+    <title>Teste calendario</title>
 
     <link rel="stylesheet" href="/testCalen.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
@@ -16,14 +23,30 @@
 
         <h1>Sala de Tarefas</h1>
 
+        <div class="div_inputpesquisa">
+
+            <label for="search">
+                Pesquise uma materia
+            </label>
+
+            <input
+                type="search"
+                class="input_pesquisa"
+                name=""
+                id="input_pesquisaId"
+                placeholder="Exemplo: Matematica, História..."
+                onkeyup="pesquisa()"
+            >
+
+        </div>
+
     </header>
 
 
     <main>
 
-        <!-- ============================= -->
-        <!-- CALENDÁRIO E AVISOS -->
-        <!-- ============================= -->
+        <div id="div_pesuiseRes"></div>
+
 
         <section class="section_calenddarioEaviso">
 
@@ -58,6 +81,7 @@
                     <div
                         class="dias_calendario"
                         id="diasCalendario">
+
                     </div>
 
                 </div>
@@ -80,10 +104,6 @@
         </section>
 
 
-        <!-- ============================= -->
-        <!-- MATÉRIAS -->
-        <!-- ============================= -->
-
         <section class="section_materias">
 
             <h2>Materias:</h2>
@@ -91,6 +111,7 @@
             <div class="div_cardMat">
 
                 <div class="div_inputsMateriais">
+
 
                     <div class="div_inputTextMat">
 
@@ -100,9 +121,11 @@
 
                         <input
                             type="text"
+                            name=""
                             class="input_textMat"
                             id="input_textMatId"
-                            placeholder="Nome da materia...">
+                            placeholder="Nome da materia..."
+                        >
 
                     </div>
 
@@ -116,9 +139,13 @@
                         <select
                             name="areaMat"
                             class="selectMat"
-                            id="select_materiaId">
+                            id="select_materiaId"
+                        >
 
-                            <optgroup label="Áreas">
+                            <optgroup
+                                label="Áreas"
+                                id="select_mateHumaRes"
+                            >
 
                                 <option value="humanas">
                                     Humanas
@@ -144,8 +171,10 @@
                         <input
                             type="button"
                             class="bot_cadasMat"
+                            id="bot_cadasMatId"
                             value="Cadastrar"
-                            onclick="cadastrarMat()">
+                            onclick="cadastrarMat()"
+                        >
 
                     </div>
 
@@ -156,8 +185,6 @@
         </section>
 
 
-        <!-- RESULTADO DAS MATÉRIAS -->
-
         <div class="div_materiasRes">
 
             <table class="tabela1">
@@ -167,7 +194,9 @@
                     <tr>
 
                         <th>Nome da materia</th>
+
                         <th>Área</th>
+
                         <th>Ações</th>
 
                     </tr>
@@ -175,27 +204,29 @@
                 </thead>
 
 
-                <tbody id="div_tableMatResId"></tbody>
+                <tbody
+                    class="div_tableMatRes"
+                    id="div_tableMatResId">
+
+                </tbody>
 
             </table>
 
         </div>
 
 
-        <!-- ============================= -->
-        <!-- TAREFAS -->
-        <!-- ============================= -->
-
         <section class="section_tarefas">
 
             <h2>Tarefas:</h2>
-
 
             <div class="div_cardTare">
 
                 <div class="div_inputsTare">
 
+
                     <div class="div_inputTextTare">
+
+                        <!-- Onde Coloca O Nome das Tarefas -->
 
                         <label for="text">
                             Digite o nome da tarefa
@@ -204,13 +235,17 @@
                         <input
                             type="text"
                             class="input_textTare"
+                            name=""
                             id="input_textTareId"
-                            placeholder="Nome da tarefa...">
+                            placeholder="Nome da tarefa..."
+                        >
 
                     </div>
 
 
                     <div class="div_inputDateTimeLocalTare">
+
+                        <!-- Coloca Data -->
 
                         <label for="datetime-local">
                             Adicione uma data para a sua tarefa
@@ -219,7 +254,9 @@
                         <input
                             type="datetime-local"
                             class="input_datetimeLocalTare"
-                            id="input_datetimeLocalTareId">
+                            name=""
+                            id="input_datetimeLocalTareId"
+                        >
 
                     </div>
 
@@ -231,10 +268,12 @@
                         </label>
 
                         <select
+                            name="areaTarefas"
                             id="select_tarefasId"
-                            class="select_tarefas">
+                            class="select_tarefas"
+                        >
 
-                            <option value="">
+                            <option value="selecione">
                                 Selecione uma matéria
                             </option>
 
@@ -249,7 +288,8 @@
                             type="button"
                             class="bot_cadasTare"
                             value="Cadastrar"
-                            onclick="cadastrarTare()">
+                            onclick="cadastrarTare()"
+                        >
 
                     </div>
 
@@ -260,7 +300,17 @@
         </section>
 
 
-        <!-- RESULTADO DAS TAREFAS -->
+        <!--
+        Esse input que está comentado é caso o select não dê certo
+
+        <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Nome da materia..."
+        >
+        -->
+
 
         <div class="div_tarefasRes">
 
@@ -271,11 +321,17 @@
                     <tr>
 
                         <th>Id</th>
+
                         <th>Nome da Tarefa</th>
+
                         <th>Nome da Materia</th>
+
                         <th>Área</th>
+
                         <th>Data</th>
+
                         <th>Horário</th>
+
                         <th>Ações</th>
 
                     </tr>
@@ -283,16 +339,14 @@
                 </thead>
 
 
-                <tbody id="div_tableTarResId"></tbody>
+                <tbody id="div_tableTarResId">
+
+                </tbody>
 
             </table>
 
         </div>
 
-
-        <!-- ============================= -->
-        <!-- TOTAIS -->
-        <!-- ============================= -->
 
         <section class="section_total">
 
@@ -305,7 +359,10 @@
 
                     <div
                         class="div_totalMateriasRes"
-                        id="div_totalMateriasResId">
+                        id="div_totalMateriasResId"
+                    >
+
+                        <!-- <h4> -->
 
                         <h4>0</h4>
 
@@ -320,7 +377,10 @@
 
                     <div
                         class="div_totalTarefasRes"
-                        id="div_totalTarefasResId">
+                        id="div_totalTarefasResId"
+                    >
+
+                        <!-- <h4> -->
 
                         <h4>0</h4>
 
@@ -331,13 +391,17 @@
 
                 <div class="div_totalDePendencias">
 
+
                     <div class="divTotal_pende">
 
                         <h3>Total de Pendencias:</h3>
 
                         <div
                             class="div_totalPendenRes"
-                            id="div_totalPendenResId">
+                            id="div_totalPendenResId"
+                        >
+
+                            <!-- <h4> -->
 
                             <h4>0</h4>
 
@@ -352,7 +416,30 @@
 
                         <div
                             class="div_tempoDeExpirarRes"
-                            id="div_tempoDeExpirarResId">
+                            id="div_tempoDeExpirarResId"
+                        >
+
+                            <!-- <ul> e <li> -->
+
+                            <ul>
+
+                                <li>
+                                    <strong>DIA:</strong> 19
+                                </li>
+
+                                <li>
+                                    <strong>MÊS:</strong> 20
+                                </li>
+
+                                <li>
+                                    <strong>ANO:</strong> 2020
+                                </li>
+
+                                <li>
+                                    <strong>HORARIO:</strong> 12:90
+                                </li>
+
+                            </ul>
 
                         </div>
 
@@ -365,9 +452,9 @@
         </section>
 
 
-        <!-- ============================= -->
-        <!-- GRÁFICO -->
-        <!-- ============================= -->
+        <!-- =========================
+             GRÁFICO
+        ========================= -->
 
         <section class="section_grafico">
 
@@ -377,7 +464,7 @@
 
                 <div class="div_grafico">
 
-                    <p>grafico</p>
+                    <canvas id="graficoTarefas"></canvas>
 
                 </div>
 
@@ -385,13 +472,14 @@
 
         </section>
 
+
     </main>
 
 
     <footer>
 
         <p>
-            &copy; Esse site foi desenvolvido por Mariana C e Yuri M
+            &copy;Esse site foi desenvolvido por mariana C e Yuri M
         </p>
 
     </footer>
