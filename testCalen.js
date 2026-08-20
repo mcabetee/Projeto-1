@@ -1,96 +1,159 @@
-// arrays
+// =====================================
+// ARRAYS
+// =====================================
+
 let materias = [];
+
 let tarefas = [];
 
-// function da botão de cadastrar as materias
+
+// =====================================
+// CADASTRAR MATÉRIA
+// =====================================
+
 function cadastrarMat() {
 
-    let input_textMatId = document.getElementById('input_textMatId').value
-    let select_materiaId = document.getElementById('select_materiaId').value
+    let input_textMatId =
+        document.getElementById('input_textMatId').value;
+
+    let select_materiaId =
+        document.getElementById('select_materiaId').value;
+
 
     if (input_textMatId.trim() !== '') {
 
         materias.push({
 
             nome: input_textMatId,
+
             area: select_materiaId
 
         });
 
+
         mostrarMat();
+
         atualizarSelectMaterias();
 
     } else {
 
-        alert('Preencha os campos')
+        alert('Preencha os campos');
 
     }
+
 
     limparInputs();
 
 }
 
-// function para atualizar e conseguir ver o resultado dos cadastros
+
+// =====================================
+// MOSTRAR MATÉRIAS
+// =====================================
+
 function mostrarMat() {
 
-    let div_tableMatResId = document.getElementById('div_tableMatResId');
+    let div_tableMatResId =
+        document.getElementById('div_tableMatResId');
+
     let conteudoHTML = "";
+
 
     materias.forEach((materia, indice) => {
 
         conteudoHTML += `
+
             <tr>
-                <td>${materia.nome}</td>
-                <td>${materia.area}</td>
+
                 <td>
-                    <button class="button_js2" onclick="deletarMateria(${indice})">Excluir</button>
+                    ${materia.nome}
                 </td>
+
+                <td>
+                    ${materia.area}
+                </td>
+
+                <td>
+
+                    <button
+                        class="button_js2"
+                        onclick="deletarMateria(${indice})">
+
+                        Excluir
+
+                    </button>
+
+                </td>
+
             </tr>
+
         `;
+
     });
+
 
     div_tableMatResId.innerHTML = conteudoHTML;
 
-    // Embaixo são os totais
-    // total de materias cadastradas (da para colocar assim: "div_totalMateriasResId.innerHTML = materias.length;")
-    let somaMat = materias.reduce((acc) => acc + 1, 0);
 
-    div_totalMateriasResId.innerHTML = somaMat;
+    // Total de matérias
+
+    let somaMat =
+        materias.reduce((acc) => acc + 1, 0);
+
+
+    document.getElementById(
+        'div_totalMateriasResId'
+    ).innerHTML = somaMat;
 
 }
 
-// function do botão de excluir uma materia
+
+// =====================================
+// EXCLUIR MATÉRIA
+// =====================================
+
 function deletarMateria(indice) {
+
     materias.splice(indice, 1);
-    window.alert("Tarefa Excluída!");
+
+    window.alert("Matéria Excluída!");
+
     mostrarMat();
+
+    atualizarSelectMaterias();
+
 }
 
-// function atualizar o select das materias nas tarefas
+
+// =====================================
+// ATUALIZAR SELECT DAS MATÉRIAS
+// =====================================
+
 function atualizarSelectMaterias() {
 
-    let select_tarefasId = document.getElementById('select_tarefasId');
+    let select_tarefasId =
+        document.getElementById('select_tarefasId');
 
-
-    // Limpa o select
 
     select_tarefasId.innerHTML = `
 
         <option value="">
+
             Selecione uma matéria
+
         </option>
 
     `;
 
-
-    // Adiciona todas as matérias cadastradas
 
     materias.forEach((materia, indice) => {
 
         select_tarefasId.innerHTML += `
 
             <option value="${indice}">
+
                 ${materia.nome}
+
             </option>
 
         `;
@@ -99,41 +162,90 @@ function atualizarSelectMaterias() {
 
 }
 
-// function da botão de cadastrar as tarefas
+
+// =====================================
+// CADASTRAR TAREFA
+// =====================================
+
 function cadastrarTare() {
 
-    let input_textTareId = document.getElementById('input_textTareId').value
-    let indiceMateria = document.getElementById('select_tarefasId').value
-    let input_datetimeLocalTareId = document.getElementById('input_datetimeLocalTareId').value
+    let input_textTareId =
+        document.getElementById(
+            'input_textTareId'
+        ).value;
 
-    let materiaSelecionada = materias[indiceMateria];
 
-    let dataObjeto = new Date(input_datetimeLocalTareId);
+    let indiceMateria =
+        document.getElementById(
+            'select_tarefasId'
+        ).value;
 
-    // Formata a data para o padrão brasileiro (DD/MM/AAAA)
-    let dataFormatada = dataObjeto.toLocaleDateString('pt-BR');
 
-    // Formata a hora para o padrão brasileiro (HH:MM)
-    let horaFormatada = dataObjeto.toLocaleTimeString('pt-BR', {
-        hour: '2-digit',
-        minute: '2-digit'
-    });
+    let input_datetimeLocalTareId =
+        document.getElementById(
+            'input_datetimeLocalTareId'
+        ).value;
 
-    div_tableTarResId.innerHTML = '';
 
-    if (input_textTareId.trim() !== '' && indiceMateria.trim() !== '' && input_datetimeLocalTareId !== '') {
+    // Verifica campos
+
+    if (
+        input_textTareId.trim() !== '' &&
+        indiceMateria.trim() !== '' &&
+        input_datetimeLocalTareId !== ''
+    ) {
+
+
+        let materiaSelecionada =
+            materias[indiceMateria];
+
+
+        let dataObjeto =
+            new Date(input_datetimeLocalTareId);
+
+
+        // Data para mostrar
+
+        let dataFormatada =
+            dataObjeto.toLocaleDateString(
+                'pt-BR'
+            );
+
+
+        // Hora para mostrar
+
+        let horaFormatada =
+            dataObjeto.toLocaleTimeString(
+                'pt-BR',
+                {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }
+            );
+
+
+        // Adiciona tarefa
 
         tarefas.push({
 
             nome: input_textTareId,
+
             materia: materiaSelecionada.nome,
+
             area: materiaSelecionada.area,
+
             data: dataFormatada,
+
             hora: horaFormatada,
+
+            // Data original
+
             dataISO: input_datetimeLocalTareId,
+
             concluida: false
 
         });
+
 
         mostrarTare();
 
@@ -143,65 +255,141 @@ function cadastrarTare() {
 
         verificarAvisos();
 
-        atualizarPendencias(); 
+        atualizarPendencias();
 
-        limparInputs();
 
     } else {
 
-        alert('Preencha todos as campos')
+        alert('Preencha todos os campos');
 
     }
 
+
+    limparInputs();
+
 }
 
-// function para atualizar e conseguir ver o resultado dos cadastros
+
+// =====================================
+// MOSTRAR TAREFAS
+// =====================================
+
 function mostrarTare() {
 
-    let div_tableTarResId = document.getElementById('div_tableTarResId')
+    let div_tableTarResId =
+        document.getElementById(
+            'div_tableTarResId'
+        );
+
 
     div_tableTarResId.innerHTML = '';
 
+
     tarefas.forEach((tarefa, indice) => {
 
-        let estiloConcluido = tarefa.concluida ? "text-decoration: line-through; color: #000000; opacity: 0.8;" : "color: #000000;";
+
+        let estiloConcluido =
+            tarefa.concluida
+
+                ? "text-decoration: line-through; color: #000000; opacity: 0.8;"
+
+                : "color: #000000;";
+
 
         div_tableTarResId.innerHTML += `
-        
-        <tr style="${estiloConcluido}">
 
-        <td>${indice + 1}</td>
-        <td>${tarefa.nome}</td>
-        <td>${tarefa.materia}</td>
-        <td>${tarefa.area}</td>
-        <td>${tarefa.data}</td>
-        <td>${tarefa.hora}</td>
-        <td>
-        <button class="button_js3" onclick="concluidaTarefa(${indice})">Concluir</button>
-        <button class="button_js4" onclick="alterar(${indice})">Alerar</button>
-        <button class="button_js5" onclick="excluirTarefa(${indice})">Excluir</button>
-        </td>
+            <tr style="${estiloConcluido}">
 
-        </tr>
+                <td>
+                    ${indice + 1}
+                </td>
 
-        `
+                <td>
+                    ${tarefa.nome}
+                </td>
 
-        let somaTar = tarefas.reduce((acc) => acc + 1, 0);
+                <td>
+                    ${tarefa.materia}
+                </td>
 
-        div_totalTarefasResId.innerHTML = somaTar;
+                <td>
+                    ${tarefa.area}
+                </td>
+
+                <td>
+                    ${tarefa.data}
+                </td>
+
+                <td>
+                    ${tarefa.hora}
+                </td>
+
+                <td>
+
+                    <button
+                        class="button_js3"
+                        onclick="concluidaTarefa(${indice})">
+
+                        ${tarefa.concluida
+                            ? 'Desconcluir'
+                            : 'Concluir'}
+
+                    </button>
+
+
+                    <button
+                        class="button_js4"
+                        onclick="alterar(${indice})">
+
+                        Alterar
+
+                    </button>
+
+
+                    <button
+                        class="button_js5"
+                        onclick="excluirTarefa(${indice})">
+
+                        Excluir
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `;
 
     });
 
+
+    // Total de tarefas
+
+    document.getElementById(
+        'div_totalTarefasResId'
+    ).innerHTML = tarefas.length;
+
+
 }
 
-// function do botão de concluir uma tarefa
+
+// =====================================
+// CONCLUIR TAREFA
+// =====================================
+
 function concluidaTarefa(indice) {
 
-    let confirmar = window.confirm('Essa tarefa foi concluída?');
+    let confirmar =
+        window.confirm(
+            'Essa tarefa foi concluída?'
+        );
+
 
     if (confirmar) {
 
-        tarefas[indice].concluida = !tarefas[indice].concluida;
+        tarefas[indice].concluida =
+            !tarefas[indice].concluida;
+
 
         mostrarTare();
 
@@ -209,62 +397,134 @@ function concluidaTarefa(indice) {
 
         atualizarPendencias();
 
-        limparInputs();
-
 
     } else {
 
-        alert('A tarefa não foi concluída.');
+        alert(
+            'A tarefa não foi concluída.'
+        );
 
     }
+
 }
 
-// function do botão de altera uma tarefa
+
+// =====================================
+// ALTERAR TAREFA
+// =====================================
+
 function alterar(indice) {
 
-    let novaData = prompt("Digite a nova data (DDMMAAAA):");
-    let novaHora = prompt("Digite o novo horário (HHMM):");
+    let novaData =
+        prompt(
+            "Digite a nova data (DDMMAAAA):"
+        );
 
-    // Remove qualquer caractere que não seja número
-    novaData = novaData.replace(/\D/g, "");
-    novaHora = novaHora.replace(/\D/g, "");
 
-    if (novaData.length === 8 && novaHora.length === 4) {
+    let novaHora =
+        prompt(
+            "Digite o novo horário (HHMM):"
+        );
 
-        // Formata a data
-        let dataFormatada =
-            `${novaData.slice(0, 2)}/${novaData.slice(2, 4)}/${novaData.slice(4, 8)}`;
 
-        // Formata a hora
-        let horaFormatada =
-            `${novaHora.slice(0, 2)}:${novaHora.slice(2, 4)}`;
+    if (
+        novaData === null ||
+        novaHora === null
+    ) {
 
-        // Cria a data no formato ISO
-        let dia = novaData.slice(0, 2);
-        let mes = novaData.slice(2, 4);
-        let ano = novaData.slice(4, 8);
+        return;
 
-        let hora = novaHora.slice(0, 2);
-        let minuto = novaHora.slice(2, 4);
+    }
 
-        let dataISO =
+
+    // Remove caracteres
+
+    novaData =
+        novaData.replace(/\D/g, "");
+
+
+    novaHora =
+        novaHora.replace(/\D/g, "");
+
+
+    if (
+        novaData.length === 8 &&
+        novaHora.length === 4
+    ) {
+
+
+        let dia =
+            novaData.slice(0, 2);
+
+
+        let mes =
+            novaData.slice(2, 4);
+
+
+        let ano =
+            novaData.slice(4, 8);
+
+
+        let hora =
+            novaHora.slice(0, 2);
+
+
+        let minuto =
+            novaHora.slice(2, 4);
+
+
+        // Verifica se a data é válida
+
+        let dataTeste =
+            new Date(
+                `${ano}-${mes}-${dia}T${hora}:${minuto}`
+            );
+
+
+        if (
+            isNaN(dataTeste.getTime())
+        ) {
+
+            alert(
+                "Data ou horário inválido."
+            );
+
+            return;
+
+        }
+
+
+        // Data mostrada
+
+        tarefas[indice].data =
+            `${dia}/${mes}/${ano}`;
+
+
+        // Hora mostrada
+
+        tarefas[indice].hora =
+            `${hora}:${minuto}`;
+
+
+        // Data utilizada pelo JS
+
+        tarefas[indice].dataISO =
             `${ano}-${mes}-${dia}T${hora}:${minuto}`;
 
-        // Atualiza a tarefa
-        tarefas[indice].data = dataFormatada;
-        tarefas[indice].hora = horaFormatada;
-        tarefas[indice].dataISO = dataISO;
 
-        alert("Alterações salvas!");
+        alert(
+            "Alterações salvas!"
+        );
 
-        // Atualiza a tabela
+
         mostrarTare();
 
-        // Atualiza os avisos
+        mostrarCalendario();
+
         verificarAvisos();
 
-        // ⭐ ATUALIZA O CALENDÁRIO
-        mostrarCalendario();
+        atualizarPendencias();
+
 
     } else {
 
@@ -272,14 +532,24 @@ function alterar(indice) {
             "Digite a data com 8 números (DDMMAAAA) " +
             "e a hora com 4 números (HHMM)."
         );
+
     }
+
 }
 
-// function do botão de excluir uma tarefa
+
+// =====================================
+// EXCLUIR TAREFA
+// =====================================
+
 function excluirTarefa(indice) {
 
     tarefas.splice(indice, 1);
-    window.alert("Tarefa excluida");
+
+    window.alert(
+        "Tarefa excluída"
+    );
+
 
     mostrarTare();
 
@@ -289,10 +559,7 @@ function excluirTarefa(indice) {
 
     atualizarPendencias();
 
-
 }
-
-
 
 
 // =====================================
@@ -343,15 +610,15 @@ function mostrarCalendario() {
 
     // Nome do mês
     let nomeMes = new Date(
-        anoAtual,
-        mesAtual
-    ).toLocaleDateString(
-        'pt-BR',
-        {
-            month: 'long',
-            year: 'numeric'
-        }
-    );
+            anoAtual,
+            mesAtual
+        ).toLocaleDateString(
+            'pt-BR',
+            {
+                month: 'long',
+                year: 'numeric'
+            }
+        );
 
     nomeMes =
         nomeMes.charAt(0).toUpperCase()
@@ -830,20 +1097,31 @@ function atualizarProximaExpirar() {
     `;
 
 }
+// =====================================
+// LIMPAR INPUTS
+// =====================================
 
+function limparInputs() {
+
+    document.getElementById(
+        'input_textMatId'
+    ).value = '';
+
+    document.getElementById(
+        'input_textTareId'
+    ).value = '';
+
+    document.getElementById(
+        'input_datetimeLocalTareId'
+    ).value = '';
+
+}
+// =====================================
+// INICIALIZAÇÃO
+// =====================================
 
 mostrarCalendario();
 
 verificarAvisos();
 
 atualizarPendencias();
-
-
-// function de limpar os inputs após cadastrar algo
-function limparInputs() {
-
-    document.getElementById('input_textMatId').value = '';
-    document.getElementById('input_textTareId').value = '';
-    document.getElementById('input_datetimeLocalTareId').value = '';
-
-}

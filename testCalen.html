@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-Br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto 1</title>
-    <link rel="stylesheet" href="/CSS/principal.css">
+
+    <title>Teste calen</title>
+
+    <link rel="stylesheet" href="/testCalen.css">
 </head>
 
 <body>
@@ -16,9 +18,14 @@
 
     </header>
 
+
     <main>
 
-       <section class="section_calenddarioEaviso">
+        <!-- ============================= -->
+        <!-- CALENDÁRIO E AVISOS -->
+        <!-- ============================= -->
+
+        <section class="section_calenddarioEaviso">
 
             <div class="div_calen">
 
@@ -71,7 +78,12 @@
             </div>
 
         </section>
-        
+
+
+        <!-- ============================= -->
+        <!-- MATÉRIAS -->
+        <!-- ============================= -->
+
         <section class="section_materias">
 
             <h2>Materias:</h2>
@@ -81,24 +93,44 @@
                 <div class="div_inputsMateriais">
 
                     <div class="div_inputTextMat">
-                        <label for="text">Digite o nome da materia</label>
-                        <input type="text" name="" class="input_textMat" id="input_textMatId"
+
+                        <label for="text">
+                            Digite o nome da materia
+                        </label>
+
+                        <input
+                            type="text"
+                            class="input_textMat"
+                            id="input_textMatId"
                             placeholder="Nome da materia...">
+
                     </div>
+
 
                     <div class="div_selectMat">
 
-                        <label for="areaMat">Adicione uma área</label>
+                        <label for="areaMat">
+                            Adicione uma área
+                        </label>
 
-                        <select name="areaMat" class="selectMat" id="select_materiaId">
+                        <select
+                            name="areaMat"
+                            class="selectMat"
+                            id="select_materiaId">
 
-                            <optgroup label="Áreas" id="select_mateHumaRes">
+                            <optgroup label="Áreas">
 
-                                <option value="humanas">Humanas</option>
+                                <option value="humanas">
+                                    Humanas
+                                </option>
 
-                                <option value="exatas">Exatas</option>
+                                <option value="exatas">
+                                    Exatas
+                                </option>
 
-                                <option value="tecnico">Tecnico</option>
+                                <option value="tecnico">
+                                    Tecnico
+                                </option>
 
                             </optgroup>
 
@@ -106,9 +138,13 @@
 
                     </div>
 
+
                     <div class="div_matBotCadas">
 
-                        <input type="button" class="bot_cadasMat" id="bot_cadasMatId" value="Cadastrar"
+                        <input
+                            type="button"
+                            class="bot_cadasMat"
+                            value="Cadastrar"
                             onclick="cadastrarMat()">
 
                     </div>
@@ -119,29 +155,41 @@
 
         </section>
 
+
+        <!-- RESULTADO DAS MATÉRIAS -->
+
         <div class="div_materiasRes">
 
             <table class="tabela1">
 
                 <thead>
+
                     <tr>
+
                         <th>Nome da materia</th>
                         <th>Área</th>
                         <th>Ações</th>
+
                     </tr>
+
                 </thead>
 
-                <tbody class="div_tableMatRes" id="div_tableMatResId"> </tbody>
+
+                <tbody id="div_tableMatResId"></tbody>
 
             </table>
 
         </div>
 
-        </section>
+
+        <!-- ============================= -->
+        <!-- TAREFAS -->
+        <!-- ============================= -->
 
         <section class="section_tarefas">
 
             <h2>Tarefas:</h2>
+
 
             <div class="div_cardTare">
 
@@ -149,37 +197,59 @@
 
                     <div class="div_inputTextTare">
 
-                        <!-- Onde Coloca O Nome das Tarefas -->
-                        <label for="text">Digite o nome da tarefa</label>
-                        <input type="text" class="input_textTare" name="" id="input_textTareId"
+                        <label for="text">
+                            Digite o nome da tarefa
+                        </label>
+
+                        <input
+                            type="text"
+                            class="input_textTare"
+                            id="input_textTareId"
                             placeholder="Nome da tarefa...">
 
                     </div>
 
+
                     <div class="div_inputDateTimeLocalTare">
 
-                        <!-- Coloca Data -->
-                        <label for="datetime-local">Adicione uma data para a sua tarefa</label>
-                        <input type="datetime-local" class="input_datetimeLocalTare" name=""
+                        <label for="datetime-local">
+                            Adicione uma data para a sua tarefa
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            class="input_datetimeLocalTare"
                             id="input_datetimeLocalTareId">
 
                     </div>
 
+
                     <div class="div_selectTare">
 
-                        <label for="areaTarefas">Adicione uma materia</label>
+                        <label for="areaTarefas">
+                            Adicione uma materia
+                        </label>
 
-                        <select name="areaTarefas" id="select_tarefasId" class="select_tarefas">
-                            <option value="selecione">
+                        <select
+                            id="select_tarefasId"
+                            class="select_tarefas">
+
+                            <option value="">
                                 Selecione uma matéria
                             </option>
+
                         </select>
 
                     </div>
 
+
                     <div class="div_tareBotCadas">
 
-                        <input type="button" class="bot_cadasTare" value="Cadastrar" onclick="cadastrarTare()">
+                        <input
+                            type="button"
+                            class="bot_cadasTare"
+                            value="Cadastrar"
+                            onclick="cadastrarTare()">
 
                     </div>
 
@@ -188,14 +258,18 @@
             </div>
 
         </section>
-        <!-- Esse input que está comentado é casos o select não de certo <input type="text" name="" id="" placeholder="Nome da materia..."> -->
+
+
+        <!-- RESULTADO DAS TAREFAS -->
 
         <div class="div_tarefasRes">
 
             <table class="tabela2">
 
                 <thead>
+
                     <tr>
+
                         <th>Id</th>
                         <th>Nome da Tarefa</th>
                         <th>Nome da Materia</th>
@@ -203,42 +277,57 @@
                         <th>Data</th>
                         <th>Horário</th>
                         <th>Ações</th>
+
                     </tr>
+
                 </thead>
 
-                <tbody id="div_tableTarResId"> </tbody>
+
+                <tbody id="div_tableTarResId"></tbody>
 
             </table>
 
         </div>
 
-        </section>
+
+        <!-- ============================= -->
+        <!-- TOTAIS -->
+        <!-- ============================= -->
 
         <section class="section_total">
 
             <div class="div_cardTotal">
 
+
                 <div class="div_totalDeMaterias">
 
                     <h3>Total de Materias:</h3>
 
-                    <div class="div_totalMateriasRes" id="div_totalMateriasResId">
-                        <!-- <h4> -->
+                    <div
+                        class="div_totalMateriasRes"
+                        id="div_totalMateriasResId">
+
                         <h4>0</h4>
+
                     </div>
 
                 </div>
+
 
                 <div class="div_totalDeTarefas">
 
                     <h3>Total de Tarefas:</h3>
 
-                    <div class="div_totalTarefasRes" id="div_totalTarefasResId">
-                        <!-- <h4> -->
+                    <div
+                        class="div_totalTarefasRes"
+                        id="div_totalTarefasResId">
+
                         <h4>0</h4>
+
                     </div>
 
                 </div>
+
 
                 <div class="div_totalDePendencias">
 
@@ -246,34 +335,39 @@
 
                         <h3>Total de Pendencias:</h3>
 
-                        <div class="div_totalPendenRes" id="div_totalPendenResId">
-                            <!-- <h4> -->
-                            <h4>2</h4>
+                        <div
+                            class="div_totalPendenRes"
+                            id="div_totalPendenResId">
+
+                            <h4>0</h4>
+
                         </div>
 
                     </div>
+
 
                     <div class="divTotal_expirar">
 
                         <h3>Proxima a expirar:</h3>
 
-                        <div class="div_tempoDeExpirarRes" id="div_tempoDeExpirarResId">
-                            <!-- <ul> e <li> -->
-                            <ul>
-                                <li><strong>DIA:</strong> 19</li>
-                                <li><strong>MÊS:</strong> 20</li>
-                                <li><strong>ANO:</strong> 2020</li>
-                                <li><strong>HORARIO:</strong> 12:90</li>
-                            </ul>
+                        <div
+                            class="div_tempoDeExpirarRes"
+                            id="div_tempoDeExpirarResId">
+
                         </div>
 
-
                     </div>
+
                 </div>
 
             </div>
 
         </section>
+
+
+        <!-- ============================= -->
+        <!-- GRÁFICO -->
+        <!-- ============================= -->
 
         <section class="section_grafico">
 
@@ -289,18 +383,22 @@
 
             </div>
 
-
         </section>
 
     </main>
 
+
     <footer>
 
-        <p>&copy;Esse site foi desenvolvido por mariana C e Yuri M</p>
+        <p>
+            &copy; Esse site foi desenvolvido por Mariana C e Yuri M
+        </p>
 
     </footer>
 
-    <script src="/JAVASCRIPT/principal.js"></script>
+
+    <script src="/testCalen.js"></script>
+
 </body>
 
 </html>
