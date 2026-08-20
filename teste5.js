@@ -259,15 +259,14 @@ function alterar(indice) {
 
         alert("Alterações salvas!");
 
+        // Atualiza a tabela
         mostrarTare();
 
+        // Atualiza os avisos
         verificarAvisos();
 
+        // ⭐ ATUALIZA O CALENDÁRIO
         mostrarCalendario();
-
-        atualizarPendencias();
-
-        atualizarProximaExpirar();
 
     } else {
 
@@ -402,7 +401,11 @@ function mostrarCalendario() {
 
         let ehHoje =
 
-            dia === hoje.getDate() && mesAtual === hoje.getMonth() && anoAtual === hoje.getFullYear();
+            dia === hoje.getDate() &&
+
+            mesAtual === hoje.getMonth() &&
+
+            anoAtual === hoje.getFullYear();
 
 
         // verificar a tarefa
@@ -423,7 +426,18 @@ function mostrarCalendario() {
 
                     return (
 
-                        dataTarefa.getDate() === dia && dataTarefa.getMonth() === mesAtual && dataTarefa.getFullYear() === anoAtual
+                        dataTarefa.getDate()
+                        === dia
+
+                        &&
+
+                        dataTarefa.getMonth()
+                        === mesAtual
+
+                        &&
+
+                        dataTarefa.getFullYear()
+                        === anoAtual
 
                     );
 
@@ -526,9 +540,10 @@ function verificarAvisos() {
                 -
                 agora.getTime();
 
-            let diasRestantes = Math.ceil(
-
-                    diferenca / (1000 * 60 * 60 * 24)
+            let diasRestantes =
+                Math.ceil(
+                    diferenca /
+                    (1000 * 60 * 60 * 24)
                 );
 
             // Tarefa atrasada
@@ -573,7 +588,9 @@ function verificarAvisos() {
 
         divAvisos.innerHTML = `
 
-            <p>Nenhuma tarefa próxima do prazo.</p>
+            <p>
+                Nenhuma tarefa próxima do prazo.
+            </p>
 
         `;
 
@@ -583,10 +600,10 @@ function verificarAvisos() {
 
     // Mostra avisos
     tarefasProximas.forEach(
-
         function (item) {
 
-            let tarefa = item.tarefa;
+            let tarefa =
+                item.tarefa;
 
             let textoAviso;
 
@@ -597,7 +614,17 @@ function verificarAvisos() {
 
                 textoAviso = `
 
-                    <p>⚠️ A tarefa <strong> ${tarefa.nome} </strong> está atrasada!</p>
+                    <p>
+
+                        ⚠️ A tarefa
+
+                        <strong>
+                            ${tarefa.nome}
+                        </strong>
+
+                        está atrasada!
+
+                    </p>
 
                 `;
 
@@ -610,7 +637,21 @@ function verificarAvisos() {
 
                 textoAviso = `
 
-                    <p>⚠️ A tarefa <strong> ${tarefa.nome} </strong> vence hoje às <strong> ${tarefa.hora} </strong>.</p>
+                    <p>
+
+                        ⚠️ A tarefa
+
+                        <strong>
+                            ${tarefa.nome}
+                        </strong>
+
+                        vence hoje às
+
+                        <strong>
+                            ${tarefa.hora}
+                        </strong>.
+
+                    </p>
 
                 `;
 
@@ -618,14 +659,22 @@ function verificarAvisos() {
 
             // Amanhã
             else if (
-
                 item.dias === 1
-
             ) {
 
                 textoAviso = `
 
-                    <p>⚠️ A tarefa <strong> ${tarefa.nome} </strong> vence amanhã.</p>
+                    <p>
+
+                        ⚠️ A tarefa
+
+                        <strong>
+                            ${tarefa.nome}
+                        </strong>
+
+                        vence amanhã.
+
+                    </p>
 
                 `;
 
@@ -636,12 +685,28 @@ function verificarAvisos() {
 
                 textoAviso = `
 
-                    <p>⚠️ A tarefa <strong>${tarefa.nome}</strong> vai expirar daqui a <strong> ${item.dias} dias </strong>.</p>
+                    <p>
+
+                        ⚠️ A tarefa
+
+                        <strong>
+                            ${tarefa.nome}
+                        </strong>
+
+                        vai expirar daqui a
+
+                        <strong>
+                            ${item.dias} dias
+                        </strong>.
+
+                    </p>
 
                 `;
+
             }
 
-            divAvisos.innerHTML += textoAviso;
+            divAvisos.innerHTML +=
+                textoAviso;
 
         }
     );
@@ -651,67 +716,26 @@ function verificarAvisos() {
 // Total de pendencias
 function atualizarPendencias() {
 
-    let pendencias = tarefas.filter(function (tarefa) {
+    let ul_TempoDeExpirarResId = document.getElementById('div_totalPendenResId')
 
-        return !tarefa.concluida;
+    tarefas.filter((tarefa, indice) => {
 
-    }
+        if (tarefa[indice] ) {
 
-    );
+            ul_TempoDeExpirarResId.innerHTML += `
+            
+            <li>${indice + 1}</li>
 
-    document.getElementById('div_totalPendenResId').innerHTML = pendencias.length;
+            `
 
-    atualizarProximaExpirar();
+        }
+
+    });
 
 }
 
 // proxima tarefa a expriar
-function atualizarProximaExpirar() {
 
-    let div = document.getElementById('div_tempoDeExpirarResId');
-
-    let pendencias = tarefas.filter(function (tarefa) {
-
-        return (!tarefa.concluida && tarefa.dataISO);
-
-    }
-
-    );
-
-    if (pendencias.length === 0) {
-
-        div.innerHTML = '<p>Nenhuma tarefa pendente.</p>';
-
-        return;
-
-    }
-
-    // Ordena pela data
-    pendencias.sort(function (a, b) {
-
-            return (new Date(a.dataISO) - new Date(b.dataISO));
-
-        }
-
-    );
-
-    let tarefa = pendencias[0];
-
-    div.innerHTML = `
-
-        <ul>
-
-            <li><strong>TAREFA:</strong>${tarefa.nome}</li>
-
-            <li><strong>DATA:</strong>${tarefa.data}</li>
-
-            <li><strong>HORÁRIO:</strong>${tarefa.hora}</li>
-
-        </ul>
-
-    `;
-
-}
 
 mostrarCalendario();
 
