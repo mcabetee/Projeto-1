@@ -5,31 +5,43 @@ let graficoTarefas;
 
 function pesquisa() {
 
-    let input_pesquisaId = document.getElementById('input_pesquisaId').value.toLowerCase()
+    let input_pesquisaId = document.getElementById('input_pesquisaId').value.toLowerCase().trim()
 
     let div_pesuiseRes = document.getElementById('div_pesuiseRes')
 
     div_pesuiseRes.innerHTML = '';
 
-    materias.forEach((materia, indice) => {
+    if(input_pesquisaId === ''){
 
-        if (materia.nome.toLowerCase().includes(input_pesquisaId))
+        return
+
+    }
+
+    tarefas.forEach((tarefa, indice) => {
+
+        if (tarefa.nome.toLowerCase().includes(input_pesquisaId))
 
             div_pesuiseRes.innerHTML += `
             
-            <table>
+            <table class="tabela_3js">
             
             <thead>
             <tr>
-            <th>Materia</th>
+            <th>Tarefa</th>
             <th>Area</th>
+            <th>Materia</th>
+            <th>Data</th>
+            <th>Horário</th>
             </tr>
             </thead>
             
             <tbody>
             <tr>
-            <td>${materia.nome}</td>
-            <td>${materia.area}</td>
+            <td>${tarefa.nome}</td>
+            <td>${tarefa.area}</td>
+            <td>${tarefa.materia}</td>
+            <td>${tarefa.data}</td>
+            <td>${tarefa.hora}</td>
             </tr>
             </tbody>
 
