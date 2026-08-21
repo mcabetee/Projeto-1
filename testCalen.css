@@ -1,29 +1,31 @@
-/*Configuraçõs universal*/
+/* =========================================================
+   CONFIGURAÇÕES UNIVERSAIS
+   ========================================================= */
+
 * {
-
-    margin: 0px;
-    padding: 0px;
-
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-
     box-sizing: border-box;
 }
 
 
-/* configurações do corpo do site */
-body {
+/* =========================================================
+   CORPO DO SITE
+   ========================================================= */
 
+body {
     display: flex;
     flex-direction: column;
-
     min-height: 100vh;
-
 }
 
 
-/*Cabeçalho*/
-header {
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
 
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,25 +35,58 @@ header {
     color: white;
 
     height: 100px;
-
     font-family: Arial, sans-serif;
-
 }
 
 
+/* =========================================================
+   PRINCIPAL
+   ========================================================= */
 
-/*Principal*/
 main {
-
     display: flex;
     flex-direction: column;
-
     margin-top: 20px;
-
 }
 
 
-/* Calendario e a aviso */
+/* =========================================================
+   CALENDÁRIO E AVISO
+   ========================================================= */
+
+.section_calenddarioEavisoPrimeira {
+    display: flex;
+    justify-content: center;
+}
+
+
+.section_cardCalenddarioEavisoH2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+}
+
+
+.tituloCalendario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 7px;
+
+    font-family: Arial;
+    color: rgb(110, 6, 148);
+
+    margin-left: 30px;
+}
+
+
+.tituloCalendario img {
+    width: 50px;
+}
+
+
 .section_calenddarioEaviso {
     width: 100%;
     max-width: 1400px;
@@ -61,6 +96,7 @@ main {
 
     display: flex;
     flex-direction: row;
+
     align-items: flex-start;
     justify-content: center;
 
@@ -68,10 +104,14 @@ main {
 }
 
 
-/* calendario */
+/* =========================================================
+   CALENDÁRIO
+   ========================================================= */
+
 .div_calen {
     width: 50%;
     max-width: 680px;
+
     min-height: 370px;
 
     background-color: white;
@@ -93,6 +133,7 @@ main {
 
 
 /* Cabeçalho do calendário */
+
 .calendario_cabecalho {
     width: 100%;
 
@@ -117,6 +158,7 @@ main {
 
 
 /* Botões de mudar mês */
+
 .calendario_cabecalho button {
     width: 45px;
     height: 42px;
@@ -141,14 +183,16 @@ main {
 
 .calendario_cabecalho button:hover {
     background-color: rgb(223, 192, 234);
-
     color: black;
 
     transform: translateY(-2px);
 }
 
 
-/* dias da semana */
+/* =========================================================
+   DIAS DA SEMANA
+   ========================================================= */
+
 .dias_semana {
     width: 100%;
 
@@ -168,7 +212,11 @@ main {
     font-weight: bold;
 }
 
-/* Dias do calendario */
+
+/* =========================================================
+   DIAS DO CALENDÁRIO
+   ========================================================= */
+
 .dias_calendario {
     width: 100%;
 
@@ -207,6 +255,7 @@ main {
 
 
 /* Dia com tarefa */
+
 .dia_tarefa {
     background-color: red;
     color: white;
@@ -216,6 +265,7 @@ main {
 
 
 /* Dia atual */
+
 .dia_hoje {
     background-color: rgb(110, 6, 148);
     color: white;
@@ -225,6 +275,7 @@ main {
 
 
 /* Hoje + tarefa */
+
 .dia_hoje.dia_tarefa {
     background-color: rgb(110, 6, 148);
     color: white;
@@ -237,10 +288,15 @@ main {
     transform: scale(1.1);
 }
 
-/* Aviso */
+
+/* =========================================================
+   AVISO
+   ========================================================= */
+
 .div_avis {
     width: 50%;
     max-width: 680px;
+
     min-height: 160px;
 
     border: 2px solid rgb(110, 6, 148);
@@ -252,6 +308,7 @@ main {
 
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: flex-start;
 
@@ -262,6 +319,7 @@ main {
 
 
 /* Título do aviso */
+
 .div_avis h2 {
     margin-bottom: 10px;
 
@@ -272,6 +330,7 @@ main {
 
 
 /* Área onde o JS coloca os avisos */
+
 #avisosTarefas {
     width: 100%;
 
@@ -292,68 +351,99 @@ main {
 }
 
 
-/*Estilização das materias*/
+/* =========================================================
+   MATÉRIAS
+   ========================================================= */
 
-/*Estilização do H2 de materias*/
-.section_materias h2 {
-
-    margin-left: 20px;
-    margin-bottom: 20px;
-
+.section_materias {
+    margin-top: 50px;
 }
 
 
-/*Estilização das primeiras divs da parte da materia o primeiro é do card e o segundo é da div dos inputs*/
 .div_cardMat {
-
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
 
     padding: 0 15px;
-
 }
 
 
-.div_inputsMateriais {
+.h2_materias {
+    color: rgb(110, 6, 148);
 
     display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-left: 20%;
+}
+
+
+.h2_materias img {
+    width: 50px;
+}
+
+
+/* =========================================================
+   INPUTS DAS MATÉRIAS
+   ========================================================= */
+
+.div_inputsMateriais {
+    display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
+
     gap: 20px;
 
     height: auto;
     min-height: 255px;
-    width: 30%;
+
+    width: 35%;
     min-width: 280px;
     max-width: 100%;
 
     padding: 20px;
 
     border-radius: 10px;
-    border: 2px solid rgb(110, 6, 148);
-    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
+    border: 2px solid rgb(110, 6, 148);
+
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 }
 
 
-/*Estilização do input:text*/
-.div_inputTextMat {
+.div_inputTextEselectMat {
+    display: flex;
+    flex-direction: row;
 
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* Input texto */
+
+.div_inputTextMat {
     display: flex;
     flex-direction: column;
 
     align-items: center;
 
     width: 100%;
-
 }
 
 
 .input_textMat {
-
     height: 45px;
     width: 350px;
     max-width: 100%;
@@ -361,82 +451,79 @@ main {
     padding-left: 10px;
 
     border-radius: 10px;
-    border: 2px solid black;
 
+    border: 2px solid black;
 }
 
 
-/*Estilização do select*/
-.div_selectMat {
+/* Select */
 
+.div_selectMat {
     display: flex;
     flex-direction: column;
-
 }
 
 
 .div_selectMat select {
-
     background-color: rgb(110, 6, 148);
     color: white;
 
-    height: 50px;
+    height: 45px;
     width: 175px;
     max-width: 100%;
 
     padding-left: 10px;
 
     border-radius: 10px;
-    border: 2px solid black;
 
+    border: 2px solid black;
 }
 
 
 .selectMat optgroup {
-
     background-color: rgb(110, 6, 148);
     color: white;
-
 }
 
 
 .selectMat option {
-
     background-color: white;
     color: black;
-
 }
 
 
-/*Estilização do botão cadastrar*/
+/* Botão cadastrar */
+
 .bot_cadasMat {
+    background-color: rgb(110, 6, 148);
+    color: white;
 
     height: 50px;
     width: 87px;
 
     border-radius: 10px;
+
     border: none;
 
     box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
     transition: 0.3s;
-
 }
 
 
 .bot_cadasMat:hover {
-
     background-color: rgb(223, 192, 234);
     color: black;
 
     transform: translateY(-5px);
-
 }
 
 
-/*Configurações da Primeira tabela que é res das materias*/
-.div_materiasRes {
+/* =========================================================
+   TABELA DE MATÉRIAS
+   ========================================================= */
 
+.div_materiasRes {
     background-color: rgb(110, 6, 148);
 
     width: 40%;
@@ -448,24 +535,20 @@ main {
     border-radius: 20px;
 
     overflow-x: auto;
-
 }
 
 
 .tabela1 {
-
     width: 100%;
 
     border: 2px solid black;
     border-collapse: collapse;
 
     color: white;
-
 }
 
 
 .tabela1 th {
-
     background-color: rgb(110, 6, 148);
     color: white;
 
@@ -474,134 +557,141 @@ main {
     font-family: Arial, sans-serif;
 
     padding: 25px;
+
     font-size: 20px;
 
     border-right: 1px solid white;
-
 }
 
 
 .tabela1 th:last-child {
-
     border-right: none;
-
 }
 
 
 .tabela1 td {
-
     color: black;
 
     text-align: center;
 
     padding: 22px;
 
-    border: 1px solid black;
-
-}
-
-
-.tabela1 th:last-child {
-
-    border-right: none;
-
-}
-
-
-.tabela1 td {
-
-    color: black;
-
-    padding: 22px;
-
-    text-align: center;
     font-size: 18px;
 
     border: 1px solid black;
-
 }
 
 
 .tabela1 tr:nth-child(even) {
-
     background-color: rgb(223, 192, 234);
-
 }
 
 
 .tabela1 tr:nth-child(odd) {
-
     background-color: white;
-
 }
 
 
 .tabela1 tr:hover {
-
     background-color: rgb(238, 218, 245);
-
 }
 
 
-/*Configurações das Tarefas*/
-.section_tarefas h2 {
+/* =========================================================
+   TAREFAS
+   ========================================================= */
 
-    margin-left: 20px;
-    margin-bottom: 20px;
-
+.section_tarefas {
+    margin-top: 50px;
 }
 
 
 .div_cardTare {
-
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
 
-    margin-bottom: 20px;
     padding: 0 15px;
-
 }
 
 
-.div_inputsTare {
+.h2_tarefas {
+    color: rgb(110, 6, 148);
 
     display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-left: 20%;
+}
+
+
+.h2_tarefas img {
+    width: 50px;
+}
+
+
+/* =========================================================
+   INPUTS DAS TAREFAS
+   ========================================================= */
+
+.div_inputsTarefas {
+    display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
+
     gap: 20px;
 
     height: auto;
-    min-height: 350px;
-    width: 35%;
+    min-height: 255px;
+
+    width: 50%;
     min-width: 280px;
     max-width: 100%;
+
+    margin-top: 25px;
 
     padding: 20px;
 
     border-radius: 10px;
-    border: 2px solid rgb(110, 6, 148);
-    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
+    border: 2px solid rgb(110, 6, 148);
+
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 }
 
 
-/*Estilização do input:text*/
-.div_inputTextTare {
+.div_inputsTextEselectTare {
+    display: flex;
+    flex-direction: row;
 
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* Input texto */
+
+.div_inputTextTare {
     display: flex;
     flex-direction: column;
+
     align-items: center;
 
     width: 100%;
-
 }
 
 
 .input_textTare {
-
     height: 45px;
     width: 350px;
     max-width: 100%;
@@ -609,69 +699,26 @@ main {
     padding-left: 10px;
 
     border-radius: 10px;
-    border: 2px solid black;
 
+    border: 2px solid black;
 }
 
 
-/*Estilização do select*/
-.div_selectTare {
+/* Data */
 
+.div_inputDateLocalTare {
     display: flex;
     flex-direction: column;
 
-}
-
-
-.div_selectTare select {
-
-    background-color: rgb(110, 6, 148);
-    color: white;
-
-    height: 50px;
-    width: 175px;
-    max-width: 100%;
-
-    padding-left: 10px;
-
-    border-radius: 10px;
-    border: 2px solid black;
-
-}
-
-
-.select_tarefas optgroup {
-
-    background-color: rgb(110, 6, 148);
-    color: white;
-
-}
-
-
-.select_tarefas option {
-
-    background-color: white;
-    color: black;
-
-}
-
-
-/*Estilização da datetime-local*/
-.div_inputDateTimeLocalTare {
-
-    display: flex;
-    flex-direction: column;
     align-items: center;
 
     width: 100%;
-
 }
 
 
 .input_datetimeLocalTare {
-
     height: 50px;
-    width: 350px;
+    width: 280px;
     max-width: 100%;
 
     padding-left: 10px;
@@ -680,39 +727,79 @@ main {
     font-size: 16px;
 
     border-radius: 10px;
-    border: 2px solid black;
 
+    border: 2px solid black;
 }
 
 
-/*Estilização do botão cadastrar*/
+/* Select */
+
+.div_selectTare {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.div_selectTare select {
+    background-color: rgb(110, 6, 148);
+    color: white;
+
+    height: 45px;
+    width: 230px;
+    max-width: 100%;
+
+    padding-left: 10px;
+
+    border-radius: 10px;
+
+    border: 2px solid black;
+}
+
+
+.selectTare optgroup {
+    background-color: rgb(110, 6, 148);
+    color: white;
+}
+
+
+.selectTare option {
+    background-color: white;
+    color: black;
+}
+
+
+/* Botão */
+
 .bot_cadasTare {
+    background-color: rgb(110, 6, 148);
+    color: white;
 
     height: 50px;
     width: 87px;
 
     border-radius: 10px;
+
     border: none;
+
     box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
 
     transition: 0.3s;
-
 }
 
 
 .bot_cadasTare:hover {
-
     background-color: rgb(223, 192, 234);
     color: black;
 
     transform: translateY(-5px);
-
 }
 
 
-/*configurações da Segunda tabela*/
-.div_tarefasRes {
+/* =========================================================
+   SEGUNDA TABELA
+   ========================================================= */
 
+.div_tarefasRes {
     background-color: rgb(110, 6, 148);
 
     width: 70%;
@@ -721,134 +808,132 @@ main {
     margin: 50px auto;
 
     border-radius: 20px;
+
     border: 2px solid white;
 
     overflow-x: auto;
-
 }
 
 
 .tabela2 {
-
     color: white;
 
     width: 100%;
 
     border: 2px solid black;
-    border-collapse: collapse;
 
+    border-collapse: collapse;
 }
 
 
 .tabela2 th {
-
     text-align: center;
 
     background-color: rgb(110, 6, 148);
     color: white;
 
     font-size: 19px;
+
     font-family: Arial, sans-serif;
 
     padding: 20px;
 
     border-right: 1px solid white;
-
 }
 
 
 .tabela2 th:last-child {
-
     border-right: none;
-
 }
 
 
 .tabela2 td {
-
     color: black;
 
     padding: 22px;
 
     text-align: center;
+
     font-size: 18px;
 
     border: 1px solid black;
-
 }
 
 
 .tabela2 tr:nth-child(even) {
-
     background-color: rgb(223, 192, 234);
-
 }
 
 
 .tabela2 tr:nth-child(odd) {
-
     background-color: white;
-
 }
 
 
 .tabela2 tr:hover {
-
     background-color: rgb(238, 218, 245);
-
 }
 
 
-/*Estilização do total de cada coisa*/
-.section_total {
+/* =========================================================
+   TOTAIS
+   ========================================================= */
 
+.section_total {
     height: auto;
+
     width: 100%;
 
     margin-top: 20px;
-    padding: 20px 15px;
 
+    padding: 20px 15px;
 }
 
 
 .div_cardTotal {
-
     display: flex;
     flex-direction: row;
+
     justify-content: center;
     align-items: stretch;
+
     flex-wrap: wrap;
+
     gap: 20px;
 
     max-width: 1200px;
 
     margin: 0 auto;
-
 }
 
 
 .div_totalDeMaterias,
 .div_totalDeTarefas,
 .div_totalDePendencias {
-
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
+
     gap: 15px;
 
     text-align: center;
 
     padding: 20px;
 
-
     flex: 1 1 250px;
+
     max-width: 380px;
+
     min-height: 160px;
 
     border-radius: 10px;
+
     border: 2px solid rgb(110, 6, 148);
+
     box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
     transition: 0.3s;
 }
 
@@ -856,67 +941,52 @@ main {
 .div_totalDeMaterias:hover,
 .div_totalDeTarefas:hover,
 .div_totalDePendencias:hover {
-
     transform: translateY(-5px);
-    cursor: default;
 
+    cursor: default;
 }
 
 
 .div_totalDeMaterias h3,
 .div_totalDeTarefas h3 {
-
     font-size: 25px;
-
 }
 
 
 .div_totalDePendencias h3 {
-
     font-size: 22px;
-
 }
 
 
 .div_totalMateriasRes h4 {
-
     font-size: 25px;
-
-
 }
 
 
 .div_totalTarefasRes h4 {
-
     font-size: 25px;
-
 }
 
 
 .div_totalDePendencias h4 {
-
     margin-top: 10px;
 
     font-size: 25px;
-
 }
 
 
 .div_tempoDeExpirarRes ul {
-
     list-style: none;
 
     margin-top: 5px;
-
 }
 
 
-/* =================================================
-   CONFIGURAÇÃO DO GRÁFICO
-================================================= */
+/* =========================================================
+   GRÁFICO
+   ========================================================= */
 
 .section_grafico {
-
     width: 90%;
     max-width: 1200px;
 
@@ -931,40 +1001,34 @@ main {
     border: 2px solid rgb(110, 6, 148);
 
     box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
-
 }
 
 
 .section_grafico h2 {
-
     margin-bottom: 25px;
 
     color: rgb(110, 6, 148);
-
 }
 
 
 .div_cardGrafico {
-
     width: 100%;
-
 }
 
 
 .div_grafico {
-
     width: 100%;
-
     height: 450px;
-
 }
 
 
-/* Rodapé */
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
 
 footer {
-
     background-color: rgb(110, 6, 148);
+
     color: white;
 
     height: 80px;
@@ -972,35 +1036,318 @@ footer {
     margin-top: 20px;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
-
 }
 
 
-/* Configuração para celulares e outros */
-@media (max-width: 450px) {
+/* =========================================================
+   BOTÕES GERADOS PELO JAVASCRIPT
+   ========================================================= */
+
+.button_js1,
+.button_js2 {
+    height: 50px;
+    width: 87px;
+
+    border-radius: 10px;
+
+    border: none;
+
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+    transition: 0.3s;
+}
+
+
+.button_js1:hover,
+.button_js2:hover {
+    background-color: rgb(223, 192, 234);
+
+    color: black;
+
+    transform: translateY(-5px);
+}
+
+
+/* Botões de tarefas */
+
+.button_js3,
+.button_js4,
+.button_js5 {
+    height: 50px;
+    width: 87px;
+
+    border-radius: 10px;
+
+    border: none;
+
+    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
+
+    transition: 0.3s;
+}
+
+
+.button_js3:hover,
+.button_js4:hover,
+.button_js5:hover {
+    background-color: rgb(223, 192, 234);
+
+    color: black;
+
+    transform: translateY(-5px);
+}
+
+
+/* =========================================================
+   RESULTADOS DO JAVASCRIPT
+   ========================================================= */
+
+.p_TotalPendJs {
+    font-size: 18px;
+
+    margin-top: 5px;
+}
+
+
+.ul_LisTotalDePendenjs {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.ul_LisTotalDePendenjs li {
+    font-size: 21px;
+
+    text-align: start;
+
+    margin-left: 25px;
+}
+
+
+.h4_totalDeMatJS {
+    font-size: 205px;
+}
+
+
+.h4_totalDeTareJS {
+    font-size: 205px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    /* Calendário + aviso */
 
     .section_calenddarioEaviso {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 30px;
+
+        padding: 0 20px;
+    }
+
+
+    .div_calen,
+    .div_avis {
+        width: 90%;
+
+        max-width: 680px;
+    }
+
+
+    /* Título */
+
+    .section_cardCalenddarioEavisoH2 {
+        width: 90%;
+    }
+
+
+    .tituloCalendario {
+        margin-left: 0;
+    }
+
+
+    /* Matérias */
+
+    .h2_materias {
+        margin-left: 10%;
+    }
+
+
+    .div_inputsMateriais {
+        width: 70%;
+    }
+
+
+    .div_inputTextEselectMat {
+        flex-wrap: wrap;
+    }
+
+
+    /* Tarefas */
+
+    .h2_tarefas {
+        margin-left: 10%;
+    }
+
+
+    .div_inputsTarefas {
+        width: 75%;
+    }
+
+
+    .div_inputsTextEselectTare {
+        flex-wrap: wrap;
+    }
+
+
+    /* Tabelas */
+
+    .div_materiasRes {
+        width: 80%;
+
+        max-width: 90%;
+    }
+
+
+    .div_tarefasRes {
+        width: 85%;
+
+        max-width: 90%;
+    }
+
+
+    /* Gráfico */
+
+    .section_grafico {
+        width: 90%;
+    }
+}
+
+
+/* =========================================================
+   CELULARES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Corpo */
+
+    body {
+        width: 100%;
+
+        overflow-x: hidden;
+    }
+
+
+    /* Cabeçalho */
+
+    header {
+        width: 100%;
+
+        height: 90px;
+
+        padding: 10px;
+
+        text-align: center;
+    }
+
+
+    /* Main */
+
+    main {
+        width: 100%;
+
+        margin-top: 15px;
+    }
+
+
+    /* =====================================================
+       CALENDÁRIO
+       ===================================================== */
+
+    .section_calenddarioEavisoPrimeira {
+        width: 100%;
+    }
+
+
+    .section_cardCalenddarioEavisoH2 {
+        width: 90%;
+    }
+
+
+    .tituloCalendario {
+        margin-left: 0;
+
+        font-size: 22px;
+    }
+
+
+    .tituloCalendario img {
+        width: 40px;
+    }
+
+
+    .section_calenddarioEaviso {
+        width: 100%;
+
         padding: 0 10px;
+
+        margin-top: 15px;
+
+        margin-bottom: 50px;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 25px;
     }
 
 
     .div_calen {
-        padding: 12px;
+        width: 100%;
+
+        max-width: none;
+
+        min-height: auto;
+
+        padding: 15px 10px;
+    }
+
+
+    .calendario_cabecalho {
+        margin-bottom: 12px;
     }
 
 
     .calendario_cabecalho h2 {
-        font-size: 19px;
+        font-size: 20px;
     }
 
 
     .calendario_cabecalho button {
         width: 35px;
+
         height: 35px;
 
-        font-size: 21px;
+        font-size: 20px;
+    }
+
+
+    .dias_semana {
+        margin-bottom: 5px;
     }
 
 
@@ -1010,7 +1357,7 @@ footer {
 
 
     .dias_calendario {
-        gap: 4px;
+        gap: 3px;
     }
 
 
@@ -1018,132 +1365,450 @@ footer {
     .dia_vazio {
         height: 32px;
 
-        font-size: 13px;
+        font-size: 12px;
+    }
+
+
+    /* =====================================================
+       AVISO
+       ===================================================== */
+
+    .div_avis {
+        width: 100%;
+
+        max-width: none;
+
+        min-height: 140px;
+
+        padding: 20px;
     }
 
 
     .div_avis h2 {
-        font-size: 21px;
+        font-size: 20px;
+    }
+
+
+    #avisosTarefas {
+        max-height: 120px;
     }
 
 
     #avisosTarefas p {
+        font-size: 15px;
+    }
+
+
+    /* =====================================================
+       MATÉRIAS
+       ===================================================== */
+
+    .section_materias {
+        width: 100%;
+
+        margin-top: 30px;
+    }
+
+
+    .div_cardMat {
+        width: 100%;
+
+        padding: 0 10px;
+    }
+
+
+    .h2_materias {
+        width: 90%;
+
+        margin: 0 auto 15px auto;
+
+        font-size: 22px;
+    }
+
+
+    .h2_materias img {
+        width: 40px;
+    }
+
+
+    .div_inputsMateriais {
+        width: 100%;
+
+        min-width: 0;
+
+        padding: 20px 15px;
+
+        gap: 18px;
+    }
+
+
+    .div_inputTextEselectMat {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .div_inputTextMat,
+    .div_selectMat {
+        width: 100%;
+    }
+
+
+    .input_textMat {
+        width: 100%;
+
+        max-width: none;
+    }
+
+
+    .div_selectMat select {
+        width: 100%;
+
+        max-width: none;
+    }
+
+
+    .bot_cadasMat {
+        margin-top: 5px;
+    }
+
+
+    /* =====================================================
+       TABELA DE MATÉRIAS
+       ===================================================== */
+
+    .div_materiasRes {
+        width: calc(100% - 20px);
+
+        max-width: none;
+
+        margin: 35px auto;
+
+        overflow-x: auto;
+    }
+
+
+    .tabela1 {
+        min-width: 600px;
+    }
+
+
+    .tabela1 th {
+        padding: 15px;
+
         font-size: 16px;
     }
 
+
+    .tabela1 td {
+        padding: 15px;
+
+        font-size: 15px;
+    }
+
+
+    /* =====================================================
+       TAREFAS
+       ===================================================== */
+
+    .section_tarefas {
+        width: 100%;
+
+        margin-top: 30px;
+    }
+
+
+    .div_cardTare {
+        width: 100%;
+
+        padding: 0 10px;
+    }
+
+
+    .h2_tarefas {
+        width: 90%;
+
+        margin: 0 auto 15px auto;
+
+        font-size: 22px;
+    }
+
+
+    .h2_tarefas img {
+        width: 40px;
+    }
+
+
+    .div_inputsTarefas {
+        width: 100%;
+
+        min-width: 0;
+
+        margin-top: 15px;
+
+        padding: 20px 15px;
+
+        gap: 18px;
+    }
+
+
+    .div_inputsTextEselectTare {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .div_inputTextTare,
+    .div_inputDateLocalTare,
+    .div_selectTare {
+        width: 100%;
+    }
+
+
+    .input_textTare,
+    .input_datetimeLocalTare,
+    .div_selectTare select {
+        width: 100%;
+
+        max-width: none;
+    }
+
+
+    /* =====================================================
+       TABELA DE TAREFAS
+       ===================================================== */
+
+    .div_tarefasRes {
+        width: calc(100% - 20px);
+
+        max-width: none;
+
+        margin: 35px auto;
+
+        overflow-x: auto;
+    }
+
+
+    .tabela2 {
+        min-width: 750px;
+    }
+
+
+    .tabela2 th {
+        padding: 15px;
+
+        font-size: 16px;
+    }
+
+
+    .tabela2 td {
+        padding: 15px;
+
+        font-size: 15px;
+    }
+
+
+    /* =====================================================
+       TOTAIS
+       ===================================================== */
+
+    .section_total {
+        width: 100%;
+
+        padding: 20px 10px;
+
+        margin-top: 10px;
+    }
+
+
+    .div_cardTotal {
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+    }
+
+
+    .div_totalDeMaterias,
+    .div_totalDeTarefas,
+    .div_totalDePendencias {
+        width: 100%;
+
+        max-width: 450px;
+
+        min-height: 150px;
+
+        flex: none;
+    }
+
+
+    .div_totalDeMaterias h3,
+    .div_totalDeTarefas h3 {
+        font-size: 22px;
+    }
+
+
+    .div_totalDePendencias h3 {
+        font-size: 20px;
+    }
+
+
+    .div_totalMateriasRes h4,
+    .div_totalTarefasRes h4,
+    .div_totalDePendencias h4 {
+        font-size: 23px;
+    }
+
+
+    .p_TotalPendJs {
+        font-size: 16px;
+    }
+
+
+    .ul_LisTotalDePendenjs li {
+        font-size: 17px;
+    }
+
+
+    /* =====================================================
+       GRÁFICO
+       ===================================================== */
+
+    .section_grafico {
+        width: calc(100% - 20px);
+
+        margin: 35px auto;
+
+        padding: 15px;
+    }
+
+
+    .section_grafico h2 {
+        font-size: 21px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .div_grafico {
+        width: 100%;
+
+        height: 300px;
+
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       BOTÕES DO JAVASCRIPT
+       ===================================================== */
+
+    .button_js1,
+    .button_js2,
+    .button_js3,
+    .button_js4,
+    .button_js5 {
+        width: 80px;
+
+        height: 45px;
+
+        font-size: 13px;
+    }
+
+
+    /* =====================================================
+       RODAPÉ
+       ===================================================== */
+
+    footer {
+        width: 100%;
+
+        height: 70px;
+
+        text-align: center;
+
+        padding: 10px;
+    }
 }
 
 
-/* Embaixo é configurações do js */
+/* =========================================================
+   CELULARES MUITO PEQUENOS
+   ========================================================= */
 
-.button_js1,
-.button_js2 {
+@media (max-width: 380px) {
 
-    height: 50px;
-    width: 87px;
-
-    border-radius: 10px;
-    border: none;
-
-    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
-
-    transition: 0.3s;
-
-}
+    .tituloCalendario,
+    .h2_materias,
+    .h2_tarefas {
+        font-size: 19px;
+    }
 
 
-.button_js1:hover {
-
-    background-color: rgb(223, 192, 234);
-    color: black;
-
-    transform: translateY(-5px);
-
-}
+    .tituloCalendario img,
+    .h2_materias img,
+    .h2_tarefas img {
+        width: 35px;
+    }
 
 
-.button_js2:hover {
-
-    background-color: rgb(223, 192, 234);
-    color: black;
-
-    transform: translateY(-5px);
-
-}
+    .div_calen {
+        padding: 10px 7px;
+    }
 
 
-/* configurações do botão cadastrar tarefas */
-.button_js3,
-.button_js4,
-.button_js5 {
-
-    height: 50px;
-    width: 87px;
-
-    border-radius: 10px;
-    border: none;
-
-    box-shadow: 5px 6px 15px 2px rgb(110, 6, 148);
-
-    transition: 0.3s;
-
-}
+    .calendario_cabecalho h2 {
+        font-size: 18px;
+    }
 
 
-.button_js3:hover {
+    .calendario_cabecalho button {
+        width: 32px;
 
-    background-color: rgb(223, 192, 234);
-    color: black;
+        height: 32px;
 
-    transform: translateY(-5px);
-
-}
-
-
-.button_js4:hover {
-
-    background-color: rgb(223, 192, 234);
-    color: black;
-
-    transform: translateY(-5px);
-
-}
+        font-size: 18px;
+    }
 
 
-.button_js5:hover {
-
-    background-color: rgb(223, 192, 234);
-    color: black;
-
-    transform: translateY(-5px);
-
-}
+    .dias_semana span {
+        font-size: 9px;
+    }
 
 
-.p_TotalPendJs {
-
-    font-size: 18px;
-    margin-top: 5px;
-
-}
+    .dias_calendario {
+        gap: 2px;
+    }
 
 
-.ul_LisTotalDePendenjs li {
+    .dia_calendario,
+    .dia_vazio {
+        height: 28px;
 
-    font-size: 21px;
-
-}
-
-
-.h4_totalDeMatJS {
-
-    font-size: 205px;
-
-}
+        font-size: 11px;
+    }
 
 
-.h4_totalDeTareJS {
+    .div_inputsMateriais,
+    .div_inputsTarefas {
+        padding: 15px 10px;
+    }
 
-    font-size: 205px;
 
+    .div_totalDeMaterias,
+    .div_totalDeTarefas,
+    .div_totalDePendencias {
+        min-height: 140px;
+
+        padding: 15px 10px;
+    }
 }

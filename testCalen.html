@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-
-<html lang="pt-BR">
+<html lang="pt-Br">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Teste calendario</title>
-
+    <title>Projeto 1</title>
     <link rel="stylesheet" href="/testCalen.css">
 
-    <!-- Chart.js -->
+    <!-- link do chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 
 <body>
@@ -24,157 +18,127 @@
         <h1>Sala de Tarefas</h1>
 
         <div class="div_inputpesquisa">
-
-            <label for="search">
-                Pesquise uma materia
-            </label>
-
-            <input
-                type="search"
-                class="input_pesquisa"
-                name=""
-                id="input_pesquisaId"
-                placeholder="Exemplo: Matematica, História..."
-                onkeyup="pesquisa()"
-            >
-
+            <label for="search">Pesquise uma materia</label>
+            <input type="search" class="input_pesquisa" name="" id="input_pesquisaId"
+                placeholder="Exemplo: Matematica, História..." onkeyup="pesquisa()">
         </div>
 
     </header>
-
 
     <main>
 
         <div id="div_pesuiseRes"></div>
 
 
-        <section class="section_calenddarioEaviso">
+        <section class="section_calenddarioEavisoPrimeira">
 
-            <div class="div_calen">
+            <section class="section_cardCalenddarioEavisoH2">
 
-                <div class="calendario">
+                <h2 class="tituloCalendario"><span><img src="/IMAGENS/calendario.png"
+                            alt="imagem do calendario"></span>Controle de Estudo</h2>
 
-                    <div class="calendario_cabecalho">
+                <section class="section_calenddarioEaviso">
 
-                        <button onclick="mesAnterior()">‹</button>
+                    <div class="div_calen">
 
-                        <h2 id="mesAno"></h2>
+                        <div class="calendario">
 
-                        <button onclick="proximoMes()">›</button>
+                            <div class="calendario_cabecalho">
+
+                                <button onclick="mesAnterior()">‹</button>
+
+                                <h2 id="mesAno"></h2>
+
+                                <button onclick="proximoMes()">›</button>
+
+                            </div>
+
+
+                            <div class="dias_semana">
+
+                                <span>DOM</span>
+                                <span>SEG</span>
+                                <span>TER</span>
+                                <span>QUA</span>
+                                <span>QUI</span>
+                                <span>SEX</span>
+                                <span>SÁB</span>
+
+                            </div>
+
+
+                            <div class="dias_calendario" id="diasCalendario">
+                            </div>
+
+                        </div>
 
                     </div>
 
 
-                    <div class="dias_semana">
+                    <div class="div_avis">
 
-                        <span>DOM</span>
-                        <span>SEG</span>
-                        <span>TER</span>
-                        <span>QUA</span>
-                        <span>QUI</span>
-                        <span>SEX</span>
-                        <span>SÁB</span>
+                        <h2>Aviso!!</h2>
 
-                    </div>
+                        <div id="avisosTarefas">
 
+                            <p>Nenhuma tarefa próxima do prazo.</p>
 
-                    <div
-                        class="dias_calendario"
-                        id="diasCalendario">
+                        </div>
 
                     </div>
 
-                </div>
+                </section>
 
-            </div>
-
-
-            <div class="div_avis">
-
-                <h2>Aviso!!</h2>
-
-                <div id="avisosTarefas">
-
-                    <p>Nenhuma tarefa próxima do prazo.</p>
-
-                </div>
-
-            </div>
+            </section>
 
         </section>
 
+        <hr>
 
         <section class="section_materias">
 
-            <h2>Materias:</h2>
+            <h2 class="h2_materias"><span><img src="/IMAGENS/livro aberto.png"
+                        alt="imagem do livro aberto"></span>Materias:</h2>
 
             <div class="div_cardMat">
 
                 <div class="div_inputsMateriais">
 
+                    <div class="div_inputTextEselectMat">
 
-                    <div class="div_inputTextMat">
+                        <div class="div_inputTextMat">
+                            <label for="text">Digite o nome da materia</label>
+                            <input type="text" name="" class="input_textMat" id="input_textMatId"
+                                placeholder="Nome da materia...">
+                        </div>
 
-                        <label for="text">
-                            Digite o nome da materia
-                        </label>
+                        <div class="div_selectMat">
 
-                        <input
-                            type="text"
-                            name=""
-                            class="input_textMat"
-                            id="input_textMatId"
-                            placeholder="Nome da materia..."
-                        >
+                            <label for="areaMat">Adicione uma área</label>
 
-                    </div>
+                            <select name="areaMat" class="selectMat" id="select_materiaId">
 
+                                <optgroup label="Áreas" id="select_mateHumaRes">
 
-                    <div class="div_selectMat">
+                                    <option value="humanas">Humanas</option>
 
-                        <label for="areaMat">
-                            Adicione uma área
-                        </label>
+                                    <option value="exatas">Exatas</option>
 
-                        <select
-                            name="areaMat"
-                            class="selectMat"
-                            id="select_materiaId"
-                        >
+                                    <option value="tecnico">Tecnico</option>
 
-                            <optgroup
-                                label="Áreas"
-                                id="select_mateHumaRes"
-                            >
+                                </optgroup>
 
-                                <option value="humanas">
-                                    Humanas
-                                </option>
+                            </select>
 
-                                <option value="exatas">
-                                    Exatas
-                                </option>
+                        </div>
 
-                                <option value="tecnico">
-                                    Tecnico
-                                </option>
-
-                            </optgroup>
-
-                        </select>
 
                     </div>
-
 
                     <div class="div_matBotCadas">
 
-                        <input
-                            type="button"
-                            class="bot_cadasMat"
-                            id="bot_cadasMatId"
-                            value="Cadastrar"
-                            onclick="cadastrarMat()"
-                        >
+                        <input type="button" class="bot_cadasMat" id="bot_cadasMatId" value="Cadastrar"
+                            onclick="cadastrarMat()">
 
                     </div>
 
@@ -183,113 +147,72 @@
             </div>
 
         </section>
-
 
         <div class="div_materiasRes">
 
             <table class="tabela1">
 
                 <thead>
-
                     <tr>
-
                         <th>Nome da materia</th>
-
                         <th>Área</th>
-
                         <th>Ações</th>
-
                     </tr>
-
                 </thead>
 
-
-                <tbody
-                    class="div_tableMatRes"
-                    id="div_tableMatResId">
-
-                </tbody>
+                <tbody class="div_tableMatRes" id="div_tableMatResId"> </tbody>
 
             </table>
 
         </div>
 
+        </section>
 
+        <hr>
+
+        <!-- Tarefa Teste -->
         <section class="section_tarefas">
 
-            <h2>Tarefas:</h2>
+            <h2 class="h2_tarefas"><span><img src="/IMAGENS/tarefas.png" alt="imagem de uma planilha"></span>Tarefas:</h2>
 
             <div class="div_cardTare">
 
-                <div class="div_inputsTare">
+                <div class="div_inputsTarefas">
 
+                    <div class="div_inputsTextEselectTare">
 
-                    <div class="div_inputTextTare">
+                        <div class="div_inputTextTare">
 
-                        <!-- Onde Coloca O Nome das Tarefas -->
+                            <!-- Onde Coloca O Nome das Tarefas -->
+                            <label for="text">Digite o nome da tarefa</label>
+                            <input type="text" class="input_textTare" name="" id="input_textTareId" placeholder="Nome da tarefa...">
 
-                        <label for="text">
-                            Digite o nome da tarefa
-                        </label>
+                        </div>
 
-                        <input
-                            type="text"
-                            class="input_textTare"
-                            name=""
-                            id="input_textTareId"
-                            placeholder="Nome da tarefa..."
-                        >
+                        <div class="div_inputDateLocalTare">
+                            <!-- Coloca Data -->
+                            <label for="datetime-local">Adicione uma data para a sua tarefa</label>
+                            <input type="datetime-local" class="input_datetimeLocalTare" name="" id="input_datetimeLocalTareId">
+                        </div>
+
+                        <div class="div_selectTare">
+
+                            <label for="areaTarefas">Adicione uma tarefa</label>
+
+                            <select name="areaTarefas" id="select_tarefasId" class="selectTare">
+                                <option value="selecione">
+                                    Selecione uma Tarefa
+                                </option>
+                            </select>
+
+                        </div>
+
 
                     </div>
 
+                    <div class="div_matBotCadas">
 
-                    <div class="div_inputDateTimeLocalTare">
-
-                        <!-- Coloca Data -->
-
-                        <label for="datetime-local">
-                            Adicione uma data para a sua tarefa
-                        </label>
-
-                        <input
-                            type="datetime-local"
-                            class="input_datetimeLocalTare"
-                            name=""
-                            id="input_datetimeLocalTareId"
-                        >
-
-                    </div>
-
-
-                    <div class="div_selectTare">
-
-                        <label for="areaTarefas">
-                            Adicione uma materia
-                        </label>
-
-                        <select
-                            name="areaTarefas"
-                            id="select_tarefasId"
-                            class="select_tarefas"
-                        >
-
-                            <option value="selecione">
-                                Selecione uma matéria
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="div_tareBotCadas">
-
-                        <input
-                            type="button"
-                            class="bot_cadasTare"
-                            value="Cadastrar"
-                            onclick="cadastrarTare()"
-                        >
+                        <input type="button" class="bot_cadasTare" value="Cadastrar" onclick="cadastrarTare()">
 
                     </div>
 
@@ -300,161 +223,96 @@
         </section>
 
 
-        <!--
-        Esse input que está comentado é caso o select não dê certo
-
-        <input
-            type="text"
-            name=""
-            id=""
-            placeholder="Nome da materia..."
-        >
-        -->
-
+        <!-- Esse input que está comentado é casos o select não de certo <input type="text" name="" id="" placeholder="Nome da materia..."> -->
 
         <div class="div_tarefasRes">
 
             <table class="tabela2">
 
                 <thead>
-
                     <tr>
-
                         <th>Id</th>
-
                         <th>Nome da Tarefa</th>
-
                         <th>Nome da Materia</th>
-
                         <th>Área</th>
-
                         <th>Data</th>
-
                         <th>Horário</th>
-
                         <th>Ações</th>
-
                     </tr>
-
                 </thead>
 
-
-                <tbody id="div_tableTarResId">
-
-                </tbody>
+                <tbody id="div_tableTarResId"> </tbody>
 
             </table>
 
         </div>
 
+        </section>
+
+        <hr>
 
         <section class="section_total">
 
             <div class="div_cardTotal">
 
-
                 <div class="div_totalDeMaterias">
 
                     <h3>Total de Materias:</h3>
 
-                    <div
-                        class="div_totalMateriasRes"
-                        id="div_totalMateriasResId"
-                    >
-
+                    <div class="div_totalMateriasRes" id="div_totalMateriasResId">
                         <!-- <h4> -->
-
                         <h4>0</h4>
-
                     </div>
 
                 </div>
-
 
                 <div class="div_totalDeTarefas">
 
                     <h3>Total de Tarefas:</h3>
 
-                    <div
-                        class="div_totalTarefasRes"
-                        id="div_totalTarefasResId"
-                    >
-
+                    <div class="div_totalTarefasRes" id="div_totalTarefasResId">
                         <!-- <h4> -->
-
                         <h4>0</h4>
-
                     </div>
 
                 </div>
 
-
                 <div class="div_totalDePendencias">
-
 
                     <div class="divTotal_pende">
 
                         <h3>Total de Pendencias:</h3>
 
-                        <div
-                            class="div_totalPendenRes"
-                            id="div_totalPendenResId"
-                        >
-
+                        <div class="div_totalPendenRes" id="div_totalPendenResId">
                             <!-- <h4> -->
-
                             <h4>0</h4>
-
                         </div>
 
                     </div>
-
 
                     <div class="divTotal_expirar">
 
                         <h3>Proxima a expirar:</h3>
 
-                        <div
-                            class="div_tempoDeExpirarRes"
-                            id="div_tempoDeExpirarResId"
-                        >
-
+                        <div class="div_tempoDeExpirarRes" id="div_tempoDeExpirarResId">
                             <!-- <ul> e <li> -->
-
                             <ul>
-
-                                <li>
-                                    <strong>DIA:</strong> 19
-                                </li>
-
-                                <li>
-                                    <strong>MÊS:</strong> 20
-                                </li>
-
-                                <li>
-                                    <strong>ANO:</strong> 2020
-                                </li>
-
-                                <li>
-                                    <strong>HORARIO:</strong> 12:90
-                                </li>
-
+                                <li><strong>DIA:</strong> 19</li>
+                                <li><strong>MÊS:</strong> 20</li>
+                                <li><strong>ANO:</strong> 2020</li>
+                                <li><strong>HORARIO:</strong> 12:90</li>
                             </ul>
-
                         </div>
 
-                    </div>
 
+                    </div>
                 </div>
 
             </div>
 
         </section>
 
-
-        <!-- =========================
-             GRÁFICO
-        ========================= -->
+        <!-- Graficos -->
 
         <section class="section_grafico">
 
@@ -472,21 +330,15 @@
 
         </section>
 
-
     </main>
-
 
     <footer>
 
-        <p>
-            &copy;Esse site foi desenvolvido por mariana C e Yuri M
-        </p>
+        <p>&copy;Esse site foi desenvolvido por mariana C e Yuri M</p>
 
     </footer>
 
-
     <script src="/testCalen.js"></script>
-
 </body>
 
 </html>

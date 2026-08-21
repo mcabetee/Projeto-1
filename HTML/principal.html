@@ -75,9 +75,9 @@
                     </div>
 
 
-                    <div class="div_avis">
+                    <div class="div_aviso">
 
-                        <h2>Aviso!!</h2>
+                        <h2 class="h2_aviso"><span><img src="/IMAGENS/sinal de alerta.png" alt="Sinal de alerta"></span>Aviso!!</h2>
 
                         <div id="avisosTarefas">
 
@@ -93,6 +93,7 @@
 
         </section>
 
+        <hr>
 
         <section class="section_materias">
 
@@ -103,7 +104,7 @@
 
                 <div class="div_inputsMateriais">
 
-                    <div class="div_inputTextEselect">
+                    <div class="div_inputTextEselectMat">
 
                         <div class="div_inputTextMat">
                             <label for="text">Digite o nome da materia</label>
@@ -167,9 +168,12 @@
 
         </section>
 
+        <hr>
+
+        <!-- Tarefa Teste -->
         <section class="section_tarefas">
 
-            <h2>Tarefas:</h2>
+            <h2 class="h2_tarefas"><span><img src="/IMAGENS/tarefas.png" alt="imagem de uma planilha"></span>Tarefas:</h2>
 
             <div class="div_cardTare">
 
@@ -185,74 +189,19 @@
 
                         </div>
 
-                        <div class="div_inputDateTimeLocalTare">
-
+                        <div class="div_inputDateLocalTare">
                             <!-- Coloca Data -->
                             <label for="datetime-local">Adicione uma data para a sua tarefa</label>
                             <input type="datetime-local" class="input_datetimeLocalTare" name="" id="input_datetimeLocalTareId">
-
                         </div>
 
                         <div class="div_selectTare">
 
-                            <label for="areaTarefas">Adicione uma materia</label>
+                            <label for="areaTarefas">Adicione uma tarefa</label>
 
-                            <select name="areaTarefas" id="select_tarefasId" class="select_tarefas">
+                            <select name="areaTarefas" id="select_tarefasId" class="selectTare">
                                 <option value="selecione">
-                                    Selecione uma matéria
-                                </option>
-                            </select>
-
-                        </div>
-
-                    </div>
-
-                    <div class="div_tareBotCadas">
-
-                        <input type="button" class="bot_cadasTare" value="Cadastrar" onclick="cadastrarTare()">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- Tarefa Teste -->
-        <section class="section_materias">
-
-            <h2 class="h2_tarefas"><span><img src="/IMAGENS/tarefas.png" alt="imagem de uma planilha"></span>Materias:</h2>
-
-            <div class="div_cardMat">
-
-                <div class="div_inputsMateriais">
-
-                    <div class="div_inputTextEselect">
-
-                        <div>
-
-                            <!-- Onde Coloca O Nome das Tarefas -->
-                            <label for="text">Digite o nome da tarefa</label>
-                            <input type="text" class="input_textTare" name="" id="input_textTareId"
-                                placeholder="Nome da tarefa...">
-
-                        </div>
-
-                        <div class="div_inputTextMat">
-                            <!-- Coloca Data -->
-                            <label for="datetime-local">Adicione uma data para a sua tarefa</label>
-                            <input type="datetime-local" class="input_datetimeLocalTare" name=""
-                                id="input_datetimeLocalTareId">
-                        </div>
-
-                        <div class="div_selectMat">
-
-                            <label for="areaTarefas">Adicione uma materia</label>
-
-                            <select name="areaTarefas" id="select_tarefasId" class="select_tarefas">
-                                <option value="selecione">
-                                    Selecione uma matéria
+                                    Selecione uma Tarefa
                                 </option>
                             </select>
 
@@ -263,8 +212,7 @@
 
                     <div class="div_matBotCadas">
 
-                        <input type="button" class="bot_cadasMat" id="bot_cadasMatId" value="Cadastrar"
-                            onclick="cadastrarMat()">
+                        <input type="button" class="bot_cadasTare" value="Cadastrar" onclick="cadastrarTare()">
 
                     </div>
 
@@ -300,6 +248,8 @@
         </div>
 
         </section>
+
+        <hr>
 
         <section class="section_total">
 
