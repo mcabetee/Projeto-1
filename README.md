@@ -15,4 +15,4 @@ Este projeto foi criado para praticar e desenvolver habilidades em:
 - Estruturação de páginas com HTML;
 - Estilização avançada com CSS;
 - Interatividade com JavaScript;
-- Organização e documentação de projetos no GitHub.
+- Organização e documentação de projetos no GitHub
