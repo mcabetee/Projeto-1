@@ -54,6 +54,22 @@ main {
     margin-top: 20px;
 }
 
+.div_linha{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.div_linha hr{
+
+    border: 1px solid purple;
+
+    width: 90%;
+
+}
+
 /* Calendario e aviso */
 
 .section_calenddarioEavisoPrimeira {
