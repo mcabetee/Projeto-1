@@ -18,3 +18,9 @@ As fases de requisitos, análise, projeto, implementação, testes e manutençã
 - Estilização avançada com CSS;
 - Interatividade com JavaScript;
 - Organização e documentação de projetos no GitHub
+
+## Desenvolvido por:
+
+- mcabetee
+- KkN0body
+- gabrielrodrigues190
